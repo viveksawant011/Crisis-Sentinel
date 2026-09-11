@@ -1,6 +1,16 @@
 -- VoltAuto GmbH synthetic enterprise database
 -- Enterprise Crisis Response Agent — Week 1 schema
 
+
+PRAGMA foreign_keys = OFF;
+
+DROP TABLE IF EXISTS alt_supplier_map;
+DROP TABLE IF EXISTS inventory;
+DROP TABLE IF EXISTS purchase_order;
+DROP TABLE IF EXISTS plant;
+DROP TABLE IF EXISTS material;
+DROP TABLE IF EXISTS supplier;
+
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE supplier (
