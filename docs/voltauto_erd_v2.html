@@ -1,0 +1,97 @@
+<style>
+#erd svg.erDiagram .divider path { stroke-opacity: 0.5; }
+#erd svg.erDiagram .row-rect-odd path,
+#erd svg.erDiagram .row-rect-odd rect,
+#erd svg.erDiagram .row-rect-even path,
+#erd svg.erDiagram .row-rect-even rect { stroke: none !important; }
+</style>
+<div id="erd"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const themeMode = document.documentElement.dataset.mode;
+const dark = themeMode ? themeMode === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"anthropic-sans", sans-serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '13px',
+    fontFamily: '"anthropic-sans", sans-serif',
+    lineColor: dark ? '#9c9a92' : '#73726c',
+    textColor: dark ? '#c2c0b6' : '#3d3d3a',
+  },
+});
+const { svg } = await mermaid.render('erd-svg', `erDiagram
+  SUPPLIER ||--o{ PURCHASE_ORDER : fulfills
+  MATERIAL ||--o{ PURCHASE_ORDER : ordered_as
+  PLANT ||--o{ PURCHASE_ORDER : receives
+  MATERIAL ||--o{ INVENTORY : tracked_as
+  PLANT ||--o{ INVENTORY : holds
+  SUPPLIER ||--o{ ALT_SUPPLIER_MAP : maps_from
+  MATERIAL ||--o{ ALT_SUPPLIER_MAP : maps_for
+  SUPPLIER {
+    string id PK
+    string name
+    string country
+    string region
+    string category
+  }
+  MATERIAL {
+    string id PK
+    string name
+    string category
+  }
+  PURCHASE_ORDER {
+    string id PK
+    string supplier_id FK
+    string material_id FK
+    string plant_id FK
+    int quantity
+    float value_eur
+    int lead_time_days
+    string status
+  }
+  PLANT {
+    string id PK
+    string name
+    string country
+  }
+  INVENTORY {
+    string material_id FK
+    string plant_id FK
+    int current_stock
+    int daily_consumption
+  }
+  ALT_SUPPLIER_MAP {
+    string material_id FK
+    string primary_supplier_id FK
+    string alt_supplier_id FK
+  }`);
+document.getElementById('erd').innerHTML = svg;
+
+document.querySelectorAll('#erd svg.erDiagram .node').forEach(node => {
+  const firstPath = node.querySelector('path[d]');
+  if (!firstPath) return;
+  const d = firstPath.getAttribute('d');
+  const nums = d.match(/-?[\d.]+/g)?.map(Number);
+  if (!nums || nums.length < 8) return;
+  const xs = [nums[0], nums[2], nums[4], nums[6]];
+  const ys = [nums[1], nums[3], nums[5], nums[7]];
+  const x = Math.min(...xs), y = Math.min(...ys);
+  const w = Math.max(...xs) - x, h = Math.max(...ys) - y;
+  const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  rect.setAttribute('x', x); rect.setAttribute('y', y);
+  rect.setAttribute('width', w); rect.setAttribute('height', h);
+  rect.setAttribute('rx', '8');
+  for (const a of ['fill', 'stroke', 'stroke-width', 'class', 'style']) {
+    if (firstPath.hasAttribute(a)) rect.setAttribute(a, firstPath.getAttribute(a));
+  }
+  firstPath.replaceWith(rect);
+});
+
+document.querySelectorAll('#erd svg.erDiagram .row-rect-odd path, #erd svg.erDiagram .row-rect-even path').forEach(p => {
+  p.setAttribute('stroke', 'none');
+});
+</script>
