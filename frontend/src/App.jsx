@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
-
+import ScenarioChips from './components/ScenarioChips';
 function App() {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(false)
@@ -22,6 +22,7 @@ function App() {
         onAnalyze={handleAnalyze}
         loading={loading}
       />
+      <ScenarioChips onPick={setQuery} disabled={loading} />
       {loading && <p className="status">Analyzing...</p>}
     </div>
   )
