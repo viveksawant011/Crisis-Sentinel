@@ -51,3 +51,45 @@ body {
   color: var(--muted);
   font-size: 14px;
 }
+
+.page .searchbar {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.search-button {
+  padding: 12px 22px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status {
+  color: var(--muted);
+  margin-top: 16px;
+}
