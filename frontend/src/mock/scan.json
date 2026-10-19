@@ -5,7 +5,9 @@
     "impacted_country": "Taiwan",
     "impacted_category": "semiconductor",
     "severity": "high",
-    "evidence": ["Example evidence line from a news source"],
+    "evidence": [
+      "Example evidence line from a news source"
+    ],
     "conflicting_claims": [],
     "confidence": null
   },
@@ -53,6 +55,15 @@
         "target_material": "MCU-X200",
         "rationale": "Highest single PO value with an approved German alternative.",
         "estimated_cost_eur": 2400000.0
+      },
+      {
+        "priority": 2,
+        "title": "Reroute MAT-L10 Supply to SouthKoreaParts 006",
+        "action_type": "reroute_supplier",
+        "target_plant": "Stuttgart Plant",
+        "target_material": "MAT-L10",
+        "rationale": "Only 1.0 days of runway at Stuttgart, and a registered South Korean alternative exists.",
+        "estimated_cost_eur": 280579.62
       }
     ]
   }
