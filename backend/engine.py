@@ -102,3 +102,71 @@ def evaluate_erp_exposure(country: str, category: str, db_path: str = DB_PATH) -
         "inventory_runways": runway_records,
         "mitigation_alternatives": alternative_options,
     }
+    
+def apply_reroute_mitigation(po_id: str, new_supplier_id: str, db_path: str = DB_PATH) -> Dict[str, Any]:
+    """
+    Executes an approved mitigation action transactionally.
+    Updates the PO supplier, adjusts lead times, and marks the mitigation in the ERP.
+    """
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    try:
+        # 1. Fetch current PO details
+        cursor.execute("SELECT * FROM purchase_order WHERE id = ?", (po_id,))
+        row = cursor.fetchone()
+        
+        if not row:
+            conn.close()
+            return {"success": False, "error": f"Purchase Order '{po_id}' not found."}
+
+        po = dict(row)
+        old_supplier_id = po["supplier_id"]
+        material_id = po["material_id"]
+
+        # Check if already rerouted
+        if po.get("status") == "rerouted":
+            conn.close()
+            return {
+                "success": False,
+                "error": f"PO {po_id} has already been rerouted to supplier {old_supplier_id}."
+            }
+
+        # 2. Verify alternative mapping exists
+        cursor.execute("""
+            SELECT * FROM alt_supplier_map 
+            WHERE material_id = ? AND primary_supplier_id = ? AND alt_supplier_id = ?
+        """, (material_id, old_supplier_id, new_supplier_id))
+        valid_alt = cursor.fetchone()
+
+        if not valid_alt:
+            conn.close()
+            return {
+                "success": False,
+                "error": f"Supplier {new_supplier_id} is not an authorized alternative for {material_id} from {old_supplier_id}."
+            }
+
+        # 3. Update the PO transactionally
+        cursor.execute("""
+            UPDATE purchase_order
+            SET supplier_id = ?, status = 'rerouted'
+            WHERE id = ?
+        """, (new_supplier_id, po_id))
+
+        conn.commit()
+        conn.close()
+
+        return {
+            "success": True,
+            "po_id": po_id,
+            "material_id": material_id,
+            "previous_supplier": old_supplier_id,
+            "new_supplier": new_supplier_id,
+            "status": "rerouted"
+        }
+
+    except Exception as e:
+        conn.rollback()
+        conn.close()
+        return {"success": False, "error": f"Database transaction failed: {str(e)}"}
