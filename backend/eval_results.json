@@ -1,0 +1,69 @@
+{
+  "cases": [],
+  "erp": [
+    {
+      "country": "Germany",
+      "category": "battery component",
+      "checks": {
+        "runs_without_error": [
+          "FAIL",
+          "OperationalError: no such table: purchase_order"
+        ]
+      },
+      "error": "OperationalError: no such table: purchase_order",
+      "oracle": {
+        "po_count": 11,
+        "exposure_eur": 6777034.75,
+        "min_runway_days": 4.2
+      }
+    },
+    {
+      "country": "Japan",
+      "category": "sensor",
+      "checks": {
+        "runs_without_error": [
+          "FAIL",
+          "OperationalError: no such table: purchase_order"
+        ]
+      },
+      "error": "OperationalError: no such table: purchase_order",
+      "oracle": {
+        "po_count": 42,
+        "exposure_eur": 17152616.36,
+        "min_runway_days": 1.0
+      }
+    },
+    {
+      "country": "Poland",
+      "category": "battery component",
+      "checks": {
+        "runs_without_error": [
+          "FAIL",
+          "OperationalError: no such table: purchase_order"
+        ]
+      },
+      "error": "OperationalError: no such table: purchase_order",
+      "oracle": {
+        "po_count": 12,
+        "exposure_eur": 6174250.32,
+        "min_runway_days": 2.2
+      }
+    },
+    {
+      "country": "Taiwan",
+      "category": "semiconductor",
+      "checks": {
+        "runs_without_error": [
+          "FAIL",
+          "OperationalError: no such table: purchase_order"
+        ]
+      },
+      "error": "OperationalError: no such table: purchase_order",
+      "oracle": {
+        "po_count": 11,
+        "exposure_eur": 4723739.97,
+        "min_runway_days": 3.2
+      }
+    }
+  ]
+}
