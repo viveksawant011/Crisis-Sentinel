@@ -5,10 +5,11 @@ ERP exposure evaluation, and mitigation execution.
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
 from tavily_nemotron_probe import research, analyze_disruption, resolve_nemotron_model
-from engine import evaluate_erp_exposure, apply_reroute_mitigation
+from engine import evaluate_erp_exposure, apply_reroute_mitigation, reset_demo_state
 from strategist import generate_mitigation_strategy
 
 app = FastAPI(
@@ -93,3 +94,17 @@ def execute_mitigation(action: MitigationApprovalRequest):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+
+@app.post("/api/demo/reset")
+def reset_demo():
+    """Rebuild the demo database so the scenario can be replayed from scratch."""
+    result = reset_demo_state()
+    if not result["success"]:
+        raise HTTPException(status_code=500, detail=result["error"])
+    return result
+
+@app.get("/")
+def root():
+    """Redirect root visitors directly to Swagger API docs."""
+    return RedirectResponse(url="/docs")

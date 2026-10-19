@@ -8,8 +8,12 @@ chain is inserted FIRST and verified before any bulk data, per the charter.
 import sqlite3
 import random
 
-DB_PATH = "voltauto.db"
-SCHEMA_PATH = "schema.sql"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+DB_PATH = str(BASE_DIR / "voltauto.db")
+SCHEMA_PATH = str(BASE_DIR / "schema.sql")
+
 random.seed(42)  # reproducible dataset across the team
 
 PLANTS = [
@@ -213,6 +217,40 @@ def seed_bulk(conn, n_suppliers=20, n_materials=50, n_pos=200,
     seed_alt_suppliers(conn, materials, all_suppliers_full)
 
 
+def ensure_coverage(conn):
+    """Make the data internally consistent so the engine's joins are meaningful.
+    1) Every (material, plant) that has a PO gets an inventory row, so runway
+       can be computed at the plant the PO actually ships to.
+    2) Every open PO from a non-European semiconductor supplier gets a valid
+       alternative supplier, so 'reroute' is always possible in the demo.
+    Runs after all random seeding, so it doesn't change earlier rows."""
+    missing = conn.execute("""
+        SELECT DISTINCT po.material_id, po.plant_id FROM purchase_order po
+        LEFT JOIN inventory i ON i.material_id = po.material_id AND i.plant_id = po.plant_id
+        WHERE i.material_id IS NULL
+    """).fetchall()
+    for material_id, plant_id in sorted(missing):
+        daily = random.randint(200, 1500)
+        stock = int(daily * random.uniform(4, 30))     # 4-30 days of cover
+        conn.execute("INSERT INTO inventory VALUES (?,?,?,?)",
+                     (material_id, plant_id, stock, daily))
+
+    alts = conn.execute(
+        "SELECT id FROM supplier WHERE category='semiconductor' AND country='Germany'"
+    ).fetchall()
+    alt_pool = [r[0] for r in alts] or ["SUP014"]
+    exposed = conn.execute("""
+        SELECT DISTINCT po.material_id, po.supplier_id FROM purchase_order po
+        JOIN supplier s ON s.id = po.supplier_id
+        WHERE s.category='semiconductor' AND s.country='Taiwan' AND po.status='open'
+        ORDER BY po.material_id, po.supplier_id
+    """).fetchall()
+    for material_id, supplier_id in exposed:
+        conn.execute("INSERT OR IGNORE INTO alt_supplier_map VALUES (?,?,?)",
+                     (material_id, supplier_id, random.choice(alt_pool)))
+    conn.commit()
+
+
 def export_vocabulary(conn):
     """Flat lists for the AI/Data Science teammate's Nemotron prompts."""
     materials = [r[0] for r in conn.execute("SELECT id FROM material")]
@@ -227,6 +265,7 @@ if __name__ == "__main__":
     seed_the_chain(conn)
     verify_chain(conn)          # stop here if the chain is broken
     seed_bulk(conn)
+    ensure_coverage(conn)
     export_vocabulary(conn)
     conn.close()
     print(f"Done — {DB_PATH} ready.")
