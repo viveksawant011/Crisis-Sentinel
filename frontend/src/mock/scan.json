@@ -51,6 +51,8 @@
         "priority": 1,
         "title": "Reroute MCU-X200 Supply to EuroSemi GmbH",
         "action_type": "reroute_supplier",
+        "po_id": "PO10482",
+        "target_supplier_id": "SUP014",
         "target_plant": "Stuttgart Plant",
         "target_material": "MCU-X200",
         "rationale": "Highest single PO value with an approved German alternative.",
@@ -58,11 +60,13 @@
       },
       {
         "priority": 2,
-        "title": "Reroute MAT-L10 Supply to SouthKoreaParts 006",
+        "title": "Reroute MAT-L10 Supply to EuroSemi GmbH",
         "action_type": "reroute_supplier",
+        "po_id": "PO10006",
+        "target_supplier_id": "SUP014",
         "target_plant": "Stuttgart Plant",
         "target_material": "MAT-L10",
-        "rationale": "Only 1.0 days of runway at Stuttgart, and a registered South Korean alternative exists.",
+        "rationale": "Only 1.0 days of runway at Stuttgart, and a registered alternative exists.",
         "estimated_cost_eur": 280579.62
       }
     ]

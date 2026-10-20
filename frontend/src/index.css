@@ -242,3 +242,30 @@ body {
   color: var(--muted);
   font-size: 12px;
 }
+.approve-button {
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.approve-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.approve-button.done {
+  background: var(--green);
+  color: #06210f;
+}
+
+.action-error {
+  margin: 10px 0 0;
+  color: var(--red);
+  font-size: 13px;
+}
