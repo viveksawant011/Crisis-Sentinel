@@ -7,7 +7,7 @@ import ActionCard from './components/ActionCard'
 import NoExposure from './components/NoExposure'
 import ErrorBanner from './components/ErrorBanner'
 import { fetchScan } from './api'
-
+import RouteGraph from './components/RouteGraph'
 const euro = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'EUR',
@@ -81,7 +81,10 @@ function App() {
               value={result.exposure.mitigation_alternatives.length}
             />
           </div>
-
+        <RouteGraph
+  pos={result.exposure.affected_open_pos}
+  alternatives={result.exposure.mitigation_alternatives}
+/>
           <section className="brief">
             <h2 className="brief-headline">{result.brief.headline}</h2>
             <p className="brief-summary">{result.brief.criticality_summary}</p>

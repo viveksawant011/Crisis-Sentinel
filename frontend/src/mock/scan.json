@@ -16,14 +16,15 @@
     "open_pos_count": 11,
     "critical_runway_days": 1.0,
     "affected_open_pos": [
-      {
-        "po_id": "PO10482",
-        "supplier_name": "TaiwanChip Corp",
-        "material_id": "MCU-X200",
-        "value_eur": 2400000.0,
-        "plant_name": "Stuttgart Plant"
-      }
-    ],
+  {
+    "po_id": "PO10482",
+    "supplier_name": "TaiwanChip Corp",
+    "supplier_country": "Taiwan",
+    "material_id": "MCU-X200",
+    "value_eur": 2400000.0,
+    "plant_name": "Stuttgart Plant"
+  }
+],
     "inventory_runways": [
       {
         "material_id": "MCU-X200",
@@ -32,14 +33,15 @@
       }
     ],
     "mitigation_alternatives": [
-      {
-        "material_id": "MCU-X200",
-        "primary_supplier": "TaiwanChip Corp",
-        "alt_supplier_id": "SUP014",
-        "alt_supplier_name": "EuroSemi GmbH",
-        "alt_supplier_country": "Germany"
-      }
-    ]
+  {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "primary_supplier": "TaiwanChip Corp",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+  }
+]
   },
   "brief": {
     "headline": "Taiwan Semiconductor Disruption Threatens €4.7M Exposure",

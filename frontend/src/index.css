@@ -269,3 +269,80 @@ body {
   color: var(--red);
   font-size: 13px;
 }
+
+.route {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.route-title {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.route-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.route-row.red {
+  --tone: var(--red);
+}
+
+.route-row.green {
+  --tone: var(--green);
+}
+
+.route-tag {
+  width: 72px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tone);
+}
+
+.route-node {
+  min-width: 150px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.route-node.origin {
+  border-color: var(--tone);
+}
+
+.route-node-name {
+  font-weight: 600;
+}
+
+.route-node-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.route-line {
+  flex: 1;
+  position: relative;
+  min-width: 40px;
+  border-top: 2px solid var(--tone);
+}
+
+.route-line::after {
+  content: '▶';
+  position: absolute;
+  right: -4px;
+  top: -9px;
+  font-size: 12px;
+  color: var(--tone);
+}
