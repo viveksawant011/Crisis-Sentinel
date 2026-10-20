@@ -1,0 +1,22 @@
+{
+  "matched": false,
+  "intelligence": {
+    "event": "Poland battery component supplier strike",
+    "impacted_country": "Poland",
+    "impacted_category": "battery component",
+    "severity": "medium",
+    "evidence": [],
+    "conflicting_claims": [],
+    "confidence": null
+  },
+  "exposure": {
+    "matched": false,
+    "impacted_country": "Poland",
+    "impacted_category": "battery component",
+    "total_exposure_eur": 0.0,
+    "open_pos_count": 0,
+    "critical_runway_days": null,
+    "message": "Zero open purchase orders exposed to battery component operations in Poland."
+  },
+  "brief": null
+}

@@ -182,3 +182,38 @@
     border-right-color: var(--border);
   }
 }
+.banner {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.banner h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.banner p {
+  margin: 0 0 6px;
+}
+
+.banner.error {
+  background: rgba(255, 92, 108, 0.1);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.banner.clean {
+  background: rgba(61, 220, 151, 0.08);
+  border-color: var(--green);
+}
+
+.banner.clean h2 {
+  color: var(--green);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}

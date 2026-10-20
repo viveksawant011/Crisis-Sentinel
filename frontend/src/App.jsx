@@ -1,11 +1,12 @@
-
 import { useState } from 'react'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import ScenarioChips from './components/ScenarioChips'
 import MetricCard from './components/MetricCard'
 import ActionCard from './components/ActionCard'
-import mockData from './mock/scan.json'
+import NoExposure from './components/NoExposure'
+import ErrorBanner from './components/ErrorBanner'
+import { fetchScan } from './api'
 
 const euro = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -15,6 +16,7 @@ const euro = new Intl.NumberFormat('en-US', {
 })
 
 function runwayTone(days) {
+  if (days === null || days === undefined) return ''
   if (days < 3) return 'red'
   if (days < 7) return 'amber'
   return 'green'
@@ -26,101 +28,71 @@ function App() {
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
 
-  function handleAnalyze() {
-    if (loading || !query.trim()) return
-
+  async function handleAnalyze() {
     setLoading(true)
     setResult(null)
     setError('')
-
-    setTimeout(() => {
-      try {
-        setResult(mockData)
-      } catch (err) {
-        setError('Analysis failed. Please try again.')
-      } finally {
-        setLoading(false)
-      }
-    }, 2000)
+    try {
+      const data = await fetchScan(query)
+      setResult(data)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <div className="page">
       <Header />
-
       <SearchBar
         query={query}
         setQuery={setQuery}
         onAnalyze={handleAnalyze}
         loading={loading}
       />
+      <ScenarioChips onPick={setQuery} disabled={loading} />
+      {loading && <p className="status">Analyzing...</p>}
+      {error && <ErrorBanner message={error} />}
 
-      <ScenarioChips
-        onPick={setQuery}
-        disabled={loading}
-      />
-
-      {loading && (
-        <p className="status">Analyzing...</p>
+      {result && !result.matched && (
+        <NoExposure
+          intelligence={result.intelligence}
+          message={result.exposure.message}
+        />
       )}
 
-      {error && (
-        <p className="status" role="alert">
-          {error}
-        </p>
-      )}
+      {result && result.matched && (
+        <>
+          <div className="metrics">
+            <MetricCard
+              label="At risk"
+              value={euro.format(result.exposure.total_exposure_eur)}
+              tone="red"
+            />
+            <MetricCard label="Open POs" value={result.exposure.open_pos_count} />
+            <MetricCard
+              label="Runway (days)"
+              value={result.exposure.critical_runway_days ?? 'n/a'}
+              tone={runwayTone(result.exposure.critical_runway_days)}
+            />
+            <MetricCard
+              label="Alternatives"
+              value={result.exposure.mitigation_alternatives.length}
+            />
+          </div>
 
-      {result?.matched && result.exposure && (
-        <div className="metrics">
-          <MetricCard
-            label="At risk"
-            value={euro.format(
-              result.exposure.total_exposure_eur
+          <section className="brief">
+            <h2 className="brief-headline">{result.brief.headline}</h2>
+            <p className="brief-summary">{result.brief.criticality_summary}</p>
+            {result.brief.recommended_actions.length === 0 && (
+              <p className="muted">No automated actions were recommended.</p>
             )}
-            tone="red"
-          />
-
-          <MetricCard
-            label="Open POs"
-            value={result.exposure.open_pos_count}
-          />
-
-          <MetricCard
-            label="Runway (days)"
-            value={result.exposure.critical_runway_days}
-            tone={runwayTone(
-              result.exposure.critical_runway_days
-            )}
-          />
-
-          <MetricCard
-            label="Alternatives"
-            value={
-              result.exposure.mitigation_alternatives.length
-            }
-          />
-        </div>
-      )}
-
-      {result?.brief && (
-        <section className="brief">
-          <h2 className="brief-headline">
-            {result.brief.headline}
-          </h2>
-
-          <p className="brief-summary">
-            {result.brief.criticality_summary}
-          </p>
-
-          {(result.brief.recommended_actions ?? []).map(
-            (action) => (
-              <ActionCard
-                key={action.priority}
-                action={action}
-              />
-            )
-          )}
-        </section>
+            {result.brief.recommended_actions.map((a) => (
+              <ActionCard key={`${a.po_id}-${a.priority}`} action={a} />
+            ))}
+          </section>
+        </>
       )}
     </div>
   )
