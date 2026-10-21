@@ -17,7 +17,11 @@ try:
         base_url="https://api.tokenfactory.nebius.com/v1/",
         api_key=os.environ["NEBIUS_API_KEY"],
     )
-    ids = [m.id for m in client.models.list().data]
-    print("Nebius key WORKS. Models found:", len(ids))
+    res = client.chat.completions.create(
+    model="nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    messages=[{"role": "user", "content": "ping"}],
+    max_tokens=5
+)
+    print("Nebius key WORKS. Inference response:", res.choices[0].message.content)
 except Exception as e:
     print("Nebius key FAILED:", str(e)[:200])
