@@ -6,8 +6,9 @@ import MetricCard from './components/MetricCard'
 import ActionCard from './components/ActionCard'
 import NoExposure from './components/NoExposure'
 import ErrorBanner from './components/ErrorBanner'
-import { fetchScan } from './api'
 import RouteGraph from './components/RouteGraph'
+import { fetchScan, resetDemo } from './api'
+
 const euro = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'EUR',
@@ -27,6 +28,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
+  const [resetting, setResetting] = useState(false)
 
   async function handleAnalyze() {
     setLoading(true)
@@ -42,6 +44,19 @@ function App() {
     }
   }
 
+  async function handleReset() {
+    setResetting(true)
+    setError('')
+    try {
+      await resetDemo()
+      setResult(null)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setResetting(false)
+    }
+  }
+
   return (
     <div className="page">
       <Header />
@@ -52,6 +67,14 @@ function App() {
         loading={loading}
       />
       <ScenarioChips onPick={setQuery} disabled={loading} />
+      <button
+        className="reset-button"
+        onClick={handleReset}
+        disabled={loading || resetting}
+      >
+        {resetting ? 'Resetting...' : 'Reset demo data'}
+      </button>
+
       {loading && <p className="status">Analyzing...</p>}
       {error && <ErrorBanner message={error} />}
 
@@ -81,10 +104,12 @@ function App() {
               value={result.exposure.mitigation_alternatives.length}
             />
           </div>
-        <RouteGraph
-  pos={result.exposure.affected_open_pos}
-  alternatives={result.exposure.mitigation_alternatives}
-/>
+
+          <RouteGraph
+            pos={result.exposure.affected_open_pos}
+            alternatives={result.exposure.mitigation_alternatives}
+          />
+
           <section className="brief">
             <h2 className="brief-headline">{result.brief.headline}</h2>
             <p className="brief-summary">{result.brief.criticality_summary}</p>
