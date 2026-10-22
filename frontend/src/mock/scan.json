@@ -1,0 +1,70 @@
+{
+  "matched": true,
+  "intelligence": {
+    "event": "Taiwan semiconductor supply disruption",
+    "impacted_country": "Taiwan",
+    "impacted_category": "semiconductor",
+    "severity": "high",
+    "evidence": [
+      "Example evidence line from a news source"
+    ],
+    "conflicting_claims": [],
+    "confidence": null
+  },
+  "exposure": {
+    "total_exposure_eur": 4723739.97,
+    "open_pos_count": 11,
+    "critical_runway_days": 1.0,
+    "affected_open_pos": [
+      {
+        "po_id": "PO10482",
+        "supplier_name": "TaiwanChip Corp",
+        "material_id": "MCU-X200",
+        "value_eur": 2400000.0,
+        "plant_name": "Stuttgart Plant"
+      }
+    ],
+    "inventory_runways": [
+      {
+        "material_id": "MCU-X200",
+        "plant_name": "Stuttgart Plant",
+        "runway_days": 10.9
+      }
+    ],
+    "mitigation_alternatives": [
+      {
+        "material_id": "MCU-X200",
+        "primary_supplier": "TaiwanChip Corp",
+        "alt_supplier_id": "SUP014",
+        "alt_supplier_name": "EuroSemi GmbH",
+        "alt_supplier_country": "Germany"
+      }
+    ]
+  },
+  "brief": {
+    "headline": "Taiwan Semiconductor Disruption Threatens €4.7M Exposure",
+    "criticality_summary": "Stuttgart has days of runway for MCU-X200.",
+    "financial_risk_eur": 4723739.97,
+    "assembly_line_deadline_days": 1.0,
+    "recommended_actions": [
+      {
+        "priority": 1,
+        "title": "Reroute MCU-X200 Supply to EuroSemi GmbH",
+        "action_type": "reroute_supplier",
+        "target_plant": "Stuttgart Plant",
+        "target_material": "MCU-X200",
+        "rationale": "Highest single PO value with an approved German alternative.",
+        "estimated_cost_eur": 2400000.0
+      },
+      {
+        "priority": 2,
+        "title": "Reroute MAT-L10 Supply to SouthKoreaParts 006",
+        "action_type": "reroute_supplier",
+        "target_plant": "Stuttgart Plant",
+        "target_material": "MAT-L10",
+        "rationale": "Only 1.0 days of runway at Stuttgart, and a registered South Korean alternative exists.",
+        "estimated_cost_eur": 280579.62
+      }
+    ]
+  }
+}

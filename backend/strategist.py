@@ -5,25 +5,28 @@ Synthesizes deterministic ERP exposure into executive mitigation actions using N
 
 import os
 import json
-from typing import List, Dict, Any
+import re
+from typing import List, Dict, Any, Optional
 from dotenv import load_dotenv
 from openai import OpenAI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 load_dotenv()
 
 NEBIUS_BASE_URL = "https://api.tokenfactory.nebius.com/v1/"
-FALLBACK_STRATEGIST_MODEL = "nvidia/NVIDIA-Nemotron-3-Super-120B-A3B"
+FALLBACK_STRATEGIST_MODEL = "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B"
 
 client = OpenAI(
     base_url=NEBIUS_BASE_URL,
-    api_key=os.environ["NEBIUS_API_KEY"],
+    api_key=os.environ.get("NEBIUS_API_KEY", ""),
 )
 
 class MitigationAction(BaseModel):
-    priority: int
+    priority: int = 1
     title: str
-    action_type: str  # "reroute_supplier" | "air_freight" | "line_rebalancing" | "buffer_stock"
+    action_type: str = "reroute_supplier"  # "reroute_supplier" | "air_freight" | "line_rebalancing" | "buffer_stock"
+    po_id: str
+    target_supplier_id: str
     target_plant: str
     target_material: str
     rationale: str
@@ -36,6 +39,7 @@ class ExecutiveBrief(BaseModel):
     assembly_line_deadline_days: float
     recommended_actions: List[MitigationAction]
 
+
 def resolve_reasoning_model() -> str:
     """Selects a high-reasoning model (Super or Ultra) for strategy generation."""
     try:
@@ -46,9 +50,28 @@ def resolve_reasoning_model() -> str:
     except Exception:
         return FALLBACK_STRATEGIST_MODEL
 
+
+def _unwrap_payload(data: Any) -> Dict[str, Any]:
+    """If the LLM wraps the output inside a container key, unpack it."""
+    if not isinstance(data, dict):
+        return {}
+    
+    # Common nested keys models invent
+    for wrapper in ["analysis_report", "executive_brief", "report", "brief", "data"]:
+        if wrapper in data and isinstance(data[wrapper], dict):
+            return data[wrapper]
+            
+    return data
+
+
 def generate_mitigation_strategy(crisis_context: Dict[str, Any], erp_exposure: Dict[str, Any]) -> ExecutiveBrief:
     """Feeds external context and internal SQL data into the Strategist model."""
     model_id = resolve_reasoning_model()
+
+    total_exposure = erp_exposure.get("total_exposure_eur", 0.0)
+    critical_runway = erp_exposure.get("critical_runway_days", 1.0) or 1.0
+    open_pos = erp_exposure.get("affected_open_pos", [])
+    alts = erp_exposure.get("mitigation_alternatives", [])
 
     system_prompt = (
         "You are the Chief Supply Chain Strategist for VoltAuto GmbH. "
@@ -56,7 +79,8 @@ def generate_mitigation_strategy(crisis_context: Dict[str, Any], erp_exposure: D
         "All calculations must be grounded strictly in the provided ERP data. "
         "If alternative suppliers are listed in the ERP data, prioritize rerouting orders. "
         "Provide prioritized, concrete operational actions with cost-benefit rationale.\n\n"
-        f"Output MUST be valid JSON adhering to:\n{json.dumps(ExecutiveBrief.model_json_schema(), indent=2)}"
+        "CRITICAL: Output MUST be a FLAT JSON object (do NOT wrap it in 'analysis_report' or any outer object) "
+        f"adhering to this exact JSON Schema:\n{json.dumps(ExecutiveBrief.model_json_schema(), indent=2)}"
     )
 
     user_payload = {
@@ -64,15 +88,95 @@ def generate_mitigation_strategy(crisis_context: Dict[str, Any], erp_exposure: D
         "internal_erp_exposure": erp_exposure
     }
 
-    completion = client.chat.completions.create(
-        model=model_id,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": json.dumps(user_payload, indent=2)},
-        ],
-        temperature=0.2,
-        response_format={"type": "json_object"},
-    )
+    valid_plants = set(erp_exposure.get("affected_plants", []))
+    valid_materials = set()
+    for po in open_pos:
+        valid_materials.update({po["material_id"], po.get("material_name", "")})
 
-    raw_output = completion.choices[0].message.content or "{}"
-    return ExecutiveBrief.model_validate_json(raw_output)
+    last_error = None
+    for attempt in range(3):
+        try:
+            completion = client.chat.completions.create(
+                model=model_id,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": json.dumps(user_payload, indent=2)},
+                ],
+                temperature=0.1,
+                response_format={"type": "json_object"},
+            )
+            raw = completion.choices[0].message.content or "{}"
+            parsed_data = json.loads(raw)
+            clean_data = _unwrap_payload(parsed_data)
+
+            # Backfill required fields if missing from model response
+            if "financial_risk_eur" not in clean_data:
+                clean_data["financial_risk_eur"] = total_exposure
+            if "assembly_line_deadline_days" not in clean_data:
+                clean_data["assembly_line_deadline_days"] = critical_runway
+            if "headline" not in clean_data:
+                clean_data["headline"] = f"Disruption in {crisis_context.get('impacted_country', 'Supplier Region')}"
+            if "criticality_summary" not in clean_data:
+                clean_data["criticality_summary"] = f"Critical inventory runway is {critical_runway} days."
+            if "recommended_actions" not in clean_data:
+                clean_data["recommended_actions"] = []
+
+            brief = ExecutiveBrief.model_validate(clean_data)
+
+            # Deterministic guardrails: strictly enforce SQL-computed numbers
+            brief.financial_risk_eur = total_exposure
+            brief.assembly_line_deadline_days = critical_runway
+
+            # Filter out any hallucinated plants/materials
+            filtered_actions = [
+                a for a in brief.recommended_actions
+                if a.target_plant in valid_plants and a.target_material in valid_materials
+            ]
+            
+            # If the model dropped or filtered all actions, provide a deterministic fallback action from ERP
+            if not filtered_actions and open_pos and alts:
+                filtered_actions = [
+                    MitigationAction(
+                        priority=1,
+                        title=f"Reroute {alts[0]['material_id']} to {alts[0]['alt_supplier_name']}",
+                        action_type="reroute_supplier",
+                        po_id=alts[0].get("po_id", open_pos[0]["po_id"]),
+                        target_supplier_id=alts[0]["alt_supplier_id"],
+                        target_plant=open_pos[0]["plant_name"],
+                        target_material=open_pos[0]["material_id"],
+                        rationale=f"Mitigates disruption. Plant runway is {critical_runway} days.",
+                        estimated_cost_eur=open_pos[0]["value_eur"]
+                    )
+                ]
+            
+            brief.recommended_actions = filtered_actions
+            return brief
+
+        except Exception as e:
+            last_error = e
+            continue
+
+    # Graceful fallback: If LLM fails all 3 attempts, build brief purely from SQL data
+    default_actions = []
+    if open_pos and alts:
+        default_actions.append(
+            MitigationAction(
+                priority=1,
+                title=f"Reroute {alts[0]['material_id']} to {alts[0]['alt_supplier_name']}",
+                action_type="reroute_supplier",
+                po_id=alts[0].get("po_id", open_pos[0]["po_id"]),
+                target_supplier_id=alts[0]["alt_supplier_id"],
+                target_plant=open_pos[0]["plant_name"],
+                target_material=open_pos[0]["material_id"],
+                rationale=f"Deterministic fallback: Plant runway is {critical_runway} days.",
+                estimated_cost_eur=open_pos[0]["value_eur"]
+            )
+        )
+
+    return ExecutiveBrief(
+        headline=f"Supply Disruption: {crisis_context.get('impacted_country', 'Global')} {crisis_context.get('impacted_category', 'Component')}",
+        criticality_summary=f"Assembly line stoppage risk identified with {critical_runway} days remaining.",
+        financial_risk_eur=total_exposure,
+        assembly_line_deadline_days=critical_runway,
+        recommended_actions=default_actions
+    )
