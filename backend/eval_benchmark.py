@@ -16,12 +16,12 @@ or fake a result in another:
                  Always fed the scenario's ground-truth country/category, so it
                  is tested in isolation from extraction errors.
 
-Usage (repo root, PowerShell):
-    python backend\\eval_benchmark.py                   # full run (uses API credits)
-    python backend\\eval_benchmark.py --offline         # ERP + alt-supplier checks only
-    python backend\\eval_benchmark.py --scenario B      # one scenario
-    python backend\\eval_benchmark.py --limit 2         # first 2 cases only
-    python backend\\eval_benchmark.py --check-urls      # also HTTP-check each source URL
+Usage (repo root, PowerShell / bash):
+    python backend/eval_benchmark.py                   # full run (uses API credits)
+    python backend/eval_benchmark.py --offline         # ERP + alt-supplier checks only
+    python backend/eval_benchmark.py --scenario B      # one scenario
+    python backend/eval_benchmark.py --limit 2         # first 2 cases only
+    python backend/eval_benchmark.py --check-urls      # also HTTP-check each source URL
 
 Exit code 1 if any check is FAIL (usable in CI). Results are saved to
 backend/eval_results.json. Report exactly what this prints - nothing more.
@@ -39,37 +39,52 @@ from urllib.request import Request, urlopen
 from alt_supplier_coverage import coverage_gaps, scenario_targets
 from test_scenarios import iter_cases
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).resolve().parent
 DB_PATH = HERE / "voltauto.db"
 
 # =====================================================================
-# ADAPTER  -  the only section you should need to edit.
-# Point these three functions at your real code. Signatures in the
-# screenshots were not visible, so adjust arguments if yours differ.
+# ADAPTER  -  Corrected to match tavily_nemotron_probe & engine signatures
 # =====================================================================
+_CACHED_MODEL_ID = None
+
+def get_active_model():
+    global _CACHED_MODEL_ID
+    if _CACHED_MODEL_ID is None:
+        try:
+            from tavily_nemotron_probe import resolve_nemotron_model
+            _CACHED_MODEL_ID = resolve_nemotron_model()
+        except Exception:
+            _CACHED_MODEL_ID = "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    return _CACHED_MODEL_ID
+
+
 def call_research(query):
-    from main import research                    # <- module that defines research()
-    return research(query)
+    from tavily_nemotron_probe import research
+    return research(query, max_results=5)
 
 
 def call_analyze(research_output, query):
-    from main import analyze_disruption          # <- module that defines analyze_disruption()
-    return analyze_disruption(research_output)   # e.g. (query, research_output) if yours takes both
+    from tavily_nemotron_probe import analyze_disruption
+    model_id = get_active_model()
+    # Fixed: Passing query, sources list, and model_id
+    return analyze_disruption(query, research_output, model_id)
 
 
 def call_erp(country, category):
-    from engine import evaluate_erp_exposure     # <- module that defines evaluate_erp_exposure()
-    return evaluate_erp_exposure(country, category)
+    from engine import evaluate_erp_exposure
+    return evaluate_erp_exposure(country, category, db_path=str(DB_PATH))
 
 
 # Key names to look for in your outputs. First match wins (searched recursively).
 EXTRACTION_KEYS = {"country": ["impacted_country"], "category": ["impacted_category"]}
 SOURCE_LIST_KEYS = ["results", "sources", "evidence", "articles"]
 SOURCE_URL_KEYS = ["url", "link", "source_url"]
+
+# Added 'open_pos_count' to fix UNVERIFIED error
 ERP_KEYS = {
-    "po_count": ["total_pos_affected", "affected_po_count", "po_count", "num_pos", "affected_pos"],
+    "po_count": ["open_pos_count", "total_pos_affected", "affected_po_count", "po_count", "num_pos", "affected_pos"],
     "exposure_eur": ["total_exposure_eur", "total_exposure", "exposure_eur", "eur_exposure", "exposure"],
-    "min_runway_days": ["min_inventory_days", "min_runway_days", "inventory_runway_days",
+    "min_runway_days": ["critical_runway_days", "min_inventory_days", "min_runway_days", "inventory_runway_days",
                         "min_days_inventory", "runway_days"],
 }
 

@@ -1,16 +1,311 @@
 {
-  "cases": [],
+  "cases": [
+    {
+      "scenario": "A",
+      "query": "Taiwan earthquake TSMC fab shutdown semiconductor supply",
+      "extraction": {
+        "seconds": 30.4,
+        "country": "Taiwan",
+        "category": "semiconductor",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 2.2,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 0,
+        "domains": [
+          "astutegroup.com",
+          "interos.ai",
+          "microchipusa.com",
+          "youtube.com",
+          "z2data.com"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 0 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "A",
+      "query": "Taiwan chip production halted automotive semiconductor shortage",
+      "extraction": {
+        "seconds": 25.2,
+        "country": "Taiwan",
+        "category": "semiconductor",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 1.5,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 2,
+        "domains": [
+          "cnbc.com",
+          "fusionww.com",
+          "npr.org",
+          "reuters.com",
+          "youtube.com"
+        ],
+        "status": "PASS",
+        "detail": "5 sources, 2 credible"
+      },
+      "error": null
+    },
+    {
+      "scenario": "A",
+      "query": "TSMC fab disruption impact on automotive chip supply",
+      "extraction": {
+        "seconds": 18.7,
+        "country": "Taiwan",
+        "category": "semiconductor",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 2.6,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 0,
+        "domains": [
+          "autosinnovate.org",
+          "engineering.org.cn",
+          "isf-muenchen.de",
+          "mdpi.com",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 0 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "B",
+      "query": "Europe lithium battery cell supply shortage Poland Germany automotive",
+      "extraction": {
+        "seconds": 29.9,
+        "country": "Poland",
+        "category": "battery component",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 1.9,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 0,
+        "domains": [
+          "acea.auto",
+          "bruegel.org",
+          "eurofound.europa.eu",
+          "scribd.com",
+          "youtube.com"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 0 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "B",
+      "query": "Poland battery cell plant production disruption EV supply chain",
+      "extraction": {
+        "seconds": 24.9,
+        "country": "Poland",
+        "category": "battery component",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 1.7,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 0,
+        "domains": [
+          "automotivelogistics.media",
+          "coxautoinc.com",
+          "embatterysystems.com",
+          "marketsandmarkets.com",
+          "rmi.org"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 0 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "B",
+      "query": "lithium supply shock European battery manufacturers delays",
+      "extraction": {
+        "seconds": 14.5,
+        "country": "Germany",
+        "category": "battery component",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": false
+      },
+      "tavily": {
+        "seconds": 1.8,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 1,
+        "domains": [
+          "carnegieendowment.org",
+          "embatterysystems.com",
+          "rmis.jrc.ec.europa.eu",
+          "youtube.com"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 1 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "C",
+      "query": "Japan port logistics disruption automotive radar sensor shipments delayed",
+      "extraction": {
+        "seconds": 10.7,
+        "country": "Japan",
+        "category": "sensor",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 2.4,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 0,
+        "domains": [
+          "automotivelogistics.media",
+          "facebook.com",
+          "gocomet.com",
+          "instagram.com",
+          "mtalines.com"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 0 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "C",
+      "query": "Japan proximity sensor supply delay automotive logistics failure",
+      "extraction": {
+        "seconds": 10.8,
+        "country": "Japan",
+        "category": "sensor",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 1.8,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 0,
+        "domains": [
+          "aimcom.com",
+          "automotivemanufacturingsolutions.com",
+          "bedooksensors.com",
+          "digital-blog.fedex.com",
+          "steelwatch.org"
+        ],
+        "status": "WARN",
+        "detail": "5 sources, only 0 from the credible-domain list"
+      },
+      "error": null
+    },
+    {
+      "scenario": "C",
+      "query": "Japanese radar sensor exports disrupted automakers",
+      "extraction": {
+        "seconds": 14.2,
+        "country": "Japan",
+        "category": "sensor",
+        "country_status": "PASS",
+        "country_note": "",
+        "category_status": "PASS",
+        "category_note": "",
+        "strict_country": true
+      },
+      "tavily": {
+        "seconds": 2.5,
+        "n_sources": 5,
+        "n_valid_urls": 5,
+        "n_unique": 5,
+        "n_credible": 2,
+        "domains": [
+          "autonews.com",
+          "everycrsreport.com",
+          "linkedin.com",
+          "reuters.com",
+          "youtube.com"
+        ],
+        "status": "PASS",
+        "detail": "5 sources, 2 credible"
+      },
+      "error": null
+    }
+  ],
   "erp": [
     {
       "country": "Germany",
       "category": "battery component",
       "checks": {
         "runs_without_error": [
-          "FAIL",
-          "OperationalError: no such table: purchase_order"
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "11"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "6,777,034.75"
+        ],
+        "inventory_runway": [
+          "WARN",
+          "engine 1 vs SQL oracle 4.2 (engine may define runway per-plant vs overall)"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
         ]
       },
-      "error": "OperationalError: no such table: purchase_order",
+      "error": null,
       "oracle": {
         "po_count": 11,
         "exposure_eur": 6777034.75,
@@ -22,11 +317,27 @@
       "category": "sensor",
       "checks": {
         "runs_without_error": [
-          "FAIL",
-          "OperationalError: no such table: purchase_order"
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "42"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "17,152,616.36"
+        ],
+        "inventory_runway": [
+          "PASS",
+          "1"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
         ]
       },
-      "error": "OperationalError: no such table: purchase_order",
+      "error": null,
       "oracle": {
         "po_count": 42,
         "exposure_eur": 17152616.36,
@@ -38,11 +349,27 @@
       "category": "battery component",
       "checks": {
         "runs_without_error": [
-          "FAIL",
-          "OperationalError: no such table: purchase_order"
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "12"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "6,174,250.32"
+        ],
+        "inventory_runway": [
+          "WARN",
+          "engine 1.6 vs SQL oracle 2.2 (engine may define runway per-plant vs overall)"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
         ]
       },
-      "error": "OperationalError: no such table: purchase_order",
+      "error": null,
       "oracle": {
         "po_count": 12,
         "exposure_eur": 6174250.32,
@@ -54,11 +381,27 @@
       "category": "semiconductor",
       "checks": {
         "runs_without_error": [
-          "FAIL",
-          "OperationalError: no such table: purchase_order"
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "11"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "4,723,739.97"
+        ],
+        "inventory_runway": [
+          "WARN",
+          "engine 1 vs SQL oracle 3.2 (engine may define runway per-plant vs overall)"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
         ]
       },
-      "error": "OperationalError: no such table: purchase_order",
+      "error": null,
       "oracle": {
         "po_count": 11,
         "exposure_eur": 4723739.97,
