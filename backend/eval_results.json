@@ -1,0 +1,133 @@
+{
+  "cases": [],
+  "erp": [
+    {
+      "country": "Germany",
+      "category": "battery component",
+      "checks": {
+        "runs_without_error": [
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "11"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "6,777,034.75"
+        ],
+        "inventory_runway": [
+          "PASS",
+          "4.2"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
+        ]
+      },
+      "error": null,
+      "oracle": {
+        "po_count": 11,
+        "exposure_eur": 6777034.75,
+        "min_runway_days": 4.2
+      }
+    },
+    {
+      "country": "Japan",
+      "category": "sensor",
+      "checks": {
+        "runs_without_error": [
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "42"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "17,152,616.36"
+        ],
+        "inventory_runway": [
+          "PASS",
+          "1"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
+        ]
+      },
+      "error": null,
+      "oracle": {
+        "po_count": 42,
+        "exposure_eur": 17152616.36,
+        "min_runway_days": 1.0
+      }
+    },
+    {
+      "country": "Poland",
+      "category": "battery component",
+      "checks": {
+        "runs_without_error": [
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "12"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "6,174,250.32"
+        ],
+        "inventory_runway": [
+          "PASS",
+          "2.2"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
+        ]
+      },
+      "error": null,
+      "oracle": {
+        "po_count": 12,
+        "exposure_eur": 6174250.32,
+        "min_runway_days": 2.2
+      }
+    },
+    {
+      "country": "Taiwan",
+      "category": "semiconductor",
+      "checks": {
+        "runs_without_error": [
+          "PASS",
+          ""
+        ],
+        "open_po_count": [
+          "PASS",
+          "11"
+        ],
+        "eur_exposure": [
+          "PASS",
+          "4,723,739.97"
+        ],
+        "inventory_runway": [
+          "PASS",
+          "3.2"
+        ],
+        "alt_supplier_coverage": [
+          "PASS",
+          ""
+        ]
+      },
+      "error": null,
+      "oracle": {
+        "po_count": 11,
+        "exposure_eur": 4723739.97,
+        "min_runway_days": 3.2
+      }
+    }
+  ]
+}
