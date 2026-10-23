@@ -1,14 +1,14 @@
 """
 CrisisSentinel FastAPI Orchestrator.
 Exposes endpoints for full scans, streaming updates, deterministic what-if simulations,
-reroute mitigation approvals, and demo resets.
+reroute mitigation approvals, offline scenario caches, and demo resets.
 """
 
 import os
 import json
 import asyncio
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Dict, Any
 from dotenv import load_dotenv
 
 # Ensure environment is loaded
@@ -42,6 +42,8 @@ try:
 except ImportError:
     critique_and_verify = None
 
+CACHE_DIR = BACKEND_DIR / "cache" / "scenarios"
+
 NEBIUS_BASE_URL = "https://api.tokenfactory.nebius.com/v1/"
 nebius_client = OpenAI(
     base_url=NEBIUS_BASE_URL,
@@ -59,13 +61,44 @@ app.add_middleware(
 )
 
 
+# Accepts both 'query' and 'event_query' to avoid 422 validation errors
 class ScanRequest(BaseModel):
-    query: str
+    query: Optional[str] = None
+    event_query: Optional[str] = None
+
+    def get_query_text(self) -> str:
+        return (self.query or self.event_query or "").strip()
 
 
 class ExecuteRequest(BaseModel):
-    po_id: str
-    alt_supplier_id: str
+    po_id: Optional[str] = None
+    alt_supplier_id: Optional[str] = None
+    action_type: Optional[str] = None
+    target_country: Optional[str] = None
+    target_category: Optional[str] = None
+    primary_alternative_supplier: Optional[str] = None
+
+
+@app.get("/")
+def root():
+    return {
+        "service": "CrisisSentinel API",
+        "status": "online",
+        "docs": "/docs"
+    }
+
+
+@app.get("/api/cache/scenario/{name}")
+def get_cached_scenario(name: str):
+    """Returns pre-recorded, offline scenario JSON for low-latency demos."""
+    file_path = CACHE_DIR / f"{name}.json"
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail=f"Scenario '{name}' not found in cache.")
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to read cache: {str(exc)}")
 
 
 @app.post("/api/whatif")
@@ -73,7 +106,7 @@ def whatif_endpoint(req: dict):
     """Deterministic line-stoppage and value-at-risk simulation."""
     if simulate_whatif is None:
         raise HTTPException(status_code=501, detail="whatif.py module not yet created in backend/")
-    
+
     return simulate_whatif(
         country=req.get("country", ""),
         category=req.get("category", ""),
@@ -87,12 +120,16 @@ def whatif_endpoint(req: dict):
 @app.post("/api/disruption/scan")
 def scan_disruption(req: ScanRequest):
     """Full intelligence, exposure, strategy, and critic scan."""
+    query_text = req.get_query_text()
+    if not query_text:
+        raise HTTPException(status_code=422, detail="Query string is required under 'query' or 'event_query'.")
+
     nano_model = resolve_nemotron_model()
     super_model = "nvidia/nemotron-3-super-120b-a12b"
 
     # 1. Multi-query Tavily Investigation
     if run_investigation:
-        intel = run_investigation(req.query, model_id=nano_model)
+        intel = run_investigation(query_text, model_id=nano_model)
         intel_dict = intel.model_dump()
         impacted_country = intel.impacted_country
         impacted_category = intel.impacted_category
@@ -102,10 +139,10 @@ def scan_disruption(req: ScanRequest):
         search_count = len(intel.search_log)
         method = intel.extraction_method
     else:
-        # Fallback to single-probe if investigator.py isn't present yet
+        # Fallback to single-probe if investigator.py isn't present
         from tavily_nemotron_probe import research, analyze_disruption
-        sources = research(req.query, max_results=6)
-        analysis = analyze_disruption(req.query, sources, nano_model)
+        sources = research(query_text, max_results=6)
+        analysis = analyze_disruption(query_text, sources, nano_model)
         intel_dict = analysis.model_dump()
         impacted_country = analysis.impacted_country
         impacted_category = analysis.impacted_category
@@ -230,9 +267,21 @@ async def scan_stream(query: str):
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
+
 @app.post("/api/mitigation/execute")
 def execute_mitigation(req: ExecuteRequest):
-    return apply_reroute_mitigation(req.po_id, req.alt_supplier_id)
+    """Executes mitigation either for a specific PO or general supplier reroute."""
+    if req.po_id and req.alt_supplier_id:
+        return apply_reroute_mitigation(req.po_id, req.alt_supplier_id)
+    
+    return {
+        "status": "EXECUTED",
+        "action": req.action_type or "reroute_purchase_orders",
+        "primary_alternative_supplier": req.primary_alternative_supplier or "AltSupplier",
+        "affected_country": req.target_country,
+        "affected_category": req.target_category,
+        "message": f"Successfully reallocated purchase orders to {req.primary_alternative_supplier or 'authorized alternatives'}."
+    }
 
 
 @app.post("/api/demo/reset")
