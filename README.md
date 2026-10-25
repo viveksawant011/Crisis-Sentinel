@@ -255,19 +255,8 @@ As part of the hackathon submission requirements, our operational feedback inclu
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
-````
+```
 
 ---
 
-### Step 3: Stage and Commit the New README
-
-From your terminal in the project root:
-
-```bash
-git add README.md
-git commit -m "docs: add comprehensive production README with architecture, setup, and hackathon feedback"
-git push origin feat/differentiators
-
-````
-
-Once pushed, merge `feat/differentiators` into `dev`, and your Pull Request from `dev` to `main` will be ready for the final submission.
+```
