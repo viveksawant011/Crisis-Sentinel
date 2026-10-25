@@ -3,14 +3,18 @@ backend/.venv/
 backend/.env
 __pycache__/
 *.py[cod]
+
+# SQLite Databases (Prevent committing local databases and binary conflicts)
+*.db
+*.sqlite3
+*.db-wal
+*.db-shm
 backend/data/*.db
+voltauto.db
 
 # Node / Frontend
 frontend/node_modules/
 frontend/.next/
+frontend/dist/
 frontend/.env*.local
 
-# System & IDE
-.DS_Store
-.vscode/
-.idea/

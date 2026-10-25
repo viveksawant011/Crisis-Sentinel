@@ -178,6 +178,37 @@ def apply_reroute_mitigation(po_id: str, new_supplier_id: str, db_path: str = DB
         conn.close()
 
 
+def apply_batch_reroute_mitigation(po_ids: list, alt_supplier_id: str, db_path: str = DB_PATH) -> Dict[str, Any]:
+    """
+    Reroutes a list of exposed purchase orders to an approved alternative supplier,
+    updating status to 'rerouted' in the SQLite database.
+    """
+    conn = get_db_connection(db_path)
+    cur = conn.cursor()
+    
+    updated_count = 0
+    try:
+        for po_id in po_ids:
+            cur.execute("""
+                UPDATE purchase_order 
+                SET supplier_id = ?, status = 'rerouted'
+                WHERE id = ?
+            """, (alt_supplier_id, str(po_id)))
+            updated_count += cur.rowcount
+        conn.commit()
+    except Exception as exc:
+        conn.rollback()
+        return {"status": "ERROR", "error": str(exc), "rerouted_pos_count": 0}
+    finally:
+        conn.close()
+
+    return {
+        "status": "SUCCESS",
+        "rerouted_pos_count": updated_count,
+        "new_supplier_id": alt_supplier_id,
+        "message": f"Successfully rerouted {updated_count} purchase orders to {alt_supplier_id}."
+    }
+
 def reset_demo_state() -> Dict[str, Any]:
     """Rebuild voltauto.db from seed_data.py so the demo can be replayed."""
     db = Path(DB_PATH)
