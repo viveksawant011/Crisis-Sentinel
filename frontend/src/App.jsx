@@ -7,6 +7,7 @@ import ActionCard from "./components/ActionCard";
 import WhatIfPanel from "./components/WhatIfPanel";
 import EvidencePanel from "./components/EvidencePanel";
 import CriticPanel from "./components/CriticPanel";
+import StreamingProgress from "./components/StreamingProgress";
 
 const euro = new Intl.NumberFormat("de-DE", {
   style: "currency",
@@ -16,6 +17,7 @@ const euro = new Intl.NumberFormat("de-DE", {
 });
 
 function runwayTone(days) {
+  if (days == null) return "green";
   if (days < 3) return "red";
   if (days < 7) return "amber";
   return "green";
@@ -24,7 +26,9 @@ function runwayTone(days) {
 export default function App() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [statusMsg, setStatusMsg] = useState("");
+  const [revising, setRevising] = useState(false);
+  const [currentStage, setCurrentStage] = useState("");
+  const [streamLogs, setStreamLogs] = useState([]);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [approved, setApproved] = useState(false);
@@ -46,7 +50,8 @@ export default function App() {
     if (loading || !query.trim()) return;
 
     setLoading(true);
-    setStatusMsg("Connecting to CrisisSentinel engine...");
+    setCurrentStage("research");
+    setStreamLogs(["Connecting to CrisisSentinel engine..."]);
     setResult(null);
     setError("");
     setApproved(false);
@@ -61,27 +66,51 @@ export default function App() {
         if (!res.ok) throw new Error(`Cached run not found for ${cacheName}`);
         const cachedData = await res.json();
         setResult(cachedData);
+        setCurrentStage("done");
       } catch (err) {
         console.error("Cache load error:", err);
         setError(`Failed to load cached scenario: ${err.message}`);
       } finally {
         setLoading(false);
-        setStatusMsg("");
       }
       return;
     }
 
-    // Path B: Live Multi-Agent Workflow
+    // Path B: Live Multi-Agent Workflow with SSE Progress Streaming
+    let eventSource = null;
     try {
-      setStatusMsg(
-        "Initiating multi-source web intelligence & ERP correlation...",
+      // Connect to the Server-Sent Events stream for live orchestration telemetry
+      eventSource = new EventSource(
+        `http://localhost:8000/api/disruption/scan/stream?query=${encodeURIComponent(
+          query,
+        )}`,
       );
+
+      eventSource.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.stage) setCurrentStage(data.stage);
+          if (data.message) {
+            setStreamLogs((prev) => [...prev, data.message]);
+          }
+          if (data.stage === "done") {
+            eventSource.close();
+          }
+        } catch {
+          // ignore parsing heartbeats
+        }
+      };
+
+      eventSource.onerror = () => {
+        if (eventSource) eventSource.close();
+      };
+
+      // Concurrent request to the full scan intelligence & strategy pipeline
       const response = await fetch(
         "http://localhost:8000/api/disruption/scan",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // Sends both keys to ensure backend compatibility
           body: JSON.stringify({
             query: query,
             event_query: query,
@@ -95,14 +124,15 @@ export default function App() {
 
       const data = await response.json();
       setResult(data);
+      setCurrentStage("done");
     } catch (err) {
       console.error("Scan error:", err);
       setError(
         `Analysis failed: ${err.message}. Ensure backend is running at http://localhost:8000.`,
       );
     } finally {
+      if (eventSource) eventSource.close();
       setLoading(false);
-      setStatusMsg("");
     }
   }
 
@@ -111,13 +141,19 @@ export default function App() {
 
     setExecutionLoading(true);
     try {
+      const primaryAlt = result.exposure.mitigation_alternatives[0];
+      const exposedPoIds = (result.exposure.affected_open_pos || []).map(
+        (po) => po.po_id || po.id,
+      );
+
+      const altSupplierId =
+        primaryAlt.alt_supplier_id || primaryAlt.supplier_id || "s_eurosemi";
+
       const payload = {
-        action_type: "reroute_purchase_orders",
+        po_ids: exposedPoIds,
+        alt_supplier_id: altSupplierId,
         target_country: result.intelligence?.impacted_country,
         target_category: result.intelligence?.impacted_category,
-        primary_alternative_supplier:
-          result.exposure.mitigation_alternatives[0]?.supplier_name ||
-          "AltSupplier",
       };
 
       const res = await fetch("http://localhost:8000/api/mitigation/execute", {
@@ -126,7 +162,20 @@ export default function App() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error(`Execution failed: ${res.statusText}`);
+      if (!res.ok) {
+        const errDetail = await res.text();
+        throw new Error(`Server returned ${res.status}: ${errDetail}`);
+      }
+
+      const data = await res.json();
+
+      if (data.updated_exposure) {
+        setResult((prev) => ({
+          ...prev,
+          exposure: data.updated_exposure,
+        }));
+      }
+
       setApproved(true);
     } catch (err) {
       console.error("Execution error:", err);
@@ -136,23 +185,98 @@ export default function App() {
     }
   }
 
+  async function handleReviseMitigation() {
+    if (!result?.brief || !result?.critique) return;
+
+    setRevising(true);
+    try {
+      const res = await fetch("http://localhost:8000/api/mitigation/revise", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: query,
+          brief: result.brief,
+          critique: result.critique,
+          exposure: result.exposure,
+          claims: result.intelligence?.claims || [],
+        }),
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`Revision request failed (${res.status}): ${errText}`);
+      }
+
+      const data = await res.json();
+
+      setResult((prev) => ({
+        ...prev,
+        brief: data.brief,
+        critique: data.critique,
+      }));
+    } catch (err) {
+      console.error("Revision error:", err);
+      alert(`Failed to revise strategy: ${err.message}`);
+    } finally {
+      setRevising(false);
+    }
+  }
+
+  async function handleResetDemo() {
+    try {
+      const res = await fetch("http://localhost:8000/api/demo/reset", {
+        method: "POST",
+      });
+      if (!res.ok) throw new Error("Reset failed");
+      setApproved(false);
+      setResult(null);
+      setQuery("");
+      setCurrentStage("");
+      setStreamLogs([]);
+      alert("ERP state reset to clean baseline.");
+    } catch (err) {
+      console.error("Reset error:", err);
+      alert("Failed to reset demo state.");
+    }
+  }
+
   return (
     <div className="page">
       <Header />
 
-      {/* Mode Toggle: Offline Cache vs. Live Multi-Agent API */}
+      {/* Mode Toggle: Offline Cache vs. Live Multi-Agent API & Demo Reset */}
       <div
         style={{
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "center",
-          gap: "10px",
+          gap: "14px",
           maxWidth: "1100px",
           margin: "0 auto 12px",
           fontSize: "12px",
           color: "#8b949e",
         }}
       >
+        <button
+          type="button"
+          onClick={handleResetDemo}
+          title="Reset SQLite database back to pre-disruption baseline"
+          style={{
+            background: "#21262d",
+            border: "1px solid #30363d",
+            color: "#c9d1d9",
+            borderRadius: "6px",
+            padding: "4px 10px",
+            fontSize: "12px",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "5px",
+          }}
+        >
+          <span>↺</span> Reset DB Baseline
+        </button>
+
         <span>Demo Reliability Mode:</span>
         <label
           style={{
@@ -190,10 +314,9 @@ export default function App() {
 
       <ScenarioChips onPick={setQuery} disabled={loading} />
 
+      {/* Real-time Multi-Agent Stage Stepper */}
       {loading && (
-        <p className="status">
-          {statusMsg || "Analyzing multi-tier disruption signals..."}
-        </p>
+        <StreamingProgress currentStage={currentStage} logs={streamLogs} />
       )}
 
       {error && (
@@ -252,7 +375,11 @@ export default function App() {
 
           <MetricCard
             label="Shortest Runway"
-            value={`${result.exposure.critical_runway_days}d`}
+            value={
+              result.exposure.critical_runway_days != null
+                ? `${result.exposure.critical_runway_days}d`
+                : "Safe (0 exposed)"
+            }
             tone={runwayTone(result.exposure.critical_runway_days)}
           />
 
@@ -340,8 +467,14 @@ export default function App() {
         />
       )}
 
-      {/* Component 2: Adversarial Critic Verification */}
-      {result?.critique && <CriticPanel critique={result.critique} />}
+      {/* Component 2: Adversarial Critic Verification & Revision Loop */}
+      {result?.critique && (
+        <CriticPanel
+          critique={result.critique}
+          onRevise={handleReviseMitigation}
+          revising={revising}
+        />
+      )}
 
       {/* Component 3: Tavily Grounded Sources & Contradictions */}
       {result?.intelligence && (

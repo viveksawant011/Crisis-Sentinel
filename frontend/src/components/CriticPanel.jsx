@@ -3,9 +3,9 @@ import { useState } from "react";
 /**
  * CriticPanel: Displays the adversarial audit from Nemotron Super.
  * Evaluates operational feasibility, checks numbers against ERP data,
- * and displays flagged challenges or confirmation verdicts.
+ * and enables a one-click single-turn bounded revision loop.
  */
-export default function CriticPanel({ critique }) {
+export default function CriticPanel({ critique, onRevise, revising = false }) {
   const [expanded, setExpanded] = useState(true);
 
   if (!critique) return null;
@@ -74,22 +74,49 @@ export default function CriticPanel({ critique }) {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <span
-            style={{
-              padding: "4px 10px",
-              borderRadius: "6px",
-              fontSize: "12px",
-              fontWeight: "bold",
-              letterSpacing: "0.5px",
-              background: isApproved
-                ? "rgba(46, 160, 67, 0.15)"
-                : "rgba(210, 153, 34, 0.15)",
-              color: isApproved ? "#3fb950" : "#d29922",
-              border: `1px solid ${isApproved ? "#2ea043" : "#d29922"}`,
-            }}
-          >
-            {verdict} • {score}/100
-          </span>
+          {isApproved ? (
+            <span
+              style={{
+                padding: "4px 10px",
+                borderRadius: "6px",
+                fontSize: "12px",
+                fontWeight: "bold",
+                letterSpacing: "0.5px",
+                background: "rgba(46, 160, 67, 0.15)",
+                color: "#3fb950",
+                border: "1px solid #2ea043",
+              }}
+            >
+              ✓ {verdict} • {score}/100
+            </span>
+          ) : (
+            <button
+              type="button"
+              onClick={onRevise}
+              disabled={revising}
+              title="Trigger Nemotron Super to address flagged challenges with dual-sourcing"
+              style={{
+                padding: "5px 12px",
+                borderRadius: "6px",
+                fontSize: "12px",
+                fontWeight: "bold",
+                letterSpacing: "0.5px",
+                background: revising ? "#21262d" : "rgba(210, 153, 34, 0.2)",
+                color: "#d29922",
+                border: "1px solid #d29922",
+                cursor: revising ? "wait" : "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
+              <span>⚙️</span>
+              {revising
+                ? "Nemotron Super Revising Plan..."
+                : `${verdict} • ${score}/100 ➔ Revise Plan`}
+            </button>
+          )}
+
           <button
             type="button"
             onClick={() => setExpanded(!expanded)}
@@ -208,7 +235,6 @@ export default function CriticPanel({ critique }) {
                 style={{ display: "flex", flexDirection: "column", gap: "8px" }}
               >
                 {challenges.map((item, idx) => {
-                  // Safe extraction whether item is an object or primitive string
                   const title =
                     typeof item === "object" && item !== null
                       ? item.issue_type ||
