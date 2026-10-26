@@ -1,0 +1,271 @@
+{
+ "inputs": {
+  "country": "Taiwan",
+  "category": "semiconductor",
+  "disruption_days": 28,
+  "capacity_offline_pct": 100.0,
+  "apply_reroute": true
+ },
+ "totals": {
+  "baseline": {
+   "value_at_risk_eur": 4106402.15,
+   "units_short": 121556,
+   "plants_at_risk": 5,
+   "max_stoppage_days": 24.8
+  },
+  "with_reroute": {
+   "value_at_risk_eur": 2641749.23,
+   "units_short": 68860,
+   "plants_at_risk": 4,
+   "max_stoppage_days": 22.8
+  },
+  "delta": {
+   "avoided_value_at_risk_eur": 1464652.91,
+   "stoppage_reduction_days": 2.0,
+   "units_saved": 52696
+  }
+ },
+ "plants": [
+  {
+   "plant_name": "Stuttgart Plant",
+   "stoppage_days_baseline": 17.1,
+   "stoppage_days_with_reroute": 7.1,
+   "value_at_risk_baseline": 718322.3843889938,
+   "value_at_risk_with_reroute": 280800.0
+  },
+  {
+   "plant_name": "Leipzig Plant",
+   "stoppage_days_baseline": 9.600000000000001,
+   "stoppage_days_with_reroute": 0.0,
+   "value_at_risk_baseline": 472925.3363873322,
+   "value_at_risk_with_reroute": 0.0
+  },
+  {
+   "plant_name": "Mannheim Plant",
+   "stoppage_days_baseline": 6.300000000000001,
+   "stoppage_days_with_reroute": 2.0,
+   "value_at_risk_baseline": 336164.2647352604,
+   "value_at_risk_with_reroute": 105565.09993413405
+  },
+  {
+   "plant_name": "Berlin Plant",
+   "stoppage_days_baseline": 24.8,
+   "stoppage_days_with_reroute": 22.8,
+   "value_at_risk_baseline": 2075515.5512775118,
+   "value_at_risk_with_reroute": 1751909.523803884
+  },
+  {
+   "plant_name": "Munich Plant",
+   "stoppage_days_baseline": 7.300000000000001,
+   "stoppage_days_with_reroute": 7.300000000000001,
+   "value_at_risk_baseline": 503474.61009174306,
+   "value_at_risk_with_reroute": 503474.61009174306
+  }
+ ],
+ "pos": [
+  {
+   "po_id": "PO10482",
+   "material_id": "MCU-X200",
+   "material_name": "MCU-X200",
+   "plant_name": "Stuttgart Plant",
+   "has_alternative": true,
+   "stockout_day": 10.9,
+   "baseline": {
+    "stoppage_days": 17.1,
+    "shortfall_units": 28200,
+    "value_at_risk_eur": 676800.0
+   },
+   "with_reroute": {
+    "stoppage_days": 7.1,
+    "shortfall_units": 11700,
+    "value_at_risk_eur": 280800.0
+   }
+  },
+  {
+   "po_id": "PO10002",
+   "material_id": "MAT-L34",
+   "material_name": "Power Module L34",
+   "plant_name": "Leipzig Plant",
+   "has_alternative": true,
+   "stockout_day": 20.7,
+   "baseline": {
+    "stoppage_days": 7.3,
+    "shortfall_units": 7059,
+    "value_at_risk_eur": 320711.26
+   },
+   "with_reroute": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   }
+  },
+  {
+   "po_id": "PO10003",
+   "material_id": "MAT-T41",
+   "material_name": "Microcontroller T41",
+   "plant_name": "Stuttgart Plant",
+   "has_alternative": true,
+   "stockout_day": 29.1,
+   "baseline": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   },
+   "with_reroute": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   }
+  },
+  {
+   "po_id": "PO10004",
+   "material_id": "MAT-P13",
+   "material_name": "Power Module P13",
+   "plant_name": "Mannheim Plant",
+   "has_alternative": true,
+   "stockout_day": 26.0,
+   "baseline": {
+    "stoppage_days": 2.0,
+    "shortfall_units": 1647,
+    "value_at_risk_eur": 105565.1
+   },
+   "with_reroute": {
+    "stoppage_days": 2.0,
+    "shortfall_units": 1647,
+    "value_at_risk_eur": 105565.1
+   }
+  },
+  {
+   "po_id": "PO10005",
+   "material_id": "MAT-V43",
+   "material_name": "Sensor Controller V43",
+   "plant_name": "Leipzig Plant",
+   "has_alternative": true,
+   "stockout_day": 18.4,
+   "baseline": {
+    "stoppage_days": 9.6,
+    "shortfall_units": 9199,
+    "value_at_risk_eur": 152214.07
+   },
+   "with_reroute": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   }
+  },
+  {
+   "po_id": "PO10006",
+   "material_id": "MAT-L10",
+   "material_name": "Microcontroller L10",
+   "plant_name": "Berlin Plant",
+   "has_alternative": true,
+   "stockout_day": 3.2,
+   "baseline": {
+    "stoppage_days": 24.8,
+    "shortfall_units": 41285,
+    "value_at_risk_eur": 1253243.49
+   },
+   "with_reroute": {
+    "stoppage_days": 22.8,
+    "shortfall_units": 37955,
+    "value_at_risk_eur": 1152158.33
+   }
+  },
+  {
+   "po_id": "PO10007",
+   "material_id": "MAT-A24",
+   "material_name": "Microcontroller A24",
+   "plant_name": "Mannheim Plant",
+   "has_alternative": true,
+   "stockout_day": 21.7,
+   "baseline": {
+    "stoppage_days": 6.3,
+    "shortfall_units": 7040,
+    "value_at_risk_eur": 230599.16
+   },
+   "with_reroute": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   }
+  },
+  {
+   "po_id": "PO10008",
+   "material_id": "MAT-P13",
+   "material_name": "Power Module P13",
+   "plant_name": "Berlin Plant",
+   "has_alternative": true,
+   "stockout_day": 8.0,
+   "baseline": {
+    "stoppage_days": 20.0,
+    "shortfall_units": 9607,
+    "value_at_risk_eur": 749942.69
+   },
+   "with_reroute": {
+    "stoppage_days": 16.0,
+    "shortfall_units": 7683,
+    "value_at_risk_eur": 599751.19
+   }
+  },
+  {
+   "po_id": "PO10009",
+   "material_id": "MAT-V43",
+   "material_name": "Sensor Controller V43",
+   "plant_name": "Berlin Plant",
+   "has_alternative": true,
+   "stockout_day": 22.0,
+   "baseline": {
+    "stoppage_days": 6.0,
+    "shortfall_units": 5295,
+    "value_at_risk_eur": 72329.37
+   },
+   "with_reroute": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   }
+  },
+  {
+   "po_id": "PO10010",
+   "material_id": "MAT-V43",
+   "material_name": "Sensor Controller V43",
+   "plant_name": "Stuttgart Plant",
+   "has_alternative": true,
+   "stockout_day": 26.1,
+   "baseline": {
+    "stoppage_days": 1.9,
+    "shortfall_units": 2349,
+    "value_at_risk_eur": 41522.38
+   },
+   "with_reroute": {
+    "stoppage_days": 0.0,
+    "shortfall_units": 0,
+    "value_at_risk_eur": 0.0
+   }
+  },
+  {
+   "po_id": "PO10011",
+   "material_id": "MAT-A24",
+   "material_name": "Microcontroller A24",
+   "plant_name": "Munich Plant",
+   "has_alternative": true,
+   "stockout_day": 20.7,
+   "baseline": {
+    "stoppage_days": 7.3,
+    "shortfall_units": 9875,
+    "value_at_risk_eur": 503474.61
+   },
+   "with_reroute": {
+    "stoppage_days": 7.3,
+    "shortfall_units": 9875,
+    "value_at_risk_eur": 503474.61
+   }
+  }
+ ],
+ "pos_without_inventory_record": [],
+ "assumptions": [
+  "Uniform capacity degradation across all regional suppliers",
+  "Alternative supplier lead-time acts as ramp-up ceiling for rerouted POs",
+  "Linear inventory depletion without demand reduction adjustments"
+ ]
+}

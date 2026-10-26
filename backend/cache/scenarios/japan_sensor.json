@@ -1,11 +1,11 @@
 {
   "matched": true,
   "intelligence": {
-    "event": "Japan port logistics disruption automotive radar sensor",
+    "event": "Typhoon Kong-rey disrupted Japanese ports, delaying automotive radar sensor shipments.",
     "impacted_country": "Japan",
     "impacted_category": "sensor",
     "severity": "high",
-    "estimated_duration_days": 14,
+    "estimated_duration_days": null,
     "confidence": 0.83,
     "sources": [
       {
@@ -16,107 +16,75 @@
       },
       {
         "id": "S2",
-        "title": "Largest Japanese Port Suffered a Russian Ransomware Attack Halting Cargo Operations - CPO Magazine",
-        "url": "https://www.cpomagazine.com/cyber-security/largest-japanese-port-suffered-a-russian-ransomware-attack-halting-cargo-operations",
-        "snippet": "Logistics and transportation of container cargo showing ransomware attack at Japanese port\n\nCyber SecurityNews\n\n\u00b73 min read\n\n# Largest Japanese Port Suffered a Russian Ransomware Attack Halting Cargo Operations\n\n, that operates the port\u2019s five cargo terminals, causing widespread disruptions.\n\nWith 21 piers and 290 berths, the Port of Nagoya, Japan, handles an average of 165 million tons of cargo annually, representing about 10% of the country\u2019s total trade volume. [...] The Japanese port suspended loading and unloading operations for two days while working to restore the impacted systems by 6 pm on Wednesday, July 5, and resume operations by Thursday morning.\n\nMeanwhile, Aichi Prefectural Police Headquarters has launched an investigation into the incident. [...] However, Toyota\u2019s production systems and delivery of finished vehicles were unaffected, as the company resorted to a different computer system to avoid disruption.\n\nA Toyota spokesperson told local media that its suppliers, such as Denso and Aisin, had secured enough supplies, and the company was closely monitoring the situation."
+        "title": "Response to the international logistics disruption caused by COVID-19 and what we have seen from it\uff5cOur Projects | NISSAN TRADING CO.,LTD.",
+        "url": "https://nitco.co.jp/en/projects/story06.html",
+        "snippet": "containers inland. Container transport became increasingly difficult. As a result of these factors, it took one to two months longer than usual for exported components and materials to reach North America and Europe from Asian countries, including Japan. The supply chain at the time was in chaos due to the lack of containers and container space. [...] Yoshida : Nissan Trading (NITCO) imports and exports components, materials, and equipment used in the manufacture of automobiles at Nissan Motor Corporation on a daily basis. The mission of the SCM Reform Team (SCM stands for supply chain management) in the Planning and Management Group of the Global Automotive Components Division, to which we belong, is to plan and provide logistics infrastructure to facilitate smooth trade operations. In order to meet the demands of domestic and overseas [...] When adjustments were necessary as a result of the allocation, we communicated this information to our internal personnel and coordinated with Nissan Motor Corporation and the shipping companies again to meet their requests. Through this kind of deepening internal and external cooperation, we managed to secure container space from the major sh"
       },
       {
         "id": "S3",
-        "title": "Japan earthquake and automotive semiconductor supply chain risks | Mobility Global",
-        "url": "https://www.mobilityglobal.com/en-us/automotive-insights/blog/japan-earthquake-automotive-semiconductor-supply-chain-resilience",
-        "snippet": "Several companies reported temporary operational disruptions immediately following the quake. Sony Semiconductor Solutions evacuated personnel from its image sensor facilities in the Kikuyo/Koshi area, while Tokyo Electron Kyushu suspended operations at its local plants to conduct safety inspections. Mitsubishi Electric also temporarily halted operations at its Koshi and Kikuchi power semiconductor facilities as a precaution, though no damage was reported. [...] ## Kumamoto earthquake causes temporary disruption at TSMC's automotive chip hub\n\nAmong the facilities attracting significant attention is Taiwan Semiconductor Manufacturing Co.'s (TSMC) Kumamoto manufacturing complex, operated through its subsidiary Japan Advanced Semiconductor Manufacturing (JASM). The facility plays an important role within Japan's semiconductor ecosystem, supplying chips used in vehicles, industrial equipment and consumer electronics. [...] The situation still bears close watching. Historical experience shows semiconductor disruptions caused by earthquakes can take anywhere from hours to weeks to resolve, particularly when equipment must be requalified and production lines recalibrated. Current assessme"
+        "title": "Iran conflict, Strait of Hormuz disruption and the impact on global automotive production",
+        "url": "https://www.automotivemanufacturingsolutions.com/analysis/iran-conflict-sends-shockwaves-through-auto-production-and-supply-chains/2616710",
+        "snippet": "maritime logistics compound themselves through port congestion, equipment imbalances and insurance market rigidity in ways that persist long after the underlying trigger has been resolved. [...] Japan imports roughly 90 per cent of its crude oil, and a substantial proportion of that volume transits the strait. Toyota, Honda and Nissan, which collectively manufacture tens of millions of vehicles annually across Japan and their global networks, face direct exposure to energy price shocks that compress margins at every link of their supply chains. Nippon Yusen, one of Japan's largest shipping groups, instructed its fleet on Saturday not to navigate the Hormuz corridor. South Korea, home [...] Beyond energy inputs, the immediate operational disruption centres on maritime logistics. Approximately 170 containerships, with a combined capacity of around 450,000 TEUs, were inside the Strait of Hormuz or its immediate approaches at the time of the initial IRGC warnings, according to analysis by Hua Joo Tan, co-founder of Linerlytica. Many are now effectively trapped."
       },
       {
         "id": "S4",
+        "title": "After the disaster in Japan | Feature | Automotive Logistics",
+        "url": "https://www.automotivelogistics.media/logistics-service-providers/after-the-disaster-in-japan/207498",
+        "snippet": "However, as production came back online, demand for airfreight began to pick up. Within a few weeks of the event, Neal Williams, managing director of premium freight operator Priority Freight, said that the company saw an impact on supply of parts and availability of airfreight services.\n\n\u201cThere is a sizeable backlog of freight at Japan\u2019s airports as exporters attempt to win back time lost due to factory shut down, but also for freight that would otherwise have been shipped by sea,\u201d he says. [...] Japan\u2019s devastating earthquake and tsunami in March put a significant proportion of the world\u2019s automotive supply chains out of action. Honda, Toyota, Nissan and Fuji Heavy Industries (maker of Subarus) all had plants in or close to the affected zone, and were forced to close them. Other Japanese plants, in many cases far less directly affected by either the earthquake or the tsunami, were also forced to stop production because of parts shortages caused by logistics difficulties or by [...] Such a plan must include an alternate sourcing capability\u2013 the ability to seamlessly switch output to an alternative facility in the event of disruption at the primary facility. Not weeks later, as at "
+      },
+      {
+        "id": "S5",
         "title": "Global Impacts of the Automotive Supply Chain Disruption Following the Japanese Earthquake of 2011 - Discover Research at University College Cork",
         "url": "https://research.ucc.ie/en/publications/global-impacts-of-the-automotive-supply-chain-disruption-followin",
         "snippet": "impacts of the disruptions broken down by country and industry. The results show that the global economic effect (in terms of value added) of this disruption amounted to US$139 billion. The most affected (groups of) countries were Japan (39%), the USA (25%), China (8%) and the European Union (7%). The most strongly affected industries were transport equipment (37%), other business activities (10%), basic and fabricated metals (8%), wholesale trade (7%) and financial intermediation (4%). [...] impacts of the disruptions broken down by country and industry. The results show that the global economic effect (in terms of value added) of this disruption amounted to US$139 billion. The most affected (groups of) countries were Japan (39%), the USA (25%), China (8%) and the European Union (7%). The most strongly affected industries were transport equipment (37%), other business activities (10%), basic and fabricated metals (8%), wholesale trade (7%) and financial intermediation (4%). [...] impacts of the disruptions broken down by country and industry. The results show that the global economic effect (in terms of value added) of this disruption amounted to US$139 billion. The most affected "
       },
       {
-        "id": "S5",
+        "id": "S6",
         "title": "The Motor Vehicle Supply Chain: Effects of the Japanese Earthquake and Tsunami - EveryCRSReport.com",
         "url": "https://www.everycrsreport.com/reports/R41831.html",
         "snippet": "As the preceding section of this report demonstrates, the disasters in Japan had immediate, albeit modest, impacts on most U.S.-based automakers. A number of plants were idled for a short period of time as parts from Japan were interrupted and most manufacturers were sent scrambling to find new sources for other parts. The initial impact domestically was mitigated, however, by the long supply chain, which normally has a month or more of parts on their way to U.S. auto plants. Michael Robinet, [...] Chrysler anticipates that it may face unidentified parts shortages in late May or June. To mitigate the impact, the company has announced that its traditional summer plant shutdowns for three plants will be moved up from July to June. This will give parts suppliers more time to bring plants online or for Chrysler to identify alternative sourcing. The plants and products affected are in Warren, MI (Ram and Dakota pick-up trucks), and two facilities in Toledo, OH (Jeep Liberty and Wrangler and [...] The effect of these disasters has been first and foremost borne by Japanese automakers, which closed many of their Japanese assembly plants for several weeks as they assessed their supply chain"
-      },
-      {
-        "id": "S6",
-        "title": "Tag: japan",
-        "url": "https://www.automotivelogistics.media/tag/japan",
-        "snippet": "James McLoughlin\n\n## Maersk-operated ro-ro vessel transits Strait of Hormuz under US military guard\n\nThe Maersk-operated vehicle carrier, Alliance Fairfax, exited the Strait of Hormuz yesterday under US military guard. This news comes as more details have emerged regarding the impact of disruption on automotive supply chains.\n\n  James McLoughlin\n\n  Megan Kelly\n\n## EV slowdown drives hybrid shift as Stellantis, Ford, GM and Honda reset automotive logistics [...] Jump to main content\n\nGo to frontpage. Logo, Automotive Logistics     Go to frontpage. Logo, Automotive Logistics     Go to frontpage. Logo, Automotive Logistics\n\n# Tag: japan\n\n## This page is showing Articles related to this Tag: japan\n\nToyota Kyushu Myata Plant\n\n## Japan earthquake impacts automotive and semiconductor supply chains\n\nA deadly earthquake in Japan has impacted the manufacturing and supply chain operations of several automakers including Toyota, Nissan, Honda and Mitsubishi. [...] Automotive Logistics\n\n## Fire at Renesas plant knocks out semiconductor chip production\n\nA fire has stopped production at one of Renesas Electronics\u2019 plants in Japan. Renesas Semiconductor Manufacturing, a subsidiary of the parent co"
-      },
-      {
-        "id": "S7",
-        "title": "After the disaster in Japan | Feature | Automotive Logistics",
-        "url": "https://www.automotivelogistics.media/logistics-service-providers/after-the-disaster-in-japan/207498",
-        "snippet": "will be added in 2012, a net loss of 640,000 units over the two-year period is expected. [...] Such a plan must include an alternate sourcing capability\u2013 the ability to seamlessly switch output to an alternative facility in the event of disruption at the primary facility. Not weeks later, as at Renesas Electronics and other badly-affected tier two and three suppliers, but more or less instantaneously. [...] Companies that many supply chain executives had never heard of suddenly became the subject of intense interest as these businesses battled to restart operations or move production to other sites. Even so, it wasn\u2019t until late April that Renesas Electronics was able to announce\u2013far less implement\u2013 plans to shift production of some components from its badly-damaged factory in the coastal city of Hitachinaka to a number of other sites around the country.\n\nMinimising impact of disasters"
-      },
-      {
-        "id": "S8",
-        "title": "The April 20 Earthquake in Japan & Its Effect on Logistics Imports",
-        "url": "https://www.sglusa.com/japan-earthquake-logistics-impact",
-        "snippet": "This is the area of most direct concern for U.S. exporters moving physical goods to Japan. Port operations in the affected region, particularly in Iwate and Aomori, may face disruption during the immediate assessment and recovery period. It's worth noting that Hachinohe Port in Aomori, which was already operating under earthquake recovery protocols from a prior event (and was explicitly exempted from the April port strike action for this reason), is in one of the most affected prefectures. [...] Kioxia, one of the world's major NAND flash manufacturers, has paused production at its Kitakami City plant in Iwate Prefecture for inspection. That facility accounts for an estimated 5\u20138% of global NAND capacity. Restart timeline is currently unclear, though the facility's newer K2 building incorporates seismic isolation design. Notably, some reports suggest limited practical impact given the seismic intensity recorded at that location. [...] On the less-disrupted side: Tokyo Electron confirmed its Tohoku facilities in Iwate and Miyagi have resumed normal operations. Silicon wafer producers Shin-Etsu Chemical and SUMCO paused for safety checks but were expected to begin gradual restarts as"
-      },
-      {
-        "id": "S9",
-        "title": "Japan Port Strike Resolved: What You Need to Know - Sumisho Global Logistics USA",
-        "url": "https://www.sglusa.com/japan-port-strike-resolved-as-earthquake-adds-new-challenges",
-        "snippet": "## Port News:\n\n## Japan Port Strike Settled: 2026 Spring Labor Negotiations Reach Agreement, Night Cargo Ban Lifted\n\nMay 5, 2026 | Japan, Japan Export Intel, Port Strike, Port Updates, SGL News\n\nread more\n\n## What is General Average? Why it Matters for Shippers, Freight Forwarders, and Carriers\n\nDec 3, 2025 | Industry News, Port Updates, SGL News\n\nread more\n\n## Japan Port Strike Update: Next Action Scheduled May 11\n\nMay 2, 2025 | Industry News, Port Strike, Port Updates, SGL News\n\nread more [...] Vessel evacuation from berths\n Temporary closure of cargo-handling areas\n Suspension of loading and unloading operations\n\nWhile these measures protected personnel and equipment, they created immediate delays for shipments routed through northern Japan. Operations teams managing supply chains dependent on these routes experienced scheduling disruptions that required rapid adjustment of logistics plans.\n\n### Ongoing Recovery Challenges [...] After months of uncertainty that began in March 2025, Japan's port labor negotiations concluded with a tentative agreement on May 14. The Japan Harbor Transportation Association (JHTA) and port workers reached terms that immediately lifted all pending st"
       }
     ],
     "claims": [
       {
         "claim_id": "C1",
-        "text": "Typhoon Kong-rey disrupts East Asian automotive logistics",
+        "text": "Typhoon Kong-rey caused port congestion affecting radar sensor shipments.",
         "type": "cause",
-        "value": "ports disrupted",
+        "value": "typhoon",
         "source_ids": [
           "S1"
         ]
       },
       {
         "claim_id": "C2",
-        "text": "Port of Nagoya ransomware halts cargo for two days",
+        "text": "Disruption impacted automotive radar sensor supply chain in Japan.",
         "type": "scope",
-        "value": "two day halt",
+        "value": "automotive radar sensor",
         "source_ids": [
-          "S2"
+          "S1"
         ]
       },
       {
         "claim_id": "C3",
-        "text": "Disruptions severely affect automotive supply chain",
+        "text": "Severity assessed as high due to multiple port closures.",
         "type": "severity",
-        "value": "high impact",
+        "value": "high",
         "source_ids": [
           "S1"
         ]
       },
       {
         "claim_id": "C4",
-        "text": "Semiconductor delays may last weeks",
+        "text": "Recovery expected after several weeks of rerouting.",
         "type": "duration",
-        "value": "weeks resolution",
+        "value": "weeks",
         "source_ids": [
-          "S3"
+          "S4"
         ]
       }
     ],
-    "contradictions": [
-      {
-        "claim_a_id": "C2",
-        "claim_b_id": "C4",
-        "topic": "duration",
-        "explanation": "C2 states a two-day halt, while C4 suggests semiconductor delays may last weeks, creating a direct contradiction in the expected duration of impact.",
-        "resolution_status": "resolved",
-        "winning_claim_id": "C2",
-        "follow_up_query": "Japan port logistics disruption automotive radar sensor duration update official",
-        "follow_up_source_ids": [
-          "S1",
-          "S9"
-        ]
-      }
-    ],
-    "evidence_strength": "83% (6 independent domains, 0 unresolved conflicts)",
+    "contradictions": [],
+    "evidence_strength": "83% (5 independent domains, 0 unresolved conflicts)",
     "search_log": [
       {
         "query": "Japan port logistics disruption automotive radar sensor what happened disruption cause",
@@ -128,14 +96,11 @@
       },
       {
         "query": "Japan port logistics disruption automotive radar sensor restart recovery estimated timeline",
-        "results_count": 3
-      },
-      {
-        "query": "Japan port logistics disruption automotive radar sensor duration update official",
-        "follow_up_for": "duration"
+        "error": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))"
       }
     ],
-    "extraction_method": "model"
+    "extraction_method": "model",
+    "mapping_source": "model"
   },
   "exposure": {
     "matched": true,
@@ -1207,16 +1172,16 @@
         "po_id": "PO10030",
         "material_id": "MAT-Y46",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1004",
+        "alt_supplier_name": "GermanyParts 004",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10030",
         "material_id": "MAT-Y46",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1255,24 +1220,16 @@
         "po_id": "PO10038",
         "material_id": "MAT-U42",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10038",
         "material_id": "MAT-U42",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
-        "alt_supplier_country": "Germany"
-      },
-      {
-        "po_id": "PO10052",
-        "material_id": "MAT-S16",
-        "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1281,6 +1238,14 @@
         "primary_supplier": "JapanParts 015",
         "alt_supplier_id": "SUP1004",
         "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_country": "Germany"
+      },
+      {
+        "po_id": "PO10052",
+        "material_id": "MAT-S16",
+        "primary_supplier": "JapanParts 015",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1335,16 +1300,16 @@
         "po_id": "PO10070",
         "material_id": "MAT-U42",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10070",
         "material_id": "MAT-U42",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1383,16 +1348,16 @@
         "po_id": "PO10075",
         "material_id": "MAT-P13",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10075",
         "material_id": "MAT-P13",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1009",
-        "alt_supplier_name": "GermanyParts 009",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1407,8 +1372,8 @@
         "po_id": "PO10076",
         "material_id": "MAT-X45",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1447,24 +1412,24 @@
         "po_id": "PO10103",
         "material_id": "MAT-W44",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1004",
+        "alt_supplier_name": "GermanyParts 004",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10103",
         "material_id": "MAT-W44",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10105",
         "material_id": "MAT-R39",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1004",
+        "alt_supplier_name": "GermanyParts 004",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1487,16 +1452,8 @@
         "po_id": "PO10108",
         "material_id": "MAT-G30",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
-        "alt_supplier_country": "Germany"
-      },
-      {
-        "po_id": "PO10109",
-        "material_id": "MAT-U18",
-        "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1505,6 +1462,14 @@
         "primary_supplier": "JapanParts 015",
         "alt_supplier_id": "SUP1004",
         "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_country": "Germany"
+      },
+      {
+        "po_id": "PO10109",
+        "material_id": "MAT-U18",
+        "primary_supplier": "JapanParts 015",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1551,8 +1516,8 @@
         "po_id": "PO10131",
         "material_id": "MAT-S40",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1615,8 +1580,8 @@
         "po_id": "PO10139",
         "material_id": "MAT-L10",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1639,16 +1604,16 @@
         "po_id": "PO10151",
         "material_id": "MAT-M35",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10151",
         "material_id": "MAT-M35",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1663,8 +1628,8 @@
         "po_id": "PO10157",
         "material_id": "MAT-L10",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1695,32 +1660,24 @@
         "po_id": "PO10169",
         "material_id": "MAT-L10",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10171",
         "material_id": "MAT-M35",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10171",
         "material_id": "MAT-M35",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
-        "alt_supplier_country": "Germany"
-      },
-      {
-        "po_id": "PO10178",
-        "material_id": "MAT-S16",
-        "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1732,11 +1689,11 @@
         "alt_supplier_country": "Germany"
       },
       {
-        "po_id": "PO10179",
-        "material_id": "MAT-T17",
+        "po_id": "PO10178",
+        "material_id": "MAT-S16",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1748,6 +1705,14 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10179",
+        "material_id": "MAT-T17",
+        "primary_supplier": "JapanParts 015",
+        "alt_supplier_id": "SUP1012",
+        "alt_supplier_name": "GermanyParts 012",
+        "alt_supplier_country": "Germany"
+      },
+      {
         "po_id": "PO10181",
         "material_id": "MAT-W20",
         "primary_supplier": "JapanParts 013",
@@ -1783,24 +1748,24 @@
         "po_id": "PO10186",
         "material_id": "MAT-Z23",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10186",
         "material_id": "MAT-Z23",
         "primary_supplier": "JapanParts 013",
-        "alt_supplier_id": "SUP1004",
-        "alt_supplier_name": "GermanyParts 004",
+        "alt_supplier_id": "SUP1011",
+        "alt_supplier_name": "GermanyParts 011",
         "alt_supplier_country": "Germany"
       },
       {
         "po_id": "PO10187",
         "material_id": "MAT-B49",
         "primary_supplier": "JapanParts 015",
-        "alt_supplier_id": "SUP1001",
-        "alt_supplier_name": "GermanyParts 001",
+        "alt_supplier_id": "SUP1009",
+        "alt_supplier_name": "GermanyParts 009",
         "alt_supplier_country": "Germany"
       },
       {
@@ -1863,44 +1828,128 @@
     "reroutable_value_eur": 17152616.36
   },
   "brief": {
-    "headline": "Supply Disruption: Japan sensor",
-    "criticality_summary": "Assembly line stoppage risk identified with 1.0 days remaining.",
+    "headline": "Typhoon Kong-rey disrupted Japanese ports, delaying automotive radar sensor shipments.",
+    "criticality_summary": "High\u2011severity port congestion threatens immediate supply of radar sensors; several POs have less than two weeks of runway.",
     "financial_risk_eur": 17152616.36,
     "assembly_line_deadline_days": 1.0,
     "recommended_actions": [
       {
         "priority": 1,
-        "title": "Reroute MAT-H31 to GermanyParts 004",
+        "title": "Expedite air freight for Cell Module W44",
+        "action_type": "expedite",
+        "po_id": "PO10103",
+        "target_supplier_id": "",
+        "target_plant": "Mannheim Plant",
+        "target_material": "MAT-W44",
+        "rationale": "Reduce 1.7\u2011day runway risk by accelerating shipment despite port delays.",
+        "estimated_cost_eur": 848494.13,
+        "value_rerouted_eur": 848494.13
+      },
+      {
+        "priority": 2,
+        "title": "Build buffer stock for Proximity Sensor X21",
+        "action_type": "buffer_stock",
+        "po_id": "PO10065",
+        "target_supplier_id": "",
+        "target_plant": "Stuttgart Plant",
+        "target_material": "MAT-X21",
+        "rationale": "Create safety stock to cover 8.2\u2011day runway while typhoon effects persist.",
+        "estimated_cost_eur": 812041.21,
+        "value_rerouted_eur": 812041.21
+      },
+      {
+        "priority": 3,
+        "title": "Reroute to German supplier for Proximity Sensor H31",
         "action_type": "reroute_supplier",
         "po_id": "PO10021",
         "target_supplier_id": "SUP1004",
-        "target_plant": "Mannheim Plant",
-        "target_material": "MAT-W44",
-        "rationale": "Deterministic fallback: Plant runway is 1.0 days.",
-        "estimated_cost_eur": 730597.36
+        "target_plant": "Munich Plant",
+        "target_material": "MAT-H31",
+        "rationale": "Shift sourcing to GermanyParts 004 to avoid Japanese port congestion.",
+        "estimated_cost_eur": 730597.36,
+        "value_rerouted_eur": 730597.36
       }
     ],
-    "brief_source": "deterministic_fallback"
+    "brief_source": "nemotron",
+    "model_used": "nvidia/nemotron-3-super-120b-a12b"
   },
   "critique": {
+    "checks": [
+      {
+        "id": "total_matches_sql",
+        "label": "Value at risk equals the SQL total",
+        "passed": true,
+        "detail": "brief \u20ac17,152,616.36 vs SQL \u20ac17,152,616.36"
+      },
+      {
+        "id": "deadline_matches_runway",
+        "label": "Deadline equals the shortest inventory runway",
+        "passed": true,
+        "detail": "brief 1.0 d vs SQL 1.0 d"
+      },
+      {
+        "id": "actions_reference_exposed_pos",
+        "label": "Every action targets an exposed open PO",
+        "passed": true,
+        "detail": "3 action(s) checked"
+      },
+      {
+        "id": "suppliers_are_erp_approved",
+        "label": "Every reroute uses an ERP-approved alternative for that PO",
+        "passed": true,
+        "detail": "all reroute pairs found in alt_supplier_map"
+      },
+      {
+        "id": "plant_material_match_po",
+        "label": "Action plant and material match the PO record",
+        "passed": true,
+        "detail": "consistent with ERP"
+      },
+      {
+        "id": "brief_generated_by_model",
+        "label": "Plan was generated by the model (not the SQL fallback)",
+        "passed": true,
+        "detail": "brief_source = nemotron"
+      }
+    ],
     "deterministic_flags": [],
     "challenges": [
       {
-        "target": "Action 1",
-        "issue_type": "unsupported_assumption",
-        "severity": "high",
-        "explanation": "The rationale assumes a deterministic fallback based on a 1\u2011day plant runway without validating actual lead times, transportation constraints, customs clearance, or supplier capacity. This assumption may be unrealistic and could cause further delays.",
-        "suggested_fix": "Perform a detailed lead\u2011time analysis including inbound logistics, customs, and supplier capacity checks; add safety stock or alternative routing; update the action with validated timelines."
+        "target": "Reroute plan",
+        "issue_type": "single_source_concentration",
+        "severity": "medium",
+        "explanation": "100% of rerouted order value (\u20ac730,597) lands on GermanyParts 004; a problem there would recreate the exposure.",
+        "suggested_fix": "Confirm the alternative's spare capacity before approving, or split volume across a second qualified supplier.",
+        "origin": "deterministic"
       },
       {
-        "target": "Action 1",
-        "issue_type": "data_inconsistency",
+        "target": "Reroute to German supplier for Proximity Sensor H31",
+        "issue_type": "unsupported_assumption",
         "severity": "medium",
-        "explanation": "The action title references MAT\u2011H31 while the target_material field shows MAT\u2011W44, indicating a possible typo or mis\u2011aligned data that could lead to executing the wrong material reroute.",
-        "suggested_fix": "Verify the correct material ID for the reroute and align all fields (title, target_material, PO reference) before execution."
+        "explanation": "The plan assumes supplier SUP1004 can immediately absorb the shifted volume without considering qualification, capacity constraints, or potential lead\u2011time for ramping production.",
+        "suggested_fix": "Validate SUP1004\u2019s current capacity and any required qualification steps; if needed, add a interim buffer or dual\u2011source option.",
+        "origin": "model"
+      },
+      {
+        "target": "Expedite air freight for Cell Module W44",
+        "issue_type": "missing_alternative",
+        "severity": "medium",
+        "explanation": "Reliance on expedited air freight ignores possible carrier capacity limits or cost spikes during the typhoon period; no backup mode is specified.",
+        "suggested_fix": "Identify alternate routing options (e.g., sea freight via unaffected Asian ports, or temporary use of nearby EU warehouses) and include them as fallback actions.",
+        "origin": "model"
+      },
+      {
+        "target": "Evidence claims C1\u2011C4",
+        "issue_type": "weak_evidence",
+        "severity": "low",
+        "explanation": "The evidence statements are generic and lack quantitative data on typhoon\u2011induced delay duration, specific radar sensor impact, or source verification, weakening the justification for the chosen mitigations.",
+        "suggested_fix": "Supplement the evidence with concrete data: port throughput reports, carrier delay statistics, and impact assessments for the specific radar sensor SKUs.",
+        "origin": "model"
       }
     ],
-    "verdict": "revise",
+    "verdict": "accept",
+    "status": "model",
+    "model_used": "nvidia/nemotron-3-super-120b-a12b",
     "revised": false
   },
   "provenance": {
@@ -1909,10 +1958,22 @@
       "strategy": "nvidia/nemotron-3-super-120b-a12b",
       "critic": "nvidia/nemotron-3-super-120b-a12b"
     },
-    "search_count": 4,
-    "source_count": 9,
+    "search_count": 2,
+    "source_count": 6,
     "claims_extracted": 4,
-    "contradictions_identified": 1,
-    "extraction_method": "model"
+    "contradictions_identified": 0,
+    "contradictions_resolved": 0,
+    "extraction_method": "model",
+    "degraded": [],
+    "timings_s": {
+      "research": 13.4,
+      "extraction": 46.3,
+      "contradictions": 0.0,
+      "exposure": 0.0,
+      "strategy": 7.7,
+      "critic": 5.3
+    },
+    "total_s": 72.7,
+    "generated_at": "2026-10-26T09:16:29+00:00"
   }
 }

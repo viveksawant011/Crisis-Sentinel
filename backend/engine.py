@@ -179,35 +179,19 @@ def apply_reroute_mitigation(po_id: str, new_supplier_id: str, db_path: str = DB
 
 
 def apply_batch_reroute_mitigation(po_ids: list, alt_supplier_id: str, db_path: str = DB_PATH) -> Dict[str, Any]:
-    """
-    Reroutes a list of exposed purchase orders to an approved alternative supplier,
-    updating status to 'rerouted' in the SQLite database.
-    """
-    conn = get_db_connection(db_path)
-    cur = conn.cursor()
-    
-    updated_count = 0
-    try:
-        for po_id in po_ids:
-            cur.execute("""
-                UPDATE purchase_order 
-                SET supplier_id = ?, status = 'rerouted'
-                WHERE id = ?
-            """, (alt_supplier_id, str(po_id)))
-            updated_count += cur.rowcount
-        conn.commit()
-    except Exception as exc:
-        conn.rollback()
-        return {"status": "ERROR", "error": str(exc), "rerouted_pos_count": 0}
-    finally:
-        conn.close()
-
+    """Reroute several POs to one supplier, validating EACH PO against alt_supplier_map.
+    POs for which the supplier is not an approved alternative are reported, not changed."""
+    results = [apply_reroute_mitigation(str(pid), alt_supplier_id, db_path=db_path) for pid in po_ids]
+    ok = [r for r in results if r.get("success")]
+    failed = [r for r in results if not r.get("success")]
     return {
-        "status": "SUCCESS",
-        "rerouted_pos_count": updated_count,
-        "new_supplier_id": alt_supplier_id,
-        "message": f"Successfully rerouted {updated_count} purchase orders to {alt_supplier_id}."
+        "status": "SUCCESS" if ok and not failed else ("PARTIAL" if ok else "ERROR"),
+        "rerouted_pos_count": len(ok),
+        "failed_pos_count": len(failed),
+        "results": results,
+        "message": f"Rerouted {len(ok)} of {len(results)} purchase orders to {alt_supplier_id}.",
     }
+
 
 def reset_demo_state() -> Dict[str, Any]:
     """Rebuild voltauto.db from seed_data.py so the demo can be replayed."""

@@ -22,7 +22,9 @@ FALLBACK_NANO_MODEL = "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
 tavily_client = TavilyClient(api_key=os.environ.get("TAVILY_API_KEY", ""))
 nebius_client = OpenAI(
     base_url=NEBIUS_BASE_URL,
-    api_key=os.environ.get("NEBIUS_API_KEY", ""),
+    api_key=os.environ.get("NEBIUS_API_KEY") or "missing-key",
+    timeout=60.0,
+    max_retries=1,
 )
 
 _CACHED_NANO_MODEL: Optional[str] = None

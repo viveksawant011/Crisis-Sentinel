@@ -217,6 +217,45 @@ def seed_bulk(conn, n_suppliers=20, n_materials=50, n_pos=200,
     seed_alt_suppliers(conn, materials, all_suppliers_full)
 
 
+# Every disruption the demo can raise must have approved alternatives, otherwise "reroute" is impossible
+# after a reset. Two options per critical (material, primary supplier) pair makes dual-sourcing real.
+SCENARIO_TARGETS = [("Taiwan", "semiconductor"), ("Poland", "battery component"),
+                    ("Germany", "battery component"), ("Japan", "sensor")]
+ALTS_PER_PAIR = 2
+
+
+def ensure_scenario_alternatives(conn):
+    for country, category in SCENARIO_TARGETS:
+        pairs = conn.execute("""
+            SELECT DISTINCT po.material_id, po.supplier_id FROM purchase_order po
+            JOIN supplier s ON s.id = po.supplier_id
+            WHERE po.status = 'open' AND s.country = ? AND s.category = ?
+            ORDER BY po.material_id, po.supplier_id""", (country, category)).fetchall()
+        for material_id, primary in pairs:
+            have = {r[0] for r in conn.execute(
+                """SELECT a.alt_supplier_id FROM alt_supplier_map a JOIN supplier s ON s.id = a.alt_supplier_id
+                   WHERE a.material_id = ? AND a.primary_supplier_id = ? AND s.country <> ? AND s.category = ?""",
+                (material_id, primary, country, category))}
+            need = ALTS_PER_PAIR - len(have)
+            if need <= 0:
+                continue
+            cands = [r[0] for r in conn.execute(
+                """SELECT s.id FROM supplier s WHERE s.category = ? AND s.country <> ? AND s.id <> ?
+                   ORDER BY s.id""", (category, country, primary)) if r[0] not in have]
+            if not cands:
+                continue
+            shippers = {r[0] for r in conn.execute(
+                "SELECT DISTINCT supplier_id FROM purchase_order WHERE material_id = ?", (material_id,))}
+            preferred = [c for c in cands if c in shippers]
+            rest = [c for c in cands if c not in shippers]
+            if rest:  # rotate deterministically so volume is not forced onto one supplier
+                k = sum(map(ord, material_id)) % len(rest)
+                rest = rest[k:] + rest[:k]
+            for alt in (preferred + rest)[:need]:
+                conn.execute("INSERT OR IGNORE INTO alt_supplier_map VALUES (?,?,?)", (material_id, primary, alt))
+    conn.commit()
+
+
 def ensure_coverage(conn):
     """Make the data internally consistent so the engine's joins are meaningful.
     1) Every (material, plant) that has a PO gets an inventory row, so runway
@@ -235,19 +274,7 @@ def ensure_coverage(conn):
         conn.execute("INSERT INTO inventory VALUES (?,?,?,?)",
                      (material_id, plant_id, stock, daily))
 
-    alts = conn.execute(
-        "SELECT id FROM supplier WHERE category='semiconductor' AND country='Germany'"
-    ).fetchall()
-    alt_pool = [r[0] for r in alts] or ["SUP014"]
-    exposed = conn.execute("""
-        SELECT DISTINCT po.material_id, po.supplier_id FROM purchase_order po
-        JOIN supplier s ON s.id = po.supplier_id
-        WHERE s.category='semiconductor' AND s.country='Taiwan' AND po.status='open'
-        ORDER BY po.material_id, po.supplier_id
-    """).fetchall()
-    for material_id, supplier_id in exposed:
-        conn.execute("INSERT OR IGNORE INTO alt_supplier_map VALUES (?,?,?)",
-                     (material_id, supplier_id, random.choice(alt_pool)))
+    ensure_scenario_alternatives(conn)
     conn.commit()
 
 

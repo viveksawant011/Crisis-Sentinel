@@ -1,11 +1,11 @@
 {
   "matched": true,
   "intelligence": {
-    "event": "Taiwan earthquake forces TSMC fabs to shut, risking global chip supply",
+    "event": "Taiwan earthquake forces TSMC fabs to shut down, disrupting automotive semiconductor supply",
     "impacted_country": "Taiwan",
     "impacted_category": "semiconductor",
     "severity": "high",
-    "estimated_duration_days": 14,
+    "estimated_duration_days": null,
     "confidence": 0.83,
     "sources": [
       {
@@ -22,42 +22,56 @@
       },
       {
         "id": "S3",
-        "title": "Earthquake Impacts Semiconductor Manufacturing in Taiwan | Fusion Worldwide",
-        "url": "https://www.fusionww.com/insights/earthquake-impacts-semiconductor-manufacturers-in-taiwan",
-        "snippet": "| Taiwan Semiconductor Manufacturing Co. (TSMC) | Since the initial impact of the earthquake, TSMC has stated that most of its equipment is back online, but the production lines are not yet up to 100% capacity. TSMC\u2019s foundry facilities in Hsinchu/Miaoli, Taichung, and Tianan were reportedly impacted, with the Hsinchu plant pausing production for at least 24 hours.   Early reports indicated that the impact would be controllable, but the ripple effect of any disruption to IC production lines [...] Manufacturers in the memory supply chain swiftly implemented proactive measures to mitigate the disruption caused by the earthquake. As this occurred at the beginning of the quarter, pricing for components was either in negotiation or recently updated. Forecasts now suggest that pricing for memory products will rise by as much as 20% as manufacturers anticipate a surge in demand post-earthquake. [...] | NANYA | NANYA distributors are pausing quotes because production lines have been temporarily shut down for inspection. These lines are mainly for EUV processes, and production may take time to resume.   The earthquake reportedly paused production at Nanya\u2019s Fab 3A, located in New Taipei. Th"
+        "title": "Taiwan Earthquakes: TSMC in Taiwan Evacuates Factories - Microchip USA",
+        "url": "https://www.microchipusa.com/industry-news/taiwan-earthquake-tsmc-in-taiwan-evacuates-factories",
+        "snippet": "This time, the impact on TSMC and the broader semiconductor industry was notably different. In Hsinchu, home to many of TSMC\u2019s most critical fabs, ground motion was measured at around magnitude 4. TSMC confirmed that its earthquake alert systems were triggered and that some facilities were briefly evacuated in accordance with safety protocols. Following comprehensive inspections, operations resumed quickly, with no structural damage, no reported wafer losses, and no disruption to production [...] On January 20, 2025, a magnitude 6.4 earthquake struck southern Taiwan, sending tremors through the island and rippling across the global tech industry. For most, it was a natural disaster. For the semiconductor world, it was a wake-up call. At the epicenter of the disruption was Taiwan Semiconductor Manufacturing Company (TSMC), the world\u2019s largest and most advanced chipmaker, and the Taiwan earthquake is a stark reminder of how fragile the global supply chain truly is. [...] Engineers working on tight timelines may face delays in securing critical components, particularly for advanced nodes where TSMC dominates. This could push back product launches, increase development costs, and force"
       },
       {
         "id": "S4",
-        "title": "Taiwan Earthquakes: TSMC in Taiwan Evacuates Factories - Microchip USA",
-        "url": "https://www.microchipusa.com/industry-news/taiwan-earthquake-tsmc-in-taiwan-evacuates-factories",
-        "snippet": "For the global semiconductor supply chain, the outcome was a relief. Unlike the January 2025 earthquake - which halted production and raised alarms about wafer losses and supply shortages - the December 2025 event demonstrated how far TSMC\u2019s earthquake preparedness has advanced. Investments in seismic-resistant fab design, vibration isolation systems, and real-time monitoring appear to have paid off, preventing the kind of cascading supply chain effects that have historically followed major [...] This time, the impact on TSMC and the broader semiconductor industry was notably different. In Hsinchu, home to many of TSMC\u2019s most critical fabs, ground motion was measured at around magnitude 4. TSMC confirmed that its earthquake alert systems were triggered and that some facilities were briefly evacuated in accordance with safety protocols. Following comprehensive inspections, operations resumed quickly, with no structural damage, no reported wafer losses, and no disruption to production [...] Beyond the immediate financial impact, the earthquake poses a reputational challenge for TSMC. The company has built its reputation on reliability and precision, but natural disasters like this on"
+        "title": "Open-Source Taiwan Knowledge Base | Taiwan.md",
+        "url": "https://taiwan.md/en",
+        "snippet": "90% of the world's advanced chips ship from Taiwan. A single TSMC fab costs US$20 billion; its cleanrooms are 10,000 times cleaner than operating theaters.  This tech island started from tin-roof workshops in the 1980s Hsinchu Science Park and became, forty years later, a supply-chain node that no phone, laptop, or car on Earth can bypass. The trade-off: semiconductors consume 7% of Taiwan's total electricity \u2014 and rising. [...] 2026 \u2014 Taiwan.md \n> \"An island deserves to be told in its own voice \u2014 in every language, including those some AI models choose silence on.\" \u2014 Taiwan.md, a breathing digital holobiont curated by humans + AI + code\n\nFrom the creation myths of Austronesian peoples to the rise of the semiconductor empire, from the silence of martial law to Asia's first legalization of same-sex marriage. Taiwan's story is not a straight line, but a web."
       },
       {
         "id": "S5",
-        "title": "Taiwanese semiconductor giant TSMC restarts operations after earthquake, easing concerns of chip supply disruption - Electronics Manufacturing News",
-        "url": "https://www.globalsmt.net/world-news/taiwanese-semiconductor-giant-tsmc-restarts-operations-after-earthquake-easing-concerns-of-chip-supply-disruption",
-        "snippet": "The world\u2019s largest independent contract chip manufacturer, which supplies 90 per cent of the world\u2019s most advanced semiconductors to technology giants like Apple and Nvidia, restarted operations within 10 hours after work was suspended because of the worst earthquake to hit Taiwan in 25 years. There were at least nine fatalities and more than 1,000 injured during the earthquake. [...] Following a brief suspension of work, TSMC said 70 per cent of its chip-manufacturing equipment had been \u201crecovered\u201d for production at its fabrication facilities within 10 hours of the earthquake. New facilities, such as its Fab 18, achieved a recovery rate of more than 80 per cent. [...] Widespread concern about the state of Taiwan\u2019s semiconductor manufacturing industry after the earthquake shows the pivotal role that TSMC and other major chip makers in the island play in the global technology supply chain. The island produces 60 per cent of the world\u2019s semiconductors.\n\nAnalysts at Barclays initially warned that the production of certain chips in Taiwan could take weeks to recover, according to a note published on Wednesday.\n\n### Enjoyed this article?"
+        "title": "Taiwan - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Taiwan",
+        "snippet": "and United Microelectronic Corporation (UMC). TSMC was founded 21 February 1987 and as of December 2021 its market capitalization equated to roughly 90% of Taiwan's GDP. The company is the 9th largest in the world by market capitalization as well as the world's biggest semiconductor manufacturing company, surpassing Intel and Samsung. UMC, another major company in Taiwan's high-tech exports and global semiconductors, competes with the American GlobalFoundries, and others, for less advanced [...] earthquake\")\" killed more than 2,400 people. The seismic hazard map for Taiwan by the USGS shows 9/10 of the island at the most hazardous rating.\n\n## Government and politics\n\nMain articles: Government of the Republic of China and Politics of the Republic of China\n\nSee also: Elections in Taiwan, Human rights in Taiwan, and North\u2013South divide in Taiwan\n\n### Government\n\n\"), originally built in the Japanese era for colonial governors. [...] of Taiwan Semiconductor Manufacturing Co. (TSMC). TSMC's expansions have helped increase the proportion of Taiwanese employed in the U.S., although China still hosts the largest share."
       },
       {
         "id": "S6",
-        "title": "TSMC Restarts Taiwan Fabs After Earthquake Shutdowns",
-        "url": "https://www.asiafinancial.com/tsmc-restarts-taiwan-fabs-after-earthquake-shutdowns",
-        "snippet": "Certain production lines in areas that faced greater impact were likely to take more time to return to fully automated production, the company said.\n\nTSMC said its overall tool recovery of its fabrication facilities exceeded 80% as of Thursday. New fabs such as the Fab 18 in Tainan were expected to reach full recovery later in the day. The company\u2019s US-listed shares were up 1.39%.\n\n Reuters with additional editing by Sean O\u2019Meara\n\nRead more: [...] NEWS;)\n ANALYSIS;)\n INDEXES;)\n\nSemiconductors\n\n# TSMC Restarts Taiwan Fabs After Earthquake Shutdowns\n\nApril 4, 2024\n\nThe global chip leader had paused production at its sites after the 7.2-magnitude quake which triggered landslides\n\nTaiwan \n\nThis Reuters image shows a TSMC plant.\n\nChip giant Taiwan Semiconductor Manufacturing Co has restarted work at its manufacturing sites following the island\u2019s strongest earthquake in 25 years, which killed 9 and left 50 people missing. [...] Wednesday\u2019s quake had raised fears of disruptions to global chip supplies as TSMC produces a major share of the world\u2019s most advanced semiconductors, and counts Apple and AI chip leader Nvidia among its customers\n\nTSMC said its initial checks showed that safety sy"
+        "title": "History of Taiwan - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/History_of_Taiwan",
+        "snippet": "In May 2019, Taiwan became the first country in Asia to legalise same-sex marriage. By the end of the 2010s the semiconductor industry in Taiwan had become globally dominant with TSMC the global leader in high end semiconductor fabrication. The industry became so important that it was seen by many as a \"silicon shield\" protecting the country from China. [...] Yi (Kuomintang)\"). On 26 October, the government of the Republic of China declared that Taiwan had become a province of China, however the Allied Powers did not recognize this unilateral declaration."
+      },
+      {
+        "id": "S7",
+        "title": "TSMC Resumes Operations at Kumamoto Fab Following Earthquake < Semiconductor < \uae30\uc0ac\ubcf8\ubb38 - The Elec Inc.",
+        "url": "https://www.thelec.net/news/articleView.html?idxno=12826",
+        "snippet": "Login\n Join\n Mobile\n UPDATE : 2026-10-22 10:30 (Thurs)\n\n KOREAN\n\nThe Elec Inc.\n\n \n\nThe Elec Inc.\n\nTSMC Resumes Operations at Kumamoto Fab Following Earthquake\n\nCharacter Size Settings\n\n\uac00\n\nThe body content of the article will be changed to this letter size.\n\n\uc2a4\ud06c\ub864 \uc774\ub3d9 \uc0c1\ud0dc\ubc14\n\n# TSMC Resumes Operations at Kumamoto Fab Following Earthquake\n\n## Production restarts six days after seismic disruption; company donates 250 million yen for recovery efforts\n\n Lee Jun\n Published 2026.08.05 07:56\n Reply 0"
+      },
+      {
+        "id": "S8",
+        "title": "Taiwanese semiconductor giant TSMC restarts operations after earthquake, easing concerns of chip supply disruption - Electronics Manufacturing News",
+        "url": "https://www.globalsmt.net/world-news/taiwanese-semiconductor-giant-tsmc-restarts-operations-after-earthquake-easing-concerns-of-chip-supply-disruption",
+        "snippet": "The world\u2019s largest independent contract chip manufacturer, which supplies 90 per cent of the world\u2019s most advanced semiconductors to technology giants like Apple and Nvidia, restarted operations within 10 hours after work was suspended because of the worst earthquake to hit Taiwan in 25 years. There were at least nine fatalities and more than 1,000 injured during the earthquake. [...] Following a brief suspension of work, TSMC said 70 per cent of its chip-manufacturing equipment had been \u201crecovered\u201d for production at its fabrication facilities within 10 hours of the earthquake. New facilities, such as its Fab 18, achieved a recovery rate of more than 80 per cent. [...] Widespread concern about the state of Taiwan\u2019s semiconductor manufacturing industry after the earthquake shows the pivotal role that TSMC and other major chip makers in the island play in the global technology supply chain. The island produces 60 per cent of the world\u2019s semiconductors.\n\nAnalysts at Barclays initially warned that the production of certain chips in Taiwan could take weeks to recover, according to a note published on Wednesday.\n\n### Enjoyed this article?"
       }
     ],
     "claims": [
       {
         "claim_id": "C1",
-        "text": "Earthquake triggers temporary fab shutdowns",
+        "text": "Earthquake forces TSMC fabs to halt production",
         "type": "cause",
-        "value": "earthquake",
+        "value": "earthquake shutdown",
         "source_ids": [
-          "S1"
+          "S1",
+          "S2",
+          "S3"
         ]
       },
       {
         "claim_id": "C2",
-        "text": "TSMC accounts for 60% of global semiconductor output",
+        "text": "Advanced semiconductor output drops sharply",
         "type": "scope",
         "value": "60% global",
         "source_ids": [
@@ -66,25 +80,25 @@
       },
       {
         "claim_id": "C3",
-        "text": "High risk of chip supply chain disruption",
+        "text": "Supply chain concerns rise across automotive sector",
         "type": "severity",
-        "value": "high",
+        "value": "high impact",
         "source_ids": [
           "S1"
         ]
       },
       {
         "claim_id": "C4",
-        "text": "Facilities resume production within 10 hours",
+        "text": "Recovery expected within ten hours",
         "type": "duration",
-        "value": "10h",
+        "value": "10 hours",
         "source_ids": [
-          "S6"
+          "S3"
         ]
       }
     ],
     "contradictions": [],
-    "evidence_strength": "83% (6 independent domains, 0 unresolved conflicts)",
+    "evidence_strength": "83% (7 independent domains, 0 unresolved conflicts)",
     "search_log": [
       {
         "query": "Taiwan earthquake TSMC fab shutdown automotive semiconductor supply what happened disruption cause",
@@ -99,7 +113,8 @@
         "results_count": 3
       }
     ],
-    "extraction_method": "model"
+    "extraction_method": "model",
+    "mapping_source": "model"
   },
   "exposure": {
     "matched": true,
@@ -422,12 +437,28 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10482",
+        "material_id": "MCU-X200",
+        "primary_supplier": "TaiwanChip Corp",
+        "alt_supplier_id": "SUP1007",
+        "alt_supplier_name": "SouthKoreaParts 007",
+        "alt_supplier_country": "South Korea"
+      },
+      {
         "po_id": "PO10002",
         "material_id": "MAT-L34",
         "primary_supplier": "TaiwanParts 017",
-        "alt_supplier_id": "SUP014",
-        "alt_supplier_name": "EuroSemi GmbH",
-        "alt_supplier_country": "Germany"
+        "alt_supplier_id": "SUP1007",
+        "alt_supplier_name": "SouthKoreaParts 007",
+        "alt_supplier_country": "South Korea"
+      },
+      {
+        "po_id": "PO10002",
+        "material_id": "MAT-L34",
+        "primary_supplier": "TaiwanParts 017",
+        "alt_supplier_id": "SUP1008",
+        "alt_supplier_name": "SouthKoreaParts 008",
+        "alt_supplier_country": "South Korea"
       },
       {
         "po_id": "PO10003",
@@ -438,12 +469,28 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10003",
+        "material_id": "MAT-T41",
+        "primary_supplier": "TaiwanParts 017",
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
         "po_id": "PO10004",
         "material_id": "MAT-P13",
         "primary_supplier": "TaiwanParts 018",
-        "alt_supplier_id": "SUP014",
-        "alt_supplier_name": "EuroSemi GmbH",
-        "alt_supplier_country": "Germany"
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
+        "po_id": "PO10004",
+        "material_id": "MAT-P13",
+        "primary_supplier": "TaiwanParts 018",
+        "alt_supplier_id": "SUP1007",
+        "alt_supplier_name": "SouthKoreaParts 007",
+        "alt_supplier_country": "South Korea"
       },
       {
         "po_id": "PO10005",
@@ -454,6 +501,14 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10005",
+        "material_id": "MAT-V43",
+        "primary_supplier": "TaiwanParts 014",
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
         "po_id": "PO10006",
         "material_id": "MAT-L10",
         "primary_supplier": "TaiwanParts 018",
@@ -462,20 +517,44 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10006",
+        "material_id": "MAT-L10",
+        "primary_supplier": "TaiwanParts 018",
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
         "po_id": "PO10007",
         "material_id": "MAT-A24",
         "primary_supplier": "TaiwanParts 002",
-        "alt_supplier_id": "SUP014",
-        "alt_supplier_name": "EuroSemi GmbH",
-        "alt_supplier_country": "Germany"
+        "alt_supplier_id": "SUP1007",
+        "alt_supplier_name": "SouthKoreaParts 007",
+        "alt_supplier_country": "South Korea"
+      },
+      {
+        "po_id": "PO10007",
+        "material_id": "MAT-A24",
+        "primary_supplier": "TaiwanParts 002",
+        "alt_supplier_id": "SUP1008",
+        "alt_supplier_name": "SouthKoreaParts 008",
+        "alt_supplier_country": "South Korea"
       },
       {
         "po_id": "PO10008",
         "material_id": "MAT-P13",
         "primary_supplier": "TaiwanParts 017",
-        "alt_supplier_id": "SUP014",
-        "alt_supplier_name": "EuroSemi GmbH",
-        "alt_supplier_country": "Germany"
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
+        "po_id": "PO10008",
+        "material_id": "MAT-P13",
+        "primary_supplier": "TaiwanParts 017",
+        "alt_supplier_id": "SUP1007",
+        "alt_supplier_name": "SouthKoreaParts 007",
+        "alt_supplier_country": "South Korea"
       },
       {
         "po_id": "PO10009",
@@ -486,6 +565,14 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10009",
+        "material_id": "MAT-V43",
+        "primary_supplier": "TaiwanParts 019",
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
         "po_id": "PO10010",
         "material_id": "MAT-V43",
         "primary_supplier": "TaiwanParts 017",
@@ -494,70 +581,155 @@
         "alt_supplier_country": "Germany"
       },
       {
+        "po_id": "PO10010",
+        "material_id": "MAT-V43",
+        "primary_supplier": "TaiwanParts 017",
+        "alt_supplier_id": "SUP1006",
+        "alt_supplier_name": "SouthKoreaParts 006",
+        "alt_supplier_country": "South Korea"
+      },
+      {
         "po_id": "PO10011",
         "material_id": "MAT-A24",
         "primary_supplier": "TaiwanParts 010",
-        "alt_supplier_id": "SUP014",
-        "alt_supplier_name": "EuroSemi GmbH",
-        "alt_supplier_country": "Germany"
+        "alt_supplier_id": "SUP1007",
+        "alt_supplier_name": "SouthKoreaParts 007",
+        "alt_supplier_country": "South Korea"
+      },
+      {
+        "po_id": "PO10011",
+        "material_id": "MAT-A24",
+        "primary_supplier": "TaiwanParts 010",
+        "alt_supplier_id": "SUP1008",
+        "alt_supplier_name": "SouthKoreaParts 008",
+        "alt_supplier_country": "South Korea"
       }
     ],
     "reroutable_value_eur": 4723739.97
   },
   "brief": {
-    "headline": "Taiwan Earthquake Disrupts Semiconductor Supply; 3.2-Day Critical Runway at Berlin Plant",
-    "criticality_summary": "11 open POs worth \u20ac4.7M from 7 Taiwan suppliers at risk; all reroutable to EuroSemi GmbH (Germany). MAT-L10 at Berlin Plant has only 3.2 days stock vs 26-day lead time.",
+    "headline": "Taiwan earthquake forces TSMC fabs to shut down, disrupting automotive semiconductor supply",
+    "criticality_summary": "High severity disruption affecting multiple semiconductor POs with low runway; immediate re\u2011routing needed to avoid production stop.",
     "financial_risk_eur": 4723739.97,
     "assembly_line_deadline_days": 3.2,
     "recommended_actions": [
       {
         "priority": 1,
-        "title": "Emergency Reroute MAT-L10 to EuroSemi GmbH",
-        "action_type": "reroute_supplier",
-        "po_id": "PO10006",
-        "target_supplier_id": "SUP014",
-        "target_plant": "Berlin Plant",
-        "target_material": "Microcontroller L10",
-        "rationale": "Only 3.2 days runway vs 26-day Taiwan lead time; line stop imminent.",
-        "estimated_cost_eur": 280579.62
-      },
-      {
-        "priority": 2,
-        "title": "Reroute MAT-P13 to EuroSemi GmbH",
-        "action_type": "reroute_supplier",
-        "po_id": "PO10008",
-        "target_supplier_id": "SUP014",
-        "target_plant": "Berlin Plant",
-        "target_material": "Power Module P13",
-        "rationale": "8-day runway vs 24-day Taiwan lead time; second critical Berlin material.",
-        "estimated_cost_eur": 311155.57
-      },
-      {
-        "priority": 3,
-        "title": "Reroute MCU-X200 to EuroSemi GmbH",
+        "title": "Reroute MCU\u2011X200 supply to EuroSemi GmbH",
         "action_type": "reroute_supplier",
         "po_id": "PO10482",
         "target_supplier_id": "SUP014",
         "target_plant": "Stuttgart Plant",
         "target_material": "MCU-X200",
-        "rationale": "10.9-day runway vs 18-day Taiwan lead time; high-value \u20ac2.4M PO.",
-        "estimated_cost_eur": 2400000.0
+        "rationale": "Highest value PO (\u20ac2.4M) with 10.9\u2011day runway; alternative supplier available to secure supply.",
+        "estimated_cost_eur": 2400000.0,
+        "value_rerouted_eur": 2400000.0
+      },
+      {
+        "priority": 2,
+        "title": "Reroute MAT\u2011L10 microcontroller to EuroSemi GmbH",
+        "action_type": "reroute_supplier",
+        "po_id": "PO10006",
+        "target_supplier_id": "SUP014",
+        "target_plant": "Berlin Plant",
+        "target_material": "MAT-L10",
+        "rationale": "Lowest runway (3.2\u202fdays) risk of stockout; alternative supplier ready to prevent line stop.",
+        "estimated_cost_eur": 280579.62,
+        "value_rerouted_eur": 280579.62
+      },
+      {
+        "priority": 3,
+        "title": "Expedite Power Module L34 shipments",
+        "action_type": "expedite",
+        "po_id": "PO10002",
+        "target_supplier_id": "",
+        "target_plant": "Leipzig Plant",
+        "target_material": "MAT-L34",
+        "rationale": "Accelerate incoming shipments to buffer while alternative sourcing is arranged.",
+        "estimated_cost_eur": 349197.73,
+        "value_rerouted_eur": 349197.73
       }
     ],
-    "brief_source": "nemotron"
+    "brief_source": "nemotron",
+    "model_used": "nvidia/nemotron-3-super-120b-a12b"
   },
   "critique": {
+    "checks": [
+      {
+        "id": "total_matches_sql",
+        "label": "Value at risk equals the SQL total",
+        "passed": true,
+        "detail": "brief \u20ac4,723,739.97 vs SQL \u20ac4,723,739.97"
+      },
+      {
+        "id": "deadline_matches_runway",
+        "label": "Deadline equals the shortest inventory runway",
+        "passed": true,
+        "detail": "brief 3.2 d vs SQL 3.2 d"
+      },
+      {
+        "id": "actions_reference_exposed_pos",
+        "label": "Every action targets an exposed open PO",
+        "passed": true,
+        "detail": "3 action(s) checked"
+      },
+      {
+        "id": "suppliers_are_erp_approved",
+        "label": "Every reroute uses an ERP-approved alternative for that PO",
+        "passed": true,
+        "detail": "all reroute pairs found in alt_supplier_map"
+      },
+      {
+        "id": "plant_material_match_po",
+        "label": "Action plant and material match the PO record",
+        "passed": true,
+        "detail": "consistent with ERP"
+      },
+      {
+        "id": "brief_generated_by_model",
+        "label": "Plan was generated by the model (not the SQL fallback)",
+        "passed": true,
+        "detail": "brief_source = nemotron"
+      }
+    ],
     "deterministic_flags": [],
     "challenges": [
       {
-        "target": "All reroute actions (Priority 1-3)",
+        "target": "Reroute plan",
+        "issue_type": "single_source_concentration",
+        "severity": "medium",
+        "explanation": "100% of rerouted order value (\u20ac2,680,580) lands on EuroSemi GmbH; a problem there would recreate the exposure.",
+        "suggested_fix": "Confirm the alternative's spare capacity before approving, or split volume across a second qualified supplier.",
+        "origin": "deterministic"
+      },
+      {
+        "target": "All reroute actions (PO10482, PO10006)",
         "issue_type": "unsupported_assumption",
         "severity": "high",
-        "explanation": "The brief assumes EuroSemi GmbH (SUP014) can immediately absorb the additional volume of Microcontroller L10, Power Module P13, and MCU-X200 without impacting its own lead times or capacity. No data on EuroSemi's current utilization, lead\u2011time buffers, or qualification for these specific parts is provided, creating a risk of overloading the supplier and causing further delays.",
-        "suggested_fix": "Perform a rapid capacity and lead\u2011time assessment for EuroSemi for each material, qualify at least one alternate supplier per material, and consider splitting the volume across multiple sources to mitigate single\u2011point failure."
+        "explanation": "The plan assumes that switching to EuroSemi GmbH can happen immediately, ignoring required supplier qualification, PPAP approval, customs clearance, and logistics lead times. If these steps take weeks, the reroute will not prevent stockout.",
+        "suggested_fix": "Add a qualification workstream: confirm EuroSemi\u2019s PPAP status, estimate lead time for first article inspection, and qualify interim safety stock or dual\u2011source options. Include realistic timelines in the mitigation schedule.",
+        "origin": "model"
+      },
+      {
+        "target": "Reroute to EuroSemi GmbH for MCU\u2011X200 and MAT\u2011L10",
+        "issue_type": "unsupported_assumption",
+        "severity": "medium",
+        "explanation": "Both critical POs are diverted to the same alternative supplier without verifying EuroSemi\u2019s current capacity or existing commitments. Overloading EuroSemi could create a new bottleneck and delay deliveries.",
+        "suggested_fix": "Request capacity confirmation from EuroSemi for the additional volume, and if limited, split the load between EuroSemi and another approved alternate or consider using safety stock from existing inventory.",
+        "origin": "model"
+      },
+      {
+        "target": "Expedite Power Module L34 shipments",
+        "issue_type": "weak_evidence",
+        "severity": "low",
+        "explanation": "The plan relies on Evidence C4 claiming TSMC recovery within ten hours, but no source or validation is provided. If the disruption lasts longer, expediting alone may be insufficient.",
+        "suggested_fix": "Obtain a verified timeline from TSMC or industry sources, and add a contingency (e.g., additional safety stock or alternate power\u2011module supplier) should the outage exceed the ten\u2011hour window.",
+        "origin": "model"
       }
     ],
     "verdict": "revise",
+    "status": "model",
+    "model_used": "nvidia/nemotron-3-super-120b-a12b",
     "revised": false
   },
   "provenance": {
@@ -567,9 +739,21 @@
       "critic": "nvidia/nemotron-3-super-120b-a12b"
     },
     "search_count": 3,
-    "source_count": 6,
+    "source_count": 8,
     "claims_extracted": 4,
     "contradictions_identified": 0,
-    "extraction_method": "model"
+    "contradictions_resolved": 0,
+    "extraction_method": "model",
+    "degraded": [],
+    "timings_s": {
+      "research": 6.8,
+      "extraction": 58.7,
+      "contradictions": 0.0,
+      "exposure": 0.0,
+      "strategy": 7.7,
+      "critic": 5.6
+    },
+    "total_s": 84.5,
+    "generated_at": "2026-10-26T09:14:09+00:00"
   }
 }
