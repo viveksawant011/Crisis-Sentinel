@@ -17,49 +17,45 @@ News tells you what happened. It does not tell you that purchase order PO10482 f
 
 AI models are good at reading news but bad at math, and they sometimes make up numbers. So we split the work. Models read and reason. A database does all the counting.
 
-## How It Works
+## How it works
 
-1. **Investigate:** Tavily searches live news via 3 targeted queries (disruption cause, automotive impact, recovery timeline).
-2. **Extract Facts:** Nemotron-3-Nano extracts key claims, impacted countries, and material categories, normalized against database vocabulary.
-3. **Resolve Conflicts:** If sources report conflicting timelines, Nemotron Nano triggers a follow-up query to settle the claim with citations.
-4. **Calculate ERP Exposure:** Pure SQL joins the event to open purchase orders—calculating exposed capital (€), days of inventory runway per plant, and approved alternative vendors.
-5. **Draft Response Plan:** Nemotron-3-Super proposes up to 3 prioritized reroute actions, bound strictly to exposed open POs.
-6. **Adversarial Audit:** Deterministic checks verify that every quantity and plant matches the ERP; Nemotron Super red-teams operational assumptions (e.g., supplier concentration).
-7. **Human Authorization:** An operator reviews and approves reroutes. Validated updates are written directly to the database.
+1. **Investigate:** Tavily searches live news with 3 targeted queries (what happened, impact on automotive, recovery timeline).
+2. **Extract facts:** Nemotron Nano pulls out the key claims, the affected country and the material category.
+3. **Resolve conflicts:** If sources disagree, a follow-up search tries to settle it, with sources cited.
+4. **Calculate exposure:** Plain SQL matches the event to open purchase orders and works out money at risk, days of stock left per plant, and approved backup suppliers.
+5. **Draft a plan:** Nemotron Super proposes up to 3 actions, each tied to a real purchase order.
+6. **Audit the plan:** Fixed rule checks confirm every number and plant matches the database. Nemotron Super then challenges the plan's assumptions (for example, relying on a single supplier).
+7. **Human approval:** A person reviews and approves. Approved reroutes are saved to the database.
 
 ![How CrisisSentinel works](docs/architecture.png)
 
-## Data Integrity Guarantees
+## Why you can trust the numbers
 
-- **No Hallucinated Financials:** Value at risk, inventory runway, and assembly stoppage days are computed via SQL arithmetic.
-- **Immutable Purchase Orders:** Material IDs and plant locations are populated directly from the ERP record, preventing mismatched parts or facilities.
-- **Strict Supplier Validation:** Reroutes to vendors not explicitly registered in `alt_supplier_map` are rejected before execution.
-- **Auditable Provenance:** Every claim extracted from news links directly to its source domain and article URL.
-- **Honest Telemetry:** If a model call times out or degrades, the UI explicitly marks the stage as degraded rather than substituting synthetic fallback values.
+- **No made-up money figures.** Value at risk, days of stock and stoppage days all come from SQL.
+- **Actions stay tied to real orders.** The part and plant for each action are copied from the order record, so the AI cannot mix them up.
+- **Only approved suppliers.** A reroute to a supplier that is not approved for that order is rejected.
+- **Sources you can check.** Every claim links to the web page it came from.
+- **Failures are visible.** If a model call fails, the app labels that step (for example `SQL fallback` or `Degraded`) instead of hiding it.
 
-## Technology Stack
+## Technology
 
-- **NVIDIA Nemotron (via Nebius Token Factory):**
-  - **Nemotron-3-Nano (30B):** High-throughput claim extraction, entity classification, and contradiction judging.
-  - **Nemotron-3-Super (120B):** Executive mitigation planning, adversarial plan critique, and iterative revision loops.
-- **Tavily Search API:** Targeted multi-query web intelligence and real-time conflict-resolution queries.
-- **Deterministic Core:** SQLite ERP engine (`voltauto.db`), FastAPI backend (Python 3.13), React + Vite command console.
+- **NVIDIA Nemotron, served by Nebius Token Factory** (OpenAI-compatible API):
+  - **Nemotron-3-Nano (30B):** the fast, high-volume work: reading sources, classifying, judging conflicts.
+  - **Nemotron-3-Super (120B):** the harder thinking: the response plan, the critic, and plan revisions.
+  - Using the smaller model for routine calls keeps the app responsive and saves credits. The UI shows which model produced each step.
+- **Tavily:** live web research, plus extra searches when sources disagree (6 searches at most per scan).
+- **Everything else:** SQLite database (`voltauto.db`), FastAPI backend (Python), React + Vite frontend.
 
 ## Quickstart
 
-### Prerequisites
-
-- Python 3.10+
-- Node.js 18+
-- Nebius Token Factory API key (`NEBIUS_API_KEY`)
-- Tavily API key (`TAVILY_API_KEY`)
+You need Python 3.10+, Node.js 18+, a Nebius Token Factory key (`NEBIUS_API_KEY`) and a Tavily key (`TAVILY_API_KEY`).
 
 ```bash
 # Backend
 cd backend
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp ../.env.example .env                               # add NEBIUS_API_KEY and TAVILY_API_KEY
+cp ../.env.example .env                               # add your two API keys
 python seed_data.py                                   # creates the sample database
 uvicorn api:app --reload --port 8000
 
@@ -71,7 +67,7 @@ npm run dev                                           # opens at http://localhos
 
 No API keys? The app starts in **Recorded** mode and replays three saved runs, no internet needed.
 
-To try the full pipeline in the terminal:
+To run the full pipeline in the terminal:
 
 ```bash
 python backend/main.py "Taiwan semiconductor supply chain disruption"
@@ -99,20 +95,25 @@ The database is made up. It describes a fictional German car maker, VoltAuto Gmb
 ## Tests
 
 ```bash
-cd backend && pytest -q          # 31 tests, no internet needed
-cd frontend && npm test          # 12 UI tests
+cd backend && pytest -q                      # 31 tests, no internet needed
+cd frontend && npm test                      # 12 UI tests
 python backend/eval_benchmark.py --offline   # 20 of 20 checks pass
 ```
 
-Accuracy of the live AI extraction depends on your own keys. Run `python backend/eval_benchmark.py` to measure it.
+How accurate the live AI extraction is depends on your own keys. Run `python backend/eval_benchmark.py` to measure it.
 
-## Limits
+## Current limits
 
-- The data is fake, and there is no real ERP connection.
+- The data is synthetic and there is no real ERP connection.
 - Suppliers are matched by country and product type, so every supplier in that group is treated as equally affected.
-- The what-if tool assumes the same capacity loss across a whole region and a steady drop in stock.
-- We cannot check supplier capacity from the data, so the critic flags it for a human to check.
-- Built for a single-user demo: no login, SQLite database.
+- It is a single-user demo: no login, SQLite database.
+
+## Roadmap
+
+- **Live ERP connectors:** replace the local SQLite database with read-only replicas or webhooks into SAP S/4HANA and Oracle SCM.
+- **Supplier capacity checks:** query alternative vendors for capacity and lead times (for example via EDI or APIs) before proposing a reroute.
+- **Finer location matching:** go beyond country level to regional logistics hubs and port catchment areas.
+- **Background jobs and alerts:** run long investigations on background workers (for example Nebius Serverless Jobs) and send push alerts to plant managers.
 
 ## Feedback on the platforms
 
@@ -122,9 +123,9 @@ Accuracy of the live AI extraction depends on your own keys. Run `python backend
 
 ## Team
 
-- Vivek Sawant: Multi-agent pipeline orchestration, deterministic ERP engine, Nebius/Nemotron integrations
-- Dhruva Makwana: ERP database architecture, SQL seed datasets, automated oracle benchmarks
-- Dhruval Makwana: Frontend architecture, real-time telemetry streaming, interactive what-if simulator
+- Vivek Sawant: backend pipeline, calculation engine, Nebius and Nemotron integration
+- Dhruva Makwana: database design, sample data, benchmarks and tests
+- Dhruval Makwana: frontend, live progress streaming, what-if simulator
 
 ## License
 
