@@ -19,44 +19,45 @@ AI models are good at reading news but bad at math, and they sometimes make up n
 
 ## How it works
 
-1. **Search the web** for the event (Tavily).
-2. **Pull out the key facts** and which country and product category are affected (Nemotron Nano).
-3. **Check for conflicting reports.** If sources disagree, search again to settle it.
-4. **Look up the company's orders** with plain SQL: money at risk, which orders are affected, how many days of stock are left, and which backup suppliers are approved.
-5. **Write a response plan** with up to 3 actions, each tied to a real order (Nemotron Super).
-6. **Have a critic double-check it.** Every number is re-checked against the database, and the critic raises objections to the plan.
-7. **A human approves.** Approved reroutes are saved to the database.
+1. **Investigate:** Tavily searches live news with 3 targeted queries (what happened, impact on automotive, recovery timeline).
+2. **Extract facts:** Nemotron Nano pulls out the key claims, the affected country and the material category.
+3. **Resolve conflicts:** If sources disagree, a follow-up search tries to settle it, with sources cited.
+4. **Calculate exposure:** Plain SQL matches the event to open purchase orders and works out money at risk, days of stock left per plant, and approved backup suppliers.
+5. **Draft a plan:** Nemotron Super proposes up to 3 actions, each tied to a real purchase order.
+6. **Audit the plan:** Fixed rule checks confirm every number and plant matches the database. Nemotron Super then challenges the plan's assumptions (for example, relying on a single supplier).
+7. **Human approval:** A person reviews and approves. Approved reroutes are saved to the database.
 
 ![How CrisisSentinel works](docs/architecture.png)
 
 ## Why you can trust the numbers
 
-- Money, days of stock and order values always come from SQL, never from the AI.
-- The AI cannot change which plant or part an action refers to. That comes from the order record.
-- If the AI suggests a supplier that is not approved for that order, the suggestion is dropped.
-- If a step fails, the app says so on screen. It does not quietly show made-up results.
-- Every claim links back to the web page it came from.
+- **No made-up money figures.** Value at risk, days of stock and stoppage days all come from SQL.
+- **Actions stay tied to real orders.** The part and plant for each action are copied from the order record, so the AI cannot mix them up.
+- **Only approved suppliers.** A reroute to a supplier that is not approved for that order is rejected.
+- **Sources you can check.** Every claim links to the web page it came from.
+- **Failures are visible.** If a model call fails, the app labels that step (for example `SQL fallback` or `Degraded`) instead of hiding it.
 
-## How we used NVIDIA, Nebius and Tavily
+## Technology
 
-**NVIDIA Nemotron.** We use two sizes. Nano does the high-volume work (reading sources, judging conflicts). Super does the harder thinking (the plan, the critic, revisions). The app shows which model produced each step.
+- **NVIDIA Nemotron, served by Nebius Token Factory** (OpenAI-compatible API):
+  - **Nemotron-3-Nano (30B):** the fast, high-volume work: reading sources, classifying, judging conflicts.
+  - **Nemotron-3-Super (120B):** the harder thinking: the response plan, the critic, and plan revisions.
+  - Using the smaller model for routine calls keeps the app responsive and saves credits. The UI shows which model produced each step.
+- **Tavily:** live web research, plus extra searches when sources disagree (6 searches at most per scan).
+- **Everything else:** SQLite database (`voltauto.db`), FastAPI backend (Python), React + Vite frontend.
 
-**Nebius Token Factory.** All model calls go through its OpenAI-compatible API. We look up model IDs at runtime, because their capitalization differs between models.
+## Quickstart
 
-**Tavily.** Handles all web research: three planned searches first, then extra searches when sources disagree (6 at most per scan).
-
-## Run it yourself
-
-You need Python 3.10+, Node 18+, a Nebius Token Factory key and a Tavily key.
+You need Python 3.10+, Node.js 18+, a Nebius Token Factory key (`NEBIUS_API_KEY`) and a Tavily key (`TAVILY_API_KEY`).
 
 ```bash
 # Backend
 cd backend
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp ../.env.example .env                               # add NEBIUS_API_KEY and TAVILY_API_KEY
+cp ../.env.example .env                               # add your two API keys
 python seed_data.py                                   # creates the sample database
-uvicorn api:app --port 8000
+uvicorn api:app --reload --port 8000
 
 # Frontend (new terminal)
 cd frontend
@@ -66,7 +67,7 @@ npm run dev                                           # opens at http://localhos
 
 No API keys? The app starts in **Recorded** mode and replays three saved runs, no internet needed.
 
-To try the full pipeline in the terminal:
+To run the full pipeline in the terminal:
 
 ```bash
 python backend/main.py "Taiwan semiconductor supply chain disruption"
@@ -94,20 +95,25 @@ The database is made up. It describes a fictional German car maker, VoltAuto Gmb
 ## Tests
 
 ```bash
-cd backend && pytest -q          # 31 tests, no internet needed
-cd frontend && npm test          # 12 UI tests
+cd backend && pytest -q                      # 31 tests, no internet needed
+cd frontend && npm test                      # 12 UI tests
 python backend/eval_benchmark.py --offline   # 20 of 20 checks pass
 ```
 
-Accuracy of the live AI extraction depends on your own keys. Run `python backend/eval_benchmark.py` to measure it.
+How accurate the live AI extraction is depends on your own keys. Run `python backend/eval_benchmark.py` to measure it.
 
-## Limits
+## Current limits
 
-- The data is fake, and there is no real ERP connection.
+- The data is synthetic and there is no real ERP connection.
 - Suppliers are matched by country and product type, so every supplier in that group is treated as equally affected.
-- The what-if tool assumes the same capacity loss across a whole region and a steady drop in stock.
-- We cannot check supplier capacity from the data, so the critic flags it for a human to check.
-- Built for a single-user demo: no login, SQLite database.
+- It is a single-user demo: no login, SQLite database.
+
+## Roadmap
+
+- **Live ERP connectors:** replace the local SQLite database with read-only replicas or webhooks into SAP S/4HANA and Oracle SCM.
+- **Supplier capacity checks:** query alternative vendors for capacity and lead times (for example via EDI or APIs) before proposing a reroute.
+- **Finer location matching:** go beyond country level to regional logistics hubs and port catchment areas.
+- **Background jobs and alerts:** run long investigations on background workers (for example Nebius Serverless Jobs) and send push alerts to plant managers.
 
 ## Feedback on the platforms
 
@@ -117,9 +123,9 @@ Accuracy of the live AI extraction depends on your own keys. Run `python backend
 
 ## Team
 
-- Vivek Sawant: backend, calculation engine, Nebius and Nemotron integration
-- Dhruva Makwana: database design, sample data, tests
-- Dhruval Makwana: frontend
+- Vivek Sawant: backend pipeline, calculation engine, Nebius and Nemotron integration
+- Dhruva Makwana: database design, sample data, benchmarks and tests
+- Dhruval Makwana: frontend, live progress streaming, what-if simulator
 
 ## License
 
