@@ -31,11 +31,11 @@ AI models are good at reading news but bad at math, and they sometimes make up n
 
 ## Why you can trust the numbers
 
-- **No made-up money figures.** Value at risk, days of stock and stoppage days all come from SQL.
-- **Actions stay tied to real orders.** The part and plant for each action are copied from the order record, so the AI cannot mix them up.
-- **Only approved suppliers.** A reroute to a supplier that is not approved for that order is rejected.
-- **Sources you can check.** Every claim links to the web page it came from.
-- **Failures are visible.** If a model call fails, the app labels that step (for example `SQL fallback` or `Degraded`) instead of hiding it.
+- **No made-up money figures -** Value at risk, days of stock and stoppage days all come from SQL.
+- **Actions stay tied to real orders -** The part and plant for each action are copied from the order record, so the AI cannot mix them up.
+- **Only approved suppliers -** A reroute to a supplier that is not approved for that order is rejected.
+- **Sources you can check -** Every claim links to the web page it came from.
+- **Failures are visible -** If a model call fails, the app labels that step (for example `SQL fallback` or `Degraded`) instead of hiding it.
 
 ## Technology
 
