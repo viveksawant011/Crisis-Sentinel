@@ -17,37 +17,42 @@ News tells you what happened. It does not tell you that purchase order PO10482 f
 
 AI models are good at reading news but bad at math, and they sometimes make up numbers. So we split the work. Models read and reason. A database does all the counting.
 
-## How it works
+## How It Works
 
-1. **Search the web** for the event (Tavily).
-2. **Pull out the key facts** and which country and product category are affected (Nemotron Nano).
-3. **Check for conflicting reports.** If sources disagree, search again to settle it.
-4. **Look up the company's orders** with plain SQL: money at risk, which orders are affected, how many days of stock are left, and which backup suppliers are approved.
-5. **Write a response plan** with up to 3 actions, each tied to a real order (Nemotron Super).
-6. **Have a critic double-check it.** Every number is re-checked against the database, and the critic raises objections to the plan.
-7. **A human approves.** Approved reroutes are saved to the database.
+1. **Investigate:** Tavily searches live news via 3 targeted queries (disruption cause, automotive impact, recovery timeline).
+2. **Extract Facts:** Nemotron-3-Nano extracts key claims, impacted countries, and material categories, normalized against database vocabulary.
+3. **Resolve Conflicts:** If sources report conflicting timelines, Nemotron Nano triggers a follow-up query to settle the claim with citations.
+4. **Calculate ERP Exposure:** Pure SQL joins the event to open purchase orders—calculating exposed capital (€), days of inventory runway per plant, and approved alternative vendors.
+5. **Draft Response Plan:** Nemotron-3-Super proposes up to 3 prioritized reroute actions, bound strictly to exposed open POs.
+6. **Adversarial Audit:** Deterministic checks verify that every quantity and plant matches the ERP; Nemotron Super red-teams operational assumptions (e.g., supplier concentration).
+7. **Human Authorization:** An operator reviews and approves reroutes. Validated updates are written directly to the database.
 
 ![How CrisisSentinel works](docs/architecture.png)
 
-## Why you can trust the numbers
+## Data Integrity Guarantees
 
-- Money, days of stock and order values always come from SQL, never from the AI.
-- The AI cannot change which plant or part an action refers to. That comes from the order record.
-- If the AI suggests a supplier that is not approved for that order, the suggestion is dropped.
-- If a step fails, the app says so on screen. It does not quietly show made-up results.
-- Every claim links back to the web page it came from.
+- **No Hallucinated Financials:** Value at risk, inventory runway, and assembly stoppage days are computed via SQL arithmetic.
+- **Immutable Purchase Orders:** Material IDs and plant locations are populated directly from the ERP record, preventing mismatched parts or facilities.
+- **Strict Supplier Validation:** Reroutes to vendors not explicitly registered in `alt_supplier_map` are rejected before execution.
+- **Auditable Provenance:** Every claim extracted from news links directly to its source domain and article URL.
+- **Honest Telemetry:** If a model call times out or degrades, the UI explicitly marks the stage as degraded rather than substituting synthetic fallback values.
 
-## How we used NVIDIA, Nebius and Tavily
+## Technology Stack
 
-**NVIDIA Nemotron.** We use two sizes. Nano does the high-volume work (reading sources, judging conflicts). Super does the harder thinking (the plan, the critic, revisions). The app shows which model produced each step.
+- **NVIDIA Nemotron (via Nebius Token Factory):**
+  - **Nemotron-3-Nano (30B):** High-throughput claim extraction, entity classification, and contradiction judging.
+  - **Nemotron-3-Super (120B):** Executive mitigation planning, adversarial plan critique, and iterative revision loops.
+- **Tavily Search API:** Targeted multi-query web intelligence and real-time conflict-resolution queries.
+- **Deterministic Core:** SQLite ERP engine (`voltauto.db`), FastAPI backend (Python 3.13), React + Vite command console.
 
-**Nebius Token Factory.** All model calls go through its OpenAI-compatible API. We look up model IDs at runtime, because their capitalization differs between models.
+## Quickstart
 
-**Tavily.** Handles all web research: three planned searches first, then extra searches when sources disagree (6 at most per scan).
+### Prerequisites
 
-## Run it yourself
-
-You need Python 3.10+, Node 18+, a Nebius Token Factory key and a Tavily key.
+- Python 3.10+
+- Node.js 18+
+- Nebius Token Factory API key (`NEBIUS_API_KEY`)
+- Tavily API key (`TAVILY_API_KEY`)
 
 ```bash
 # Backend
@@ -56,7 +61,7 @@ python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\a
 pip install -r requirements.txt
 cp ../.env.example .env                               # add NEBIUS_API_KEY and TAVILY_API_KEY
 python seed_data.py                                   # creates the sample database
-uvicorn api:app --port 8000
+uvicorn api:app --reload --port 8000
 
 # Frontend (new terminal)
 cd frontend
@@ -117,9 +122,9 @@ Accuracy of the live AI extraction depends on your own keys. Run `python backend
 
 ## Team
 
-- Vivek Sawant: backend, calculation engine, Nebius and Nemotron integration
-- Dhruva Makwana: database design, sample data, tests
-- Dhruval Makwana: frontend
+- Vivek Sawant: Multi-agent pipeline orchestration, deterministic ERP engine, Nebius/Nemotron integrations
+- Dhruva Makwana: ERP database architecture, SQL seed datasets, automated oracle benchmarks
+- Dhruval Makwana: Frontend architecture, real-time telemetry streaming, interactive what-if simulator
 
 ## License
 
