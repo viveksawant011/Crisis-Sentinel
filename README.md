@@ -1,273 +1,126 @@
-Here is the comprehensive, production-grade `README.md` for **CrisisSentinel**.
+# CrisisSentinel
 
-It specifically addresses all four judging criteria (**Technological Implementation**, **Design**, **Potential Impact**, and **Quality of the Idea**) and highlights how you utilized **NVIDIA Nemotron on Nebius Token Factory** and the **Tavily Search API**.
-
----
-
-```markdown
-# ◉ CrisisSentinel
-
-### Autonomous Supply Chain Command Center Powered by NVIDIA Nemotron & Nebius Token Factory
+When a factory shuts down or a port closes, CrisisSentinel tells a manufacturer which of its orders are at risk, how much money is involved, and what to do about it. A human approves the final plan.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Nebius%20Token%20Factory-7928CA)](https://tokenfactory.nebius.com)
-[![Models](https://img.shields.io/badge/Models-Nemotron--3--Nano%20%7C%20Nemotron--3--Super-76B900)](https://build.nvidia.com)
-[![Search](https://img.shields.io/badge/Search-Tavily%20API-00B4D8)](https://tavily.com)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20%2F%20SQLite-009688)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/Frontend-React%20%2F%20Vite-61DAFB)](https://react.dev/)
 
-> **CrisisSentinel** bridges the critical gap between unstructured, real-world geopolitical shock signals and internal corporate balance sheets. It transforms live web intelligence into deterministic ERP impact analysis, models plant stoppage timelines with zero-hallucination inventory math, triggers an adversarial red-team audit, and executes transactional purchase order reroutes in real-time.
+Built for the Nebius x NVIDIA Global AI Hackathon, **Best Apps and Agents** track.
 
----
+- **Live demo:** ADD_DEMO_URL_HERE
+- **Demo video (3 min):** ADD_YOUTUBE_URL_HERE
 
-## 📌 Executive Summary & Problem Space
+## The problem
 
-When global supply chain shocks hit—such as semiconductor fab halts in Taiwan, battery cathode logistics strikes in Poland, or sensor export embargoes in Japan—automotive manufacturers face stoppage costs exceeding **€500,000+ per hour per plant**.
+Say a chip factory in Taiwan shuts down. A car maker needs answers fast: does this hit us, how badly, and what do we do?
 
-### The Core Flaw in Current AI Approaches
+News tells you what happened. It does not tell you that purchase order PO10482 for part MCU-X200 goes to the Stuttgart plant, where stock lasts only 10.9 more days.
 
-Most LLM agents hallucinate arithmetic, invent fictional supplier entities, and generate ungrounded mitigation advice. Furthermore, real-world news articles (via Tavily) report on real entities (like TSMC or ASE Group) and will never mention an enterprise's internal ERP part numbers (e.g., `MCU-X200`). Asking an LLM to guess internal suppliers directly leads to catastrophic hallucinations.
+AI models are good at reading news but bad at math, and they sometimes make up numbers. So we split the work. Models read and reason. A database does all the counting.
 
-### The CrisisSentinel Solution: The AI vs. Deterministic Split
+## How it works
 
-1. **AI Never Does Accounting:** Internal inventory runway, balance sheet exposure (€), and stockout projections are computed strictly via pure SQL joins and inventory math.
-2. **AI Acts as Operational Researcher, Strategist & Adversarial Critic:** Models handle multi-source taxonomy extraction, operational strategy drafting, and red-team audits.
-3. **Transactional Mutation:** Operators don't just read suggestions—they click to execute purchase order reallocations directly against the database, driving exposure to €0.
+1. **Search the web** for the event (Tavily).
+2. **Pull out the key facts** and which country and product category are affected (Nemotron Nano).
+3. **Check for conflicting reports.** If sources disagree, search again to settle it.
+4. **Look up the company's orders** with plain SQL: money at risk, which orders are affected, how many days of stock are left, and which backup suppliers are approved.
+5. **Write a response plan** with up to 3 actions, each tied to a real order (Nemotron Super).
+6. **Have a critic double-check it.** Every number is re-checked against the database, and the critic raises objections to the plan.
+7. **A human approves.** Approved reroutes are saved to the database.
 
----
+![How CrisisSentinel works](docs/architecture.png)
 
-## 🏛️ System Architecture
+## Why you can trust the numbers
 
-CrisisSentinel operates on a tier-orchestrated pipeline combining **NVIDIA Nemotron models via Nebius Token Factory**, **Tavily AI Search**, and a deterministic **SQLite ERP Engine**:
-```
+- Money, days of stock and order values always come from SQL, never from the AI.
+- The AI cannot change which plant or part an action refers to. That comes from the order record.
+- If the AI suggests a supplier that is not approved for that order, the suggestion is dropped.
+- If a step fails, the app says so on screen. It does not quietly show made-up results.
+- Every claim links back to the web page it came from.
 
-```
-                   ┌─────────────────────────────────────┐
-                   │     Live Geopolitical Signal        │
-                   │   (e.g., Taiwan Chip Disruption)    │
-                   └──────────────────┬──────────────────┘
-                                      │
-                                      ▼
-                   ┌─────────────────────────────────────┐
-                   │     Tavily Multi-Query Engine       │
-                   │  3-Query Research & Contradiction   │
-                   └──────────────────┬──────────────────┘
-                                      │ Raw Sources & Citations
-                                      ▼
-                   ┌─────────────────────────────────────┐
-                   │       NVIDIA Nemotron-3-Nano        │
-                   │ Structured Fact Extraction (Nebius) │
-                   └──────────────────┬──────────────────┘
-                                      │ Taxonomy: (Country, Category)
-                                      ▼
-                   ┌─────────────────────────────────────┐
-                   │     Deterministic SQLite Engine     │
-                   │  WHERE s.country = ? AND cat = ?    │
-                   └──────────────────┬──────────────────┘
-                                      │
-             ┌────────────────────────┴────────────────────────┐
-             ▼                                                 ▼
+## How we used NVIDIA, Nebius and Tavily
 
-```
+**NVIDIA Nemotron.** We use two sizes. Nano does the high-volume work (reading sources, judging conflicts). Super does the harder thinking (the plan, the critic, revisions). The app shows which model produced each step.
 
-┌───────────────────────────────┐ ┌─────────────────────────────────┐
-│ Deterministic What-If │ │ NVIDIA Nemotron-3-Super │
-│ Duration × Capacity Slider │ │ Mitigation Brief Generation │
-└───────────────────────────────┘ └────────────────┬────────────────┘
-│
-▼
-┌─────────────────────────────────┐
-│ Nemotron Super Adversarial Audit│
-│ Red-Teams Brief for Bottlenecks│
-└────────────────┬────────────────┘
-│ (Revise Plan Loop)
-▼
-┌─────────────────────────────────┐
-│ One-Click ERP State Mutation │
-│ Reroutes POs in voltauto.db │
-└─────────────────────────────────┘
+**Nebius Token Factory.** All model calls go through its OpenAI-compatible API. We look up model IDs at runtime, because their capitalization differs between models.
 
-````
+**Tavily.** Handles all web research: three planned searches first, then extra searches when sources disagree (6 at most per scan).
 
----
+## Run it yourself
 
-## 🌟 Key Differentiators & Features
-
-### 1. Multi-Model Tiering via Nebius Token Factory
-- **Nemotron-3-Nano (`nvidia/nemotron-3-nano-30b-a3b`):** Fast, low-latency structured extraction using Pydantic JSON mode. It filters web noise, extracts real-world entities, identifies timeline duration, and resolves claim contradictions.
-- **Nemotron-3-Super (`nvidia/nemotron-3-super-120b-a12b`):** High-reasoning executive strategist that formulates mitigation protocols, prioritizes bottleneck components, and coordinates buffer logistics.
-
-### 2. Adversarial AI Critic & Single-Turn Revision Loop
-- Nemotron-3-Super acts as an independent auditor evaluating the generated plan.
-- Checks operational feasibility, identifies single-source bottleneck risks (e.g., over-relying on a single alternate like *EuroSemi GmbH*), and issues a scorecard (`revise • 92/100`).
-- Clicking **"Revise Plan"** sends flagged challenges back into a bounded revision loop, synthesizing an audited, dual-sourcing strategy (`VERIFIED • 98/100`).
-
-### 3. Pure SQL Deterministic What-If Simulator
-- Pure SQL and inventory math ($Stockout = CurrentStock - (Days \times Consumption)$).
-- Interactive duration (1–90 days) and regional capacity offline (0–100%) sliders.
-- Displays line-stoppage days with vs. without intervention with instant recalibration.
-
-### 4. Interactive State Mutation & Baseline Reset
-- Clicking **"Approve Primary Reroute"** executes `POST /api/mitigation/execute`, writing directly to SQLite (`UPDATE purchase_order SET supplier_id = ?, status = 'rerouted' WHERE id = ?`).
-- Recomputes exposure dynamically, dropping the risk metric to **€0,00** and setting remaining exposure to 0 POs.
-- Includes a **"↺ Reset DB Baseline"** button to replay the demo idempotently from clean seed data.
-
-### 5. Verifiable Evidence Trail (Tavily Prize Track)
-- Multi-query investigation logging queries, depth, and credits.
-- Every extracted claim is attributed to clickable source URLs (`S1`, `S2`), ensuring zero unverifiable claims.
-
----
-
-## 📊 Database Schema (`voltauto.db`)
-
-The internal ERP data architecture models enterprise automotive operations across 5 German manufacturing plants:
-
-| Table | Records | Purpose |
-| :--- | :--- | :--- |
-| `supplier` | 20 suppliers | Global supply base (Taiwan, Poland, Japan, Germany) categorized by industry |
-| `material` | 50 parts | Critical bill of materials (microcontrollers, battery cells, LiDAR modules) |
-| `plant` | 5 plants | Assembly facilities: Stuttgart, Berlin, Leipzig, Mannheim, Munich |
-| `purchase_order`| 200 orders | Open & delivered POs tracking unit quantities, values (€), and lead times |
-| `inventory` | Plant $\times$ Mat | Local factory current stock levels and daily consumption burn rates |
-| `alt_supplier_map`| Verified routes | Pre-qualified, validated alternative suppliers for fast rerouting |
-
----
-
-## 🚀 Quickstart Guide
-
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- [Nebius Token Factory](https://tokenfactory.nebius.com) API Key
-- [Tavily Search](https://tavily.com) API Key
-
----
-
-### Step 1: Clone Repository & Setup Environment
-```bash
-git clone [https://github.com/viveksawant011/crisis-sentinel.git](https://github.com/viveksawant011/crisis-sentinel.git)
-cd crisis-sentinel
-
-# Configure backend environment
-cp .env.example backend/.env
-
-````
-
-Edit `backend/.env` with your API credentials:
-
-```env
-NEBIUS_API_KEY=your_nebius_api_key_here
-TAVILY_API_KEY=your_tavily_api_key_here
-
-```
-
----
-
-### Step 2: Initialize & Launch the Backend
+You need Python 3.10+, Node 18+, a Nebius Token Factory key and a Tavily key.
 
 ```bash
+# Backend
 cd backend
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install dependencies
+python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+cp ../.env.example .env                               # add NEBIUS_API_KEY and TAVILY_API_KEY
+python seed_data.py                                   # creates the sample database
+uvicorn api:app --port 8000
 
-# Seed the VoltAuto ERP database
-python seed_data.py
-
-# Launch FastAPI orchestrator
-uvicorn api:app --reload --port 8000
-
-```
-
-Backend API will be live at `http://localhost:8000` (Swagger docs available at `http://localhost:8000/docs`).
-
----
-
-### Step 3: Launch Frontend Cockpit
-
-Open a second terminal window:
-
-```bash
+# Frontend (new terminal)
 cd frontend
 npm install
-npm run dev
-
+npm run dev                                           # opens at http://localhost:5173
 ```
 
-Navigate to **`http://localhost:5173`** in your browser.
+No API keys? The app starts in **Recorded** mode and replays three saved runs, no internet needed.
 
----
-
-## 🎬 How to Run the Demo Scenarios
-
-1. **Taiwan Semiconductor Fab Disruption (Hero Scenario):**
-
-- Click the **"Taiwan chips"** scenario chip or type `Taiwan semiconductor supply chain disruption 2026`.
-- Click **Analyze**. Observe live SSE streaming telemetry across all 5 agent stages.
-- Review the metrics: **€4,72 Mio. Value at Risk**, **11 Exposed Open POs**, **3.2d Critical Runway** on Berlin assembly lines.
-- Observe the Adversarial Critic panel: Nemotron Super flags single-source dependencies on EuroSemi GmbH (`revise • 92/100`).
-- Click **"Revise Plan"**: The strategy rewrites to a dual-sourced mitigation, achieving `VERIFIED • 98/100`.
-- Click **"Approve Primary Reroute"**: Executes SQL mutation, dropping Value at Risk to `0 €`.
-- Click **"↺ Reset DB Baseline"** to wipe mutations and restore baseline data.
-
-2. **Poland Lithium Battery Strike:**
-
-- Click **"Poland battery"** to test cathode cell supply halts impacting Leipzig & Munich.
-
-3. **Offline Demo Reliability Mode:**
-
-- Toggle **"Demo Reliability Mode"** to test instantly using pre-recorded golden runs in `backend/cache/scenarios/` with zero network dependency.
-
----
-
-## 🔬 Benchmark & Evaluation Metrics
-
-To prove model extraction accuracy and zero hallucination mathematically, run the automated evaluation suite:
+To try the full pipeline in the terminal:
 
 ```bash
-cd backend
-python eval_benchmark.py
-
+python backend/main.py "Taiwan semiconductor supply chain disruption"
 ```
 
-- **Extraction Accuracy:** 100% ground-truth country & category extraction across multi-scenario tests.
-- **Arithmetic Integrity:** 100% of financial figures ground directly in deterministic SQLite calculations.
+## Try the demo
 
----
+1. Run the Taiwan semiconductor scenario in Live mode.
+2. Look at the four numbers at the top (tagged `SQL`) and open Evidence to see the sources.
+3. Read the critic's objections, then click **Revise plan**. The plan is rewritten and checked again.
+4. Move the what-if sliders. Results update instantly with no AI call.
+5. Click **Approve**. The reroutes are saved and the value at risk drops.
 
-## 💬 Feedback on Nebius Token Factory & NVIDIA Nemotron
+## The sample data
 
-As part of the hackathon submission requirements, our operational feedback includes:
+The database is made up. It describes a fictional German car maker, VoltAuto GmbH, with 21 suppliers, 50 materials, 5 plants and 199 purchase orders. It is not connected to SAP or any real system.
 
-- **NVIDIA Nemotron-3-Nano (`nano-30b-a3b`):** Extremely reliable for strict JSON schema compliance. When given Pydantic definitions, it produced zero malformed syntax, making it the ideal low-latency extractor.
-- **NVIDIA Nemotron-3-Super (`super-120b-a12b`):** Exceptional capability for adversarial auditing. Unlike typical models that unconditionally praise previous outputs, Nemotron Super successfully identified unstated operational assumptions (e.g., tooling qualification and fab bottlenecks).
-- **Nebius Token Factory:** Sub-second time-to-first-token (TTFT) and an OpenAI-compatible interface allowed our team to implement agent streaming (SSE) without complex custom SDK wrappers.
+| Scenario              | Orders at risk | Value at risk | Shortest stock |
+| --------------------- | -------------- | ------------- | -------------- |
+| Taiwan semiconductors | 11             | €4.72M        | 3.2 days       |
+| Poland batteries      | 12             | €6.17M        | 2.2 days       |
+| Germany batteries     | 11             | €6.78M        | 4.2 days       |
+| Japan sensors         | 42             | €17.15M       | 1.0 day        |
 
----
-
-## 👥 Team & License
-
-- **Vivek Sawant** — Backend Orchestration, Deterministic Engine, & Nebius/Nemotron Integration
-- **Dhruva Makwana** — Enterprise Database Architecture, Seeding, & Benchmark Evaluations
-- **Dhruval Patel** — Frontend Cockpit, What-If Simulator UI, & Telemetry Streaming
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
-````
-
----
-
-### Step 3: Stage and Commit the New README
-
-From your terminal in the project root:
+## Tests
 
 ```bash
-git add README.md
-git commit -m "docs: add comprehensive production README with architecture, setup, and hackathon feedback"
-git push origin feat/differentiators
+cd backend && pytest -q          # 31 tests, no internet needed
+cd frontend && npm test          # 12 UI tests
+python backend/eval_benchmark.py --offline   # 20 of 20 checks pass
+```
 
-````
+Accuracy of the live AI extraction depends on your own keys. Run `python backend/eval_benchmark.py` to measure it.
 
-Once pushed, merge `feat/differentiators` into `dev`, and your Pull Request from `dev` to `main` will be ready for the final submission.
+## Limits
+
+- The data is fake, and there is no real ERP connection.
+- Suppliers are matched by country and product type, so every supplier in that group is treated as equally affected.
+- The what-if tool assumes the same capacity loss across a whole region and a steady drop in stock.
+- We cannot check supplier capacity from the data, so the critic flags it for a human to check.
+- Built for a single-user demo: no login, SQLite database.
+
+## Feedback on the platforms
+
+- **Token Factory:** model IDs are capitalized inconsistently (`nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` vs `nvidia/nemotron-3-super-120b-a12b`). Looking them up with `models.list()` is safer than hard-coding.
+- **Nemotron:** reasoning models sometimes return output that is not clean JSON (empty content, reasoning tags, code fences), even in JSON mode. We wrote a forgiving parser with retries.
+- **Tavily:** snippets are short, so search wording and source quality matter more than the number of results.
+
+## Team
+
+- Vivek Sawant: backend, calculation engine, Nebius and Nemotron integration
+- Dhruva Makwana: database design, sample data, tests
+- Dhruval Makwana: frontend
+
+## License
+
+MIT. See [LICENSE](LICENSE).

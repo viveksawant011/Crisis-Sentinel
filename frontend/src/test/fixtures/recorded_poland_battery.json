@@ -1,0 +1,669 @@
+{
+ "matched": true,
+ "intelligence": {
+  "event": "Poland battery cell plant production disruption EV supply",
+  "impacted_country": "Poland",
+  "impacted_category": "battery component",
+  "severity": "high",
+  "estimated_duration_days": 14,
+  "confidence": 0.83,
+  "sources": [
+   {
+    "id": "S1",
+    "title": "Battery Supply Chain Disruptions: How Material Shortages Are Impacting Production (Latest Stats) | PatentPC",
+    "url": "https://patentpc.com/blog/battery-supply-chain-disruptions-how-material-shortages-are-impacting-production-latest-stats",
+    "snippet": "Even if raw graphite is available, the processing capabilities needed to meet stringent purity standards are severely limited, with China currently dominating over 90% of the world\u2019s refined battery-grade graphite supply.\n\n## 10. EV manufacturers report a 6-12 month delay in battery deliveries due to supply constraints\n\nBattery supply chain disruptions have caused long wait times for manufacturers, slowing down EV production. [...] Battery supply chain disruptions are causing serious problems for electric vehicle (EV) makers, electronics manufacturers, and energy storage companies. The demand for batteries is skyrocketing, but critical materials like lithium, nickel, cobalt, and graphite are in short supply. This has led to rising costs, production delays, and geopolitical challenges.\n\n## 1. Global lithium prices surged over 500% from 2021 to 2022 before stabilizing in 2023 [...] But not just any nickel\u2014high-grade nickel is what battery manufacturers need, and Russia happens to control a significant chunk of this critical supply.\n\nWith nearly 20% of the world\u2019s high-grade nickel coming from Russia, global battery production is deeply intertwined with geopolitical tensions, economic"
+   },
+   {
+    "id": "S2",
+    "title": "Battery Regulation in Poland: Importer Rules | Dudkowiak & Putyra",
+    "url": "https://www.dudkowiak.com/automotive-law-in-poland/battery-regulation-in-poland",
+    "snippet": "human rights violations, including child labor and forced labor,\n severe environmental damage,\n the financing of armed conflicts.\n\nIn practice, EV importers must demand documentation from their suppliers\u2014vehicle or cell manufacturers\u2014regarding raw material sources.\n\nImplementing a due diligence system requires reviewing the supply chain at least two levels above the direct supplier. Full compliance therefore depends on access to reliable documentation throughout the relevant supply chain. [...] Since August 18, 2025, EV battery manufacturers and importers are required to implement a due diligence system regarding the sourcing of critical materials. The obligation is modeled on regulations concerning conflict minerals.\n\nRequirements specifically include verification that cobalt, nickel, lithium, manganese and natural graphite used for battery production do not originate from areas where their extraction involves:"
+   },
+   {
+    "id": "S3",
+    "title": "Global Supply Chains of EV Batteries - IEA",
+    "url": "https://www.iea.org/reports/global-supply-chains-of-ev-batteries",
+    "snippet": "Electric car sales powered through 2021 and have remained strong so far in 2022, but ensuring future growth will demand greater efforts to diversify battery manufacturing and critical mineral supplies to reduce the risks of bottlenecks and price rises. In the short term, the greatest obstacles to continued strong EV sales are soaring prices for some critical minerals essential for battery manufacturing, as well as supply chain disruptions caused by Russia\u2019s attack on Ukraine and by continued"
+   },
+   {
+    "id": "S4",
+    "title": "Poland - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Poland",
+    "snippet": "|  v  t  e  Poland articles | |\n --- | [...] ### Kingdom of Poland [...] Wikipedia\nThe Free Encyclopedia\n\n## Contents\n\n# Poland\n\nPage semi-protected"
+   },
+   {
+    "id": "S5",
+    "title": "Poland - Simple English Wikipedia, the free encyclopedia",
+    "url": "https://simple.wikipedia.org/wiki/Poland",
+    "snippet": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  --- | [...] However, Poland lost independence again not long after the beginning of World War II, after suffering a defeat by both the Soviet Union and Nazi Germany. Although the government collapsed, the Polish people fought on by forming the largest and most effective resistance movement in German-occupied Europe. It is most notable for disrupting German supply lines to the Eastern Front of World War II, providing military intelligence to the British, and saving more Jewish lives in the Holocaust than [...] Poland became an attractive place to work for people from other countries (mainly Ukraine)."
+   },
+   {
+    "id": "S6",
+    "title": "Geography of Poland - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Geography_of_Poland",
+    "snippet": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [...] Present-day Poland is a country with favorable agricultural prospects, and over two million private farms. It is the leading producer of potatoes and rye in Europe, the world's largest producer of triticale, and one of the more important producers of barley, oats, sugar beets, flax, and various fruits. It is also the European Union's fourth largest supplier of pork after Germany, Spain and France.\n\n## Biodiversity\n\n[edit] [...] coal ash is aided by revegetation. \u017bo\u0142nierz et al., 2016 find the return of bush species is naturally phytoremediating fly ash dumps. Air pollution is a particular concern in Poland, particularly in the industrial cities in the south west. An assessment of the i"
+   },
+   {
+    "id": "S7",
+    "title": "Poland Battery Recycling: Central Europe Capacity Build - Green Li-ion",
+    "url": "https://www.greenli-ion.com/post/poland-battery-recycling-infrastructure-investment",
+    "snippet": "Poland's battery recycling facilities employ advanced hydrometallurgical processing technologies achieving recovery rates exceeding 90% for cobalt, nickel, copper, and manganese, with lithium recovery reaching 50% by 2027 and 80% by 2031 to meet EU Battery Regulation requirements. These recovery rates match or exceed specifications for battery-grade materials, enabling direct reintegration into manufacturing supply chains without quality compromises. [...] The Zawiercie facility's first phase, completed in 2024, processes 12,000 metric tons of lithium-ion batteries and 6,000 metric tons of automotive catalytic converters annually. The complex recovers eight critical materials identified by the European Commission: cobalt, lithium, manganese, copper, nickel, plus platinum group metals including palladium, platinum, and rhodium. This comprehensive recovery capability positions the facility to process multiple waste streams while maximizing material [...] LG Energy Solution formalized its recycling strategy through a joint venture with French waste management company Derichebourg to construct a battery recycling plant in France's Val-d'Oise region, with operations scheduled to begin i"
+   },
+   {
+    "id": "S8",
+    "title": "Global Supply Chains of EV Batteries",
+    "url": "https://iea.blob.core.windows.net/assets/961cfc6c-6a8c-42bb-a3ef-57f3657b7aca/GlobalSupplyChainsofEVBatteries.pdf",
+    "snippet": "of Northvolt\u2019s first factory in Sweden and the beginning of production. Anode and cathode plants have lead times that are typical for chemical plants, which vary by region. Umicore announced production plans for a plant in Poland in 2018, which is expected to begin commercial production in 2022, thus requiring four years. In China, cathode factories can be built in less than two years due to previous experience and the use of existing sites for expansion. By far the longest lead times are in"
+   },
+   {
+    "id": "S9",
+    "title": "Poland strengthens its position in Europe\u2019s battery industry - Trade.gov.pl",
+    "url": "https://www.trade.gov.pl/en/news/poland-strengthens-its-position-in-europes-battery-industry",
+    "snippet": "The facility will process used lithium-ion batteries and recover valuable materials for the production of new cells. The investment received approximately USD 320 million in government support and is expected to become one of Europe\u2019s largest battery material recovery projects.\n\nSuch investments align with the EU\u2019s Critical Raw Materials Act (CRMA), aimed at improving Europe\u2019s raw material security and reducing dependence on China in strategic industrial sectors. [...] ## Poland is rapidly strengthening its role in Europe\u2019s battery and electromobility sector. New investments in battery recycling, energy storage systems and cell production are turning the country into one of the key pillars of the European energy transition and clean-tech supply chain. [...] minimise machine downtime."
+   }
+  ],
+  "claims": [
+   {
+    "claim_id": "C1",
+    "text": "China controls 90% of refined graphite, limiting processing capacity",
+    "type": "cause",
+    "value": "graphite",
+    "source_ids": [
+     "S1"
+    ]
+   },
+   {
+    "claim_id": "C2",
+    "text": "EV battery deliveries delayed 6-12 months due to supply constraints",
+    "type": "duration",
+    "value": "6-12 months",
+    "source_ids": [
+     "S2"
+    ]
+   },
+   {
+    "claim_id": "C3",
+    "text": "Russia supplies 20% of high-grade nickel, creating geopolitical risk",
+    "type": "severity",
+    "value": "nickel",
+    "source_ids": [
+     "S2"
+    ]
+   }
+  ],
+  "contradictions": [],
+  "evidence_strength": "83% (8 independent domains, 0 unresolved conflicts)",
+  "search_log": [
+   {
+    "query": "Poland battery cell plant production disruption EV supply what happened disruption cause",
+    "results_count": 3
+   },
+   {
+    "query": "Poland battery cell plant production disruption EV supply automotive supplier parts plant impact",
+    "results_count": 3
+   },
+   {
+    "query": "Poland battery cell plant production disruption EV supply restart recovery estimated timeline",
+    "results_count": 3
+   }
+  ],
+  "extraction_method": "model"
+ },
+ "exposure": {
+  "matched": true,
+  "impacted_country": "Poland",
+  "impacted_category": "battery component",
+  "total_exposure_eur": 6174250.32,
+  "open_pos_count": 12,
+  "affected_suppliers": [
+   "PolandParts 016"
+  ],
+  "affected_plants": [
+   "Berlin Plant",
+   "Leipzig Plant",
+   "Mannheim Plant",
+   "Munich Plant",
+   "Stuttgart Plant"
+  ],
+  "critical_runway_days": 2.2,
+  "critical_runway_detail": {
+   "material_id": "MAT-J32",
+   "material_name": "Proximity Sensor J32",
+   "plant_name": "Stuttgart Plant",
+   "current_stock": 3506,
+   "daily_consumption": 1578,
+   "runway_days": 2.2
+  },
+  "affected_open_pos": [
+   {
+    "po_id": "PO10092",
+    "material_id": "MAT-M11",
+    "material_name": "Battery Controller M11",
+    "quantity": 8864,
+    "value_eur": 883035.34,
+    "lead_time_days": 39,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 18374,
+    "daily_consumption": 1067,
+    "runway_days": 17.2,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10154",
+    "material_id": "MAT-J32",
+    "material_name": "Proximity Sensor J32",
+    "quantity": 2391,
+    "value_eur": 876369.2,
+    "lead_time_days": 43,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 3506,
+    "daily_consumption": 1578,
+    "runway_days": 2.2,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10116",
+    "material_id": "MAT-H31",
+    "material_name": "Proximity Sensor H31",
+    "quantity": 29871,
+    "value_eur": 717780.92,
+    "lead_time_days": 10,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 10962,
+    "daily_consumption": 779,
+    "runway_days": 14.1,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10174",
+    "material_id": "MAT-H7",
+    "material_name": "Microcontroller H7",
+    "quantity": 11402,
+    "value_eur": 630721.02,
+    "lead_time_days": 6,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 3503,
+    "daily_consumption": 1407,
+    "runway_days": 2.5,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10045",
+    "material_id": "MAT-Y22",
+    "material_name": "Sensor Controller Y22",
+    "quantity": 45555,
+    "value_eur": 578129.4,
+    "lead_time_days": 21,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_MUNICH",
+    "plant_name": "Munich Plant",
+    "current_stock": 5648,
+    "daily_consumption": 1049,
+    "runway_days": 5.4,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10101",
+    "material_id": "MAT-T17",
+    "material_name": "Battery Controller T17",
+    "quantity": 11496,
+    "value_eur": 553185.57,
+    "lead_time_days": 12,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_LEIPZIG",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 16195,
+    "daily_consumption": 1785,
+    "runway_days": 9.1,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10042",
+    "material_id": "MAT-W20",
+    "material_name": "Proximity Sensor W20",
+    "quantity": 43358,
+    "value_eur": 485467.81,
+    "lead_time_days": 40,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 14596,
+    "daily_consumption": 253,
+    "runway_days": 57.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10088",
+    "material_id": "MAT-C2",
+    "material_name": "Proximity Sensor C2",
+    "quantity": 25428,
+    "value_eur": 439742.16,
+    "lead_time_days": 27,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 19745,
+    "daily_consumption": 1570,
+    "runway_days": 12.6,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10023",
+    "material_id": "MAT-E4",
+    "material_name": "Radar Unit E4",
+    "quantity": 4472,
+    "value_eur": 374306.73,
+    "lead_time_days": 26,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 7619,
+    "daily_consumption": 958,
+    "runway_days": 8.0,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10189",
+    "material_id": "MAT-K9",
+    "material_name": "Cell Module K9",
+    "quantity": 19840,
+    "value_eur": 307512.83,
+    "lead_time_days": 31,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 24348,
+    "daily_consumption": 835,
+    "runway_days": 29.2,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10044",
+    "material_id": "MAT-N36",
+    "material_name": "Proximity Sensor N36",
+    "quantity": 18348,
+    "value_eur": 267945.52,
+    "lead_time_days": 18,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_MUNICH",
+    "plant_name": "Munich Plant",
+    "current_stock": 11810,
+    "daily_consumption": 930,
+    "runway_days": 12.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10124",
+    "material_id": "MAT-M35",
+    "material_name": "Cell Module M35",
+    "quantity": 18477,
+    "value_eur": 60053.82,
+    "lead_time_days": 8,
+    "supplier_id": "SUP1016",
+    "supplier_name": "PolandParts 016",
+    "supplier_country": "Poland",
+    "plant_id": "PL_MUNICH",
+    "plant_name": "Munich Plant",
+    "current_stock": 14984,
+    "daily_consumption": 898,
+    "runway_days": 16.7,
+    "has_alternative": true
+   }
+  ],
+  "inventory_runways": [
+   {
+    "material_id": "MAT-J32",
+    "material_name": "Proximity Sensor J32",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 3506,
+    "daily_consumption": 1578,
+    "runway_days": 2.2
+   },
+   {
+    "material_id": "MAT-H7",
+    "material_name": "Microcontroller H7",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 3503,
+    "daily_consumption": 1407,
+    "runway_days": 2.5
+   },
+   {
+    "material_id": "MAT-Y22",
+    "material_name": "Sensor Controller Y22",
+    "plant_name": "Munich Plant",
+    "current_stock": 5648,
+    "daily_consumption": 1049,
+    "runway_days": 5.4
+   },
+   {
+    "material_id": "MAT-E4",
+    "material_name": "Radar Unit E4",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 7619,
+    "daily_consumption": 958,
+    "runway_days": 8.0
+   },
+   {
+    "material_id": "MAT-T17",
+    "material_name": "Battery Controller T17",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 16195,
+    "daily_consumption": 1785,
+    "runway_days": 9.1
+   },
+   {
+    "material_id": "MAT-C2",
+    "material_name": "Proximity Sensor C2",
+    "plant_name": "Berlin Plant",
+    "current_stock": 19745,
+    "daily_consumption": 1570,
+    "runway_days": 12.6
+   },
+   {
+    "material_id": "MAT-N36",
+    "material_name": "Proximity Sensor N36",
+    "plant_name": "Munich Plant",
+    "current_stock": 11810,
+    "daily_consumption": 930,
+    "runway_days": 12.7
+   },
+   {
+    "material_id": "MAT-H31",
+    "material_name": "Proximity Sensor H31",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 10962,
+    "daily_consumption": 779,
+    "runway_days": 14.1
+   },
+   {
+    "material_id": "MAT-M35",
+    "material_name": "Cell Module M35",
+    "plant_name": "Munich Plant",
+    "current_stock": 14984,
+    "daily_consumption": 898,
+    "runway_days": 16.7
+   },
+   {
+    "material_id": "MAT-M11",
+    "material_name": "Battery Controller M11",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 18374,
+    "daily_consumption": 1067,
+    "runway_days": 17.2
+   },
+   {
+    "material_id": "MAT-K9",
+    "material_name": "Cell Module K9",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 24348,
+    "daily_consumption": 835,
+    "runway_days": 29.2
+   },
+   {
+    "material_id": "MAT-W20",
+    "material_name": "Proximity Sensor W20",
+    "plant_name": "Berlin Plant",
+    "current_stock": 14596,
+    "daily_consumption": 253,
+    "runway_days": 57.7
+   }
+  ],
+  "pos_without_inventory_record": [],
+  "mitigation_alternatives": [
+   {
+    "po_id": "PO10023",
+    "material_id": "MAT-E4",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10042",
+    "material_id": "MAT-W20",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10044",
+    "material_id": "MAT-N36",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10045",
+    "material_id": "MAT-Y22",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10088",
+    "material_id": "MAT-C2",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10092",
+    "material_id": "MAT-M11",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10101",
+    "material_id": "MAT-T17",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10116",
+    "material_id": "MAT-H31",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10124",
+    "material_id": "MAT-M35",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10154",
+    "material_id": "MAT-J32",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10174",
+    "material_id": "MAT-H7",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10189",
+    "material_id": "MAT-K9",
+    "primary_supplier": "PolandParts 016",
+    "alt_supplier_id": "SUP1005",
+    "alt_supplier_name": "GermanyParts 005",
+    "alt_supplier_country": "Germany"
+   }
+  ],
+  "reroutable_value_eur": 6174250.32
+ },
+ "brief": {
+  "headline": "Poland Battery Disruption Threatens 5 German Plants; 2.2-Day Critical Runway at Stuttgart",
+  "criticality_summary": "12 open POs worth \u20ac6.2M exposed; 3 materials face stockout within 14-day disruption; alternatives exist in Germany.",
+  "financial_risk_eur": 6174250.32,
+  "assembly_line_deadline_days": 2.2,
+  "recommended_actions": [
+   {
+    "priority": 1,
+    "title": "Reroute PO10154 Proximity Sensor J32 to GermanyParts 005",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10154",
+    "target_supplier_id": "SUP1005",
+    "target_plant": "Stuttgart Plant",
+    "target_material": "MAT-J32",
+    "rationale": "Stuttgart line stops in 2.2 days; alternative supplier available in Germany.",
+    "estimated_cost_eur": 876369.2,
+    "value_rerouted_eur": 876369.2
+   },
+   {
+    "priority": 2,
+    "title": "Reroute PO10174 Microcontroller H7 to GermanyParts 005",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10174",
+    "target_supplier_id": "SUP1005",
+    "target_plant": "Mannheim Plant",
+    "target_material": "MAT-H7",
+    "rationale": "Mannheim Microcontroller H7 stockout in 2.5 days; German alternative qualified.",
+    "estimated_cost_eur": 630721.02,
+    "value_rerouted_eur": 630721.02
+   },
+   {
+    "priority": 3,
+    "title": "Reroute PO10045 Sensor Controller Y22 to GermanyParts 005",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10045",
+    "target_supplier_id": "SUP1005",
+    "target_plant": "Munich Plant",
+    "target_material": "MAT-Y22",
+    "rationale": "Munich Sensor Controller Y22 critical in 5.4 days; reroute to domestic supplier.",
+    "estimated_cost_eur": 578129.4,
+    "value_rerouted_eur": 578129.4
+   }
+  ],
+  "brief_source": "nemotron"
+ },
+ "critique": {
+  "deterministic_flags": [],
+  "challenges": [
+   {
+    "target": "Action 1",
+    "issue_type": "unsupported_assumption",
+    "severity": "high",
+    "explanation": "The brief assumes SUP1005 can immediately supply Proximity Sensor J32 without verifying current capacity, lead times, or potential impact of the Poland battery disruption on this supplier.",
+    "suggested_fix": "Obtain capacity confirmation from SUP1005, validate lead times, and consider dual-sourcing or safety stock."
+   },
+   {
+    "target": "Action 2",
+    "issue_type": "unsupported_assumption",
+    "severity": "high",
+    "explanation": "Assumes Microcontroller H7 is readily available from SUP1005 with no qualification delay, ignoring possible need for re-validation or supply constraints.",
+    "suggested_fix": "Confirm part qualification status and lead time; if needed, initiate expedited qualification or identify alternate supplier."
+   },
+   {
+    "target": "Action 3",
+    "issue_type": "logistics_bottleneck",
+    "severity": "medium",
+    "explanation": "All three reroutes target the same supplier (SUP1005), risking overload and creating a single point of failure.",
+    "suggested_fix": "Distribute the load across multiple qualified suppliers or implement staggered delivery schedules."
+   }
+  ],
+  "verdict": "revise",
+  "revised": false,
+  "checks": [
+   {
+    "id": "total_matches_sql",
+    "label": "Value at risk equals the SQL total",
+    "passed": true,
+    "detail": "brief \u20ac6,174,250.32 vs SQL \u20ac6,174,250.32"
+   },
+   {
+    "id": "deadline_matches_runway",
+    "label": "Deadline equals the shortest inventory runway",
+    "passed": true,
+    "detail": "brief 2.2 d vs SQL 2.2 d"
+   },
+   {
+    "id": "actions_reference_exposed_pos",
+    "label": "Every action targets an exposed open PO",
+    "passed": true,
+    "detail": "3 action(s) checked"
+   },
+   {
+    "id": "suppliers_are_erp_approved",
+    "label": "Every reroute uses an ERP-approved alternative for that PO",
+    "passed": true,
+    "detail": "all reroute pairs found in alt_supplier_map"
+   },
+   {
+    "id": "plant_material_match_po",
+    "label": "Action plant and material match the PO record",
+    "passed": true,
+    "detail": "consistent with ERP"
+   },
+   {
+    "id": "brief_generated_by_model",
+    "label": "Plan was generated by the model (not the SQL fallback)",
+    "passed": true,
+    "detail": "brief_source = nemotron"
+   }
+  ],
+  "status": "model"
+ },
+ "provenance": {
+  "models": {
+   "extraction": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "strategy": "nvidia/nemotron-3-super-120b-a12b",
+   "critic": "nvidia/nemotron-3-super-120b-a12b"
+  },
+  "search_count": 3,
+  "source_count": 9,
+  "claims_extracted": 3,
+  "contradictions_identified": 0,
+  "extraction_method": "model"
+ },
+ "cached": true,
+ "recorded_at": "2026-10-25T12:10:24+00:00"
+}

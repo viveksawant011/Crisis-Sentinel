@@ -18,3 +18,4 @@ frontend/.next/
 frontend/dist/
 frontend/.env*.local
 
+.vscode/

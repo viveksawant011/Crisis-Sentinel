@@ -1,335 +1,77 @@
-import { useState } from "react";
+import { Badge, Card, Spinner } from './ui.jsx'
 
-/**
- * CriticPanel: Displays the adversarial audit from Nemotron Super.
- * Evaluates operational feasibility, checks numbers against ERP data,
- * and enables a one-click single-turn bounded revision loop.
- */
-export default function CriticPanel({ critique, onRevise, revising = false }) {
-  const [expanded, setExpanded] = useState(true);
+const VERDICT = {
+  accept: { tone: 'success', label: 'Plan accepted' },
+  revise: { tone: 'warning', label: 'Revision recommended' },
+  escalate: { tone: 'danger', label: 'Escalate to a human' },
+  unverified: { tone: 'neutral', label: 'Not independently reviewed' },
+}
 
-  if (!critique) return null;
-
-  const {
-    verdict = "VERIFIED",
-    challenges = [],
-    score = 92,
-    confidence_rationale = "All mitigation steps ground strictly in internal ERP capacity and verified supplier quotes.",
-    audit_checks = {
-      erp_math_grounded: true,
-      supplier_capacity_verified: true,
-      timeline_feasible: true,
-    },
-  } = critique;
-
-  // Determine styling based on verification verdict
-  const isApproved =
-    verdict.toUpperCase() === "VERIFIED" ||
-    verdict.toUpperCase() === "APPROVED";
+export default function CriticPanel({ critique, onRevise, revising, error, previousVerdict }) {
+  const verdict = VERDICT[critique.verdict] || VERDICT.unverified
+  const checks = critique.checks || []
+  const challenges = critique.challenges || []
+  const canRevise = critique.verdict === 'revise' && !critique.revised
+  const passedCount = checks.filter((c) => c.passed).length
 
   return (
-    <div
-      style={{
-        marginTop: "24px",
-        padding: "24px",
-        backgroundColor: "#161b22",
-        border: `1px solid ${isApproved ? "#238636" : "#d29922"}`,
-        borderRadius: "12px",
-        color: "#c9d1d9",
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      }}
+    <Card
+      title="Critic audit"
+      subtitle="Rules re-verify every number in the plan; a second model argues against it."
+      actions={<Badge tone={verdict.tone} dot>{verdict.label}</Badge>}
     >
-      {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "16px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ fontSize: "20px" }}>🛡️</span>
-          <div>
-            <h3
-              style={{
-                margin: 0,
-                fontSize: "18px",
-                color: "#f0f6fc",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              Nemotron Super Adversarial Audit
-            </h3>
-            <p
-              style={{ margin: "4px 0 0", fontSize: "13px", color: "#8b949e" }}
-            >
-              Independent AI Critic validating supply chain feasibility and
-              financial totals.
-            </p>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {isApproved ? (
-            <span
-              style={{
-                padding: "4px 10px",
-                borderRadius: "6px",
-                fontSize: "12px",
-                fontWeight: "bold",
-                letterSpacing: "0.5px",
-                background: "rgba(46, 160, 67, 0.15)",
-                color: "#3fb950",
-                border: "1px solid #2ea043",
-              }}
-            >
-              ✓ {verdict} • {score}/100
-            </span>
-          ) : (
-            <button
-              type="button"
-              onClick={onRevise}
-              disabled={revising}
-              title="Trigger Nemotron Super to address flagged challenges with dual-sourcing"
-              style={{
-                padding: "5px 12px",
-                borderRadius: "6px",
-                fontSize: "12px",
-                fontWeight: "bold",
-                letterSpacing: "0.5px",
-                background: revising ? "#21262d" : "rgba(210, 153, 34, 0.2)",
-                color: "#d29922",
-                border: "1px solid #d29922",
-                cursor: revising ? "wait" : "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-              }}
-            >
-              <span>⚙️</span>
-              {revising
-                ? "Nemotron Super Revising Plan..."
-                : `${verdict} • ${score}/100 ➔ Revise Plan`}
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={() => setExpanded(!expanded)}
-            style={{
-              background: "#21262d",
-              border: "1px solid #30363d",
-              color: "#c9d1d9",
-              borderRadius: "6px",
-              padding: "4px 10px",
-              fontSize: "12px",
-              cursor: "pointer",
-            }}
-          >
-            {expanded ? "Collapse" : "Expand"}
-          </button>
-        </div>
-      </div>
-
-      {expanded && (
-        <>
-          {/* Audit Verification Checklist */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "10px",
-              marginBottom: "16px",
-            }}
-          >
-            <div
-              style={{
-                padding: "10px 12px",
-                background: "#0d1117",
-                borderRadius: "6px",
-                border: "1px solid #30363d",
-                fontSize: "12px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <span>{audit_checks.erp_math_grounded ? "✅" : "⚠️"}</span>
-              <span
-                style={{
-                  color: audit_checks.erp_math_grounded ? "#c9d1d9" : "#d29922",
-                }}
-              >
-                ERP Totals Grounded
-              </span>
-            </div>
-
-            <div
-              style={{
-                padding: "10px 12px",
-                background: "#0d1117",
-                borderRadius: "6px",
-                border: "1px solid #30363d",
-                fontSize: "12px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <span>
-                {audit_checks.supplier_capacity_verified ? "✅" : "⚠️"}
-              </span>
-              <span
-                style={{
-                  color: audit_checks.supplier_capacity_verified
-                    ? "#c9d1d9"
-                    : "#d29922",
-                }}
-              >
-                Supplier Alt Capacity Valid
-              </span>
-            </div>
-
-            <div
-              style={{
-                padding: "10px 12px",
-                background: "#0d1117",
-                borderRadius: "6px",
-                border: "1px solid #30363d",
-                fontSize: "12px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <span>{audit_checks.timeline_feasible ? "✅" : "⚠️"}</span>
-              <span
-                style={{
-                  color: audit_checks.timeline_feasible ? "#c9d1d9" : "#d29922",
-                }}
-              >
-                Lead-Time Feasible
-              </span>
-            </div>
-          </div>
-
-          {/* Adversarial Challenges / Potential Flaws Flagged */}
-          {challenges.length > 0 && (
-            <div style={{ marginBottom: "16px" }}>
-              <div
-                style={{
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  color: "#f0883e",
-                  textTransform: "uppercase",
-                  marginBottom: "8px",
-                }}
-              >
-                Identified Operational Risks & Challenges
-              </div>
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-              >
-                {challenges.map((item, idx) => {
-                  const title =
-                    typeof item === "object" && item !== null
-                      ? item.issue_type ||
-                        item.target ||
-                        `Challenge #${idx + 1}`
-                      : `Challenge #${idx + 1}`;
-
-                  const explanation =
-                    typeof item === "object" && item !== null
-                      ? item.explanation ||
-                        item.suggested_fix ||
-                        JSON.stringify(item)
-                      : String(item);
-
-                  const severityTag =
-                    typeof item === "object" && item?.severity
-                      ? item.severity
-                      : null;
-
-                  return (
-                    <div
-                      key={idx}
-                      style={{
-                        padding: "10px 14px",
-                        background: "#0d1117",
-                        border: "1px solid rgba(240, 136, 62, 0.3)",
-                        borderRadius: "6px",
-                        fontSize: "13px",
-                        color: "#c9d1d9",
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: "8px",
-                      }}
-                    >
-                      <span style={{ color: "#f0883e" }}>•</span>
-                      <div style={{ flex: 1 }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <strong>{title}</strong>
-                          {severityTag && (
-                            <span
-                              style={{
-                                fontSize: "11px",
-                                padding: "2px 6px",
-                                borderRadius: "4px",
-                                background: "rgba(240, 136, 62, 0.15)",
-                                color: "#f0883e",
-                              }}
-                            >
-                              {severityTag}
-                            </span>
-                          )}
-                        </div>
-                        <div style={{ marginTop: "4px", color: "#8b949e" }}>
-                          {explanation}
-                        </div>
-                        {item.suggested_fix && (
-                          <div
-                            style={{
-                              marginTop: "4px",
-                              color: "#3fb950",
-                              fontSize: "12px",
-                            }}
-                          >
-                            <strong>Fix:</strong> {item.suggested_fix}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* Rationale Footer */}
-          <div
-            style={{
-              fontSize: "12px",
-              color: "#8b949e",
-              background: "#0d1117",
-              padding: "10px 14px",
-              borderRadius: "6px",
-              border: "1px solid #30363d",
-            }}
-          >
-            <strong>Critic Rationale:</strong> {confidence_rationale}
-          </div>
-        </>
+      {critique.revised && (
+        <p className="caption" style={{ marginBottom: 12 }}>
+          Revised once after critique{previousVerdict ? ` (previous verdict: ${previousVerdict})` : ''}. This audit covers the new plan.
+        </p>
       )}
-    </div>
-  );
+      {critique.status === 'degraded' && (
+        <p className="caption" style={{ marginBottom: 12, color: 'var(--warning)' }}>
+          The critic model was unavailable, so only the rule checks ran.
+        </p>
+      )}
+
+      <div className="section-label">Rule checks · {passedCount}/{checks.length} passed</div>
+      <ul className="checks">
+        {checks.map((c) => (
+          <li key={c.id} className={`check ${c.passed ? 'ok' : 'fail'}`}>
+            <span className="check-icon" aria-label={c.passed ? 'Passed' : 'Failed'}>{c.passed ? '✓' : '✕'}</span>
+            <span>{c.label}<span className="check-detail">{c.detail}</span></span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="section-label">Challenges{challenges.length ? ` · ${challenges.length}` : ''}</div>
+      {challenges.length === 0 ? (
+        <p className="caption">The critic found no weaknesses it could substantiate.</p>
+      ) : (
+        <div>
+          {challenges.map((c, i) => (
+            <div key={i} className={`challenge sev-${c.severity}`}>
+              <div className="challenge-head">
+                <span>{c.target}</span>
+                <Badge tone={c.severity === 'high' ? 'danger' : c.severity === 'medium' ? 'warning' : 'info'}>{c.severity}</Badge>
+                <span className="chip">{c.origin === 'deterministic' ? 'Rule' : 'Model'}</span>
+              </div>
+              <p>{c.explanation}</p>
+              {c.suggested_fix && <p className="fix">Suggested: {c.suggested_fix}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {error && <p role="alert" className="caption" style={{ marginTop: 12, color: 'var(--danger)' }}>{error}</p>}
+
+      {canRevise && (
+        <button type="button" className="btn btn-primary" style={{ marginTop: 16, width: '100%' }} onClick={onRevise} disabled={revising}>
+          {revising ? <><Spinner /> Rewriting and re-auditing…</> : 'Revise plan using this feedback'}
+        </button>
+      )}
+      {critique.revised && critique.verdict === 'revise' && (
+        <p className="caption" style={{ marginTop: 12 }}>
+          The critic still has objections after the one allowed revision. A human should decide.
+        </p>
+      )}
+    </Card>
+  )
 }

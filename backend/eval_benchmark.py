@@ -4,12 +4,12 @@ Automated evaluation benchmark for the Enterprise Crisis Response Agent.
 Three stages are measured SEPARATELY, so an error in one stage can never hide
 or fake a result in another:
 
-  1. EXTRACTION  analyze_disruption() -> impacted_country / impacted_category
+  1. EXTRACTION  run_investigation() -> impacted_country / impacted_category (the production path)
                  PASS only on an EXACT string match, because the SQL join is
                  `supplier.country = ? AND supplier.category = ?`. A value like
                  "Semiconductors" is reported as WARN: right idea, but it would
                  return zero rows unless the pipeline normalises it.
-  2. TAVILY      research() -> are the sources real, valid, credible URLs?
+  2. TAVILY      run_investigation() sources -> are they real, valid, credible URLs?
   3. ERP         evaluate_erp_exposure() vs an INDEPENDENT SQL oracle written in
                  this file (open PO count, EUR exposure, inventory runway), plus
                  alternative-supplier coverage for the Strategist.
@@ -58,16 +58,21 @@ def get_active_model():
     return _CACHED_MODEL_ID
 
 
+_INTEL_CACHE = {}
+
+from dotenv import load_dotenv
+load_dotenv()
+
 def call_research(query):
-    from tavily_nemotron_probe import research
-    return research(query, max_results=5)
+    """Runs the PRODUCTION investigator (3-query Tavily plan + claim extraction) once per query and
+    returns its sources. Extraction below reuses the same run, so both stages measure what the app does."""
+    from investigator import run_investigation
+    _INTEL_CACHE[query] = run_investigation(query, model_id=get_active_model())
+    return _INTEL_CACHE[query].sources
 
 
 def call_analyze(research_output, query):
-    from tavily_nemotron_probe import analyze_disruption
-    model_id = get_active_model()
-    # Fixed: Passing query, sources list, and model_id
-    return analyze_disruption(query, research_output, model_id)
+    return _INTEL_CACHE[query].model_dump()
 
 
 def call_erp(country, category):

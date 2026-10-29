@@ -1,11 +1,11 @@
 {
   "matched": true,
   "intelligence": {
-    "event": "Poland battery cell plant production disruption EV supply",
+    "event": "Poland's battery cell plant production is disrupted, causing delays in EV supply.",
     "impacted_country": "Poland",
     "impacted_category": "battery component",
     "severity": "high",
-    "estimated_duration_days": 14,
+    "estimated_duration_days": null,
     "confidence": 0.83,
     "sources": [
       {
@@ -16,9 +16,9 @@
       },
       {
         "id": "S2",
-        "title": "Battery Regulation in Poland: Importer Rules | Dudkowiak & Putyra",
-        "url": "https://www.dudkowiak.com/automotive-law-in-poland/battery-regulation-in-poland",
-        "snippet": "human rights violations, including child labor and forced labor,\n severe environmental damage,\n the financing of armed conflicts.\n\nIn practice, EV importers must demand documentation from their suppliers\u2014vehicle or cell manufacturers\u2014regarding raw material sources.\n\nImplementing a due diligence system requires reviewing the supply chain at least two levels above the direct supplier. Full compliance therefore depends on access to reliable documentation throughout the relevant supply chain. [...] Since August 18, 2025, EV battery manufacturers and importers are required to implement a due diligence system regarding the sourcing of critical materials. The obligation is modeled on regulations concerning conflict minerals.\n\nRequirements specifically include verification that cobalt, nickel, lithium, manganese and natural graphite used for battery production do not originate from areas where their extraction involves:"
+        "title": "Global Supply Chains of EV Batteries",
+        "url": "https://iea.blob.core.windows.net/assets/961cfc6c-6a8c-42bb-a3ef-57f3657b7aca/GlobalSupplyChainsofEVBatteries.pdf",
+        "snippet": "material plant in Canada. Global supply chains of EV batteries PAGE | 31 EV batteries and supply chains Impact of Russia\u2019s invasion of Ukraine on battery supply chains Lithium, cobalt and graphite supply chains are less affected by the supply disruption caused by Russia\u2019s invasion of Ukraine as relatively little supply and processing is from either country. However, there is concern regarding nickel; Russia is the third-largest producer, supplying about 9% and processing about 6% of global [...] of Northvolt\u2019s first factory in Sweden and the beginning of production. Anode and cathode plants have lead times that are typical for chemical plants, which vary by region. Umicore announced production plans for a plant in Poland in 2018, which is expected to begin commercial production in 2022, thus requiring four years. In China, cathode factories can be built in less than two years due to previous experience and the use of existing sites for expansion. By far the longest lead times are in"
       },
       {
         "id": "S3",
@@ -28,67 +28,61 @@
       },
       {
         "id": "S4",
-        "title": "Poland - Wikipedia",
-        "url": "https://en.wikipedia.org/wiki/Poland",
-        "snippet": "|  v  t  e  Poland articles | |\n --- | [...] ### Kingdom of Poland [...] Wikipedia\nThe Free Encyclopedia\n\n## Contents\n\n# Poland\n\nPage semi-protected"
+        "title": "Poland Battery Manufacturing Equipment Market Size, Share,Trends, Growth Analysis Report, 2030",
+        "url": "https://www.marketsandmarkets.com/Market-Reports/geography/battery-production-machine-market/Poland",
+        "snippet": "Equipment Manufacturers :  Battery equipment producers need Poland-specific market data to identify growth opportunities, assess demand for automation solutions, and plan manufacturing or distribution operations in Central Europe.\n Automotive OEMs & Suppliers :  Vehicle manufacturers and tier-1 suppliers require insights into Poland's battery production capacity, equipment capabilities, and supply chain infrastructure to support EV manufacturing expansion. [...] Poland's battery manufacturing equipment market will nearly double from $59.8M (2025) to $111.7M (2030), representing a 13.3% CAGR.\n Poland is emerging as a critical manufacturing hub for battery equipment in Central Europe due to cost advantages and strategic location.\n Poland's growth outpaces broader European trends, driven by EV production expansion and renewable energy infrastructure investments. [...] Poland's strategic location and competitive labor costs position it as a key manufacturing hub in Central Europe, attracting significant foreign direct investment in battery production facilities.\n\n### EV Production Expansion :\n\nIncreasing investments in electric vehicle manufacturing and assembly plants across Poland ar"
       },
       {
         "id": "S5",
-        "title": "Poland - Simple English Wikipedia, the free encyclopedia",
-        "url": "https://simple.wikipedia.org/wiki/Poland",
-        "snippet": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  --- | [...] However, Poland lost independence again not long after the beginning of World War II, after suffering a defeat by both the Soviet Union and Nazi Germany. Although the government collapsed, the Polish people fought on by forming the largest and most effective resistance movement in German-occupied Europe. It is most notable for disrupting German supply lines to the Eastern Front of World War II, providing military intelligence to the British, and saving more Jewish lives in the Holocaust than [...] Poland became an attractive place to work for people from other countries (mainly Ukraine)."
+        "title": "The EV Battery Supply Chain Explained - RMI",
+        "url": "http://rmi.org/resources/the-ev-battery-supply-chain-explained",
+        "snippet": "These disruptions can result in bottlenecks and negatively affect the rest of the battery supply chain; they can also impact economies, cause delays for suppliers, increase transportation costs, force employers to cut jobs, discourage investment, and hinder transportation decarbonization.\n\n### The global EV battery supply chain today [...] Corporate consolidation: Today, when one of the many companies involved in the battery supply chain experiences a disruption, others are affected. As EV demand rises, it\u2019s likely that there will be a few big players that will oversee more parts of the process. If one (or more) of these companies experience disruptions, the effects will be greater. [...] However, with overall car sales declining after a peak in 2017, EVs are the only growth area in the automotive market, meaning all future job growth in the industry will likely be in EV manufacturing and its supply chain. These new EV jobs will not necessarily be in states and regions where ICE manufacturing jobs are today. That being said, disruptions related to EVs can have all sorts of economic benefits when they lead to increased entrepreneurship pathways and the development of new"
       },
       {
         "id": "S6",
-        "title": "Geography of Poland - Wikipedia",
-        "url": "https://en.wikipedia.org/wiki/Geography_of_Poland",
-        "snippet": "|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [...] Present-day Poland is a country with favorable agricultural prospects, and over two million private farms. It is the leading producer of potatoes and rye in Europe, the world's largest producer of triticale, and one of the more important producers of barley, oats, sugar beets, flax, and various fruits. It is also the European Union's fourth largest supplier of pork after Germany, Spain and France.\n\n## Biodiversity\n\n[edit] [...] coal ash is aided by revegetation. \u017bo\u0142nierz et al., 2016 find the return of bush species is naturally phytoremediating fly ash dumps. Air pollution is a particular concern in Poland, particularly in the industrial cities in the south west. An assessment of the i"
+        "title": "Battery Regulation in Poland: Importer Rules | Dudkowiak & Putyra",
+        "url": "https://www.dudkowiak.com/automotive-law-in-poland/battery-regulation-in-poland",
+        "snippet": "human rights violations, including child labor and forced labor,\n severe environmental damage,\n the financing of armed conflicts.\n\nIn practice, EV importers must demand documentation from their suppliers\u2014vehicle or cell manufacturers\u2014regarding raw material sources.\n\nImplementing a due diligence system requires reviewing the supply chain at least two levels above the direct supplier. Full compliance therefore depends on access to reliable documentation throughout the relevant supply chain. [...] ## Legal Support for Businesses Affected by the EU Battery Regulation\n\nRegulation (EU) 2023/1542 may have a direct impact on market access, supply chain arrangements, contractual responsibilities and day-to-day compliance for manufacturers, importers, distributors and EV dealers operating in Poland.\n\nContact us to discuss the legal risks and regulatory obligations that may affect your business under the new EU battery framework.\n\n## FAQ \u2013 Battery law for EV dealers and importers [...] Since August 18, 2025, EV battery manufacturers and importers are required to implement a due diligence system regarding the sourcing of critical materials. The obligation is modeled on regulations concerning c"
       },
       {
         "id": "S7",
-        "title": "Poland Battery Recycling: Central Europe Capacity Build - Green Li-ion",
-        "url": "https://www.greenli-ion.com/post/poland-battery-recycling-infrastructure-investment",
-        "snippet": "Poland's battery recycling facilities employ advanced hydrometallurgical processing technologies achieving recovery rates exceeding 90% for cobalt, nickel, copper, and manganese, with lithium recovery reaching 50% by 2027 and 80% by 2031 to meet EU Battery Regulation requirements. These recovery rates match or exceed specifications for battery-grade materials, enabling direct reintegration into manufacturing supply chains without quality compromises. [...] The Zawiercie facility's first phase, completed in 2024, processes 12,000 metric tons of lithium-ion batteries and 6,000 metric tons of automotive catalytic converters annually. The complex recovers eight critical materials identified by the European Commission: cobalt, lithium, manganese, copper, nickel, plus platinum group metals including palladium, platinum, and rhodium. This comprehensive recovery capability positions the facility to process multiple waste streams while maximizing material [...] LG Energy Solution formalized its recycling strategy through a joint venture with French waste management company Derichebourg to construct a battery recycling plant in France's Val-d'Oise region, with operations scheduled to begin i"
+        "title": "Poland EV Battery Supply Chain Market - Research and Markets",
+        "url": "https://www.researchandmarkets.com/reports/6210519/poland-ev-battery-supply-chain-market",
+        "snippet": "The Polish government has implemented a comprehensive strategy to enhance the local EV battery supply chain, including significant funding to support research and development in battery technologies. The \u201cPolish National Recovery and Resilience Plan (Krajowy Plan Odbudowy i Zwi?kszania Odporno?ci, KPO), 2022\u201d issued by the Council of Ministers, allocates over EUR 1 billion for the development of battery technologies, supporting domestic production capabilities and reducing reliance on imports. [...] The EV battery supply chain in Poland faces significant disruptions due to geopolitical tensions and the COVID-19 pandemic. In future, global semiconductor shortages led to a notable decrease in battery production capacity. These disruptions hinder the timely delivery of critical components, affecting manufacturers' ability to meet the growing demand for EVs and their batteries, ultimately impacting market growth.  \n  \n\n## High Production Costs: [...] Poland is investing over \u20ac500 million in expanding its EV charging infrastructure in future, with plans to install 10,000 new charging stations nationwide. This expansion is crucial for alleviating range anxiety among consumers and promoti"
       },
       {
         "id": "S8",
-        "title": "Global Supply Chains of EV Batteries",
-        "url": "https://iea.blob.core.windows.net/assets/961cfc6c-6a8c-42bb-a3ef-57f3657b7aca/GlobalSupplyChainsofEVBatteries.pdf",
-        "snippet": "of Northvolt\u2019s first factory in Sweden and the beginning of production. Anode and cathode plants have lead times that are typical for chemical plants, which vary by region. Umicore announced production plans for a plant in Poland in 2018, which is expected to begin commercial production in 2022, thus requiring four years. In China, cathode factories can be built in less than two years due to previous experience and the use of existing sites for expansion. By far the longest lead times are in"
-      },
-      {
-        "id": "S9",
-        "title": "Poland strengthens its position in Europe\u2019s battery industry - Trade.gov.pl",
-        "url": "https://www.trade.gov.pl/en/news/poland-strengthens-its-position-in-europes-battery-industry",
-        "snippet": "The facility will process used lithium-ion batteries and recover valuable materials for the production of new cells. The investment received approximately USD 320 million in government support and is expected to become one of Europe\u2019s largest battery material recovery projects.\n\nSuch investments align with the EU\u2019s Critical Raw Materials Act (CRMA), aimed at improving Europe\u2019s raw material security and reducing dependence on China in strategic industrial sectors. [...] ## Poland is rapidly strengthening its role in Europe\u2019s battery and electromobility sector. New investments in battery recycling, energy storage systems and cell production are turning the country into one of the key pillars of the European energy transition and clean-tech supply chain. [...] minimise machine downtime."
+        "title": "Powering the EU's future: Strengthening the battery industry",
+        "url": "https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/767214/EPRS_BRI(2025)767214_EN.pdf",
+        "snippet": "action. In 2023, European-based battery production covered almost half of Europe's demand for batteries applied in EVs and energy storage systems. Production output reached nearly 100 GWh, led by LG Energy Solution in Poland (between 34 and 55 GWh), Samsung SDI (about 21-24 GWh) and SK On in Hungary (about 10-12 GWh), Northvolt in Sweden (up to about 6 GWh), BMZ (up to about 10 GWh) and CATL (5-8 GWh) in Germany. Korean companies account for three quarters of European production capacities."
       }
     ],
     "claims": [
       {
         "claim_id": "C1",
-        "text": "China controls 90% of refined graphite, limiting processing capacity",
+        "text": "Raw material shortages limit processing capacity",
         "type": "cause",
-        "value": "graphite",
+        "value": "shortage",
         "source_ids": [
           "S1"
         ]
       },
       {
         "claim_id": "C2",
-        "text": "EV battery deliveries delayed 6-12 months due to supply constraints",
-        "type": "duration",
-        "value": "6-12 months",
+        "text": "Battery component production disrupted in Poland",
+        "type": "scope",
+        "value": "component",
         "source_ids": [
           "S2"
         ]
       },
       {
         "claim_id": "C3",
-        "text": "Russia supplies 20% of high-grade nickel, creating geopolitical risk",
+        "text": "High impact on EV supply chain",
         "type": "severity",
-        "value": "nickel",
+        "value": "high",
         "source_ids": [
-          "S2"
+          "S3"
         ]
       }
     ],
@@ -108,7 +102,8 @@
         "results_count": 3
       }
     ],
-    "extraction_method": "model"
+    "extraction_method": "model",
+    "mapping_source": "model"
   },
   "exposure": {
     "matched": true,
@@ -541,73 +536,128 @@
     "reroutable_value_eur": 6174250.32
   },
   "brief": {
-    "headline": "Poland Battery Disruption Threatens 5 German Plants; 2.2-Day Critical Runway at Stuttgart",
-    "criticality_summary": "12 open POs worth \u20ac6.2M exposed; 3 materials face stockout within 14-day disruption; alternatives exist in Germany.",
+    "headline": "Poland battery component disruption threatens EV production with sub\u20113\u2011day runway on critical parts",
+    "criticality_summary": "Total ERP exposure \u20ac6.17M across 12 open POs; overall critical runway 2.2 days, with PO10154 and PO10174 each under 2.5 days, posing imminent stockout risk.",
     "financial_risk_eur": 6174250.32,
     "assembly_line_deadline_days": 2.2,
     "recommended_actions": [
       {
         "priority": 1,
-        "title": "Reroute PO10154 Proximity Sensor J32 to GermanyParts 005",
+        "title": "Reroute PO10154 to German alternative supplier",
         "action_type": "reroute_supplier",
         "po_id": "PO10154",
         "target_supplier_id": "SUP1005",
         "target_plant": "Stuttgart Plant",
-        "target_material": "Proximity Sensor J32",
-        "rationale": "Stuttgart line stops in 2.2 days; alternative supplier available in Germany.",
-        "estimated_cost_eur": 876369.2
+        "target_material": "MAT-J32",
+        "rationale": "Critical runway 2.2 days; switching to SUP1005 mitigates immediate stockout risk.",
+        "estimated_cost_eur": 876369.2,
+        "value_rerouted_eur": 876369.2
       },
       {
         "priority": 2,
-        "title": "Reroute PO10174 Microcontroller H7 to GermanyParts 005",
-        "action_type": "reroute_supplier",
+        "title": "Expedite PO10174 deliveries",
+        "action_type": "expedite",
         "po_id": "PO10174",
-        "target_supplier_id": "SUP1005",
+        "target_supplier_id": "",
         "target_plant": "Mannheim Plant",
-        "target_material": "Microcontroller H7",
-        "rationale": "Mannheim Microcontroller H7 stockout in 2.5 days; German alternative qualified.",
-        "estimated_cost_eur": 630721.02
+        "target_material": "MAT-H7",
+        "rationale": "Low runway 2.5 days; request faster shipping to avoid production halt.",
+        "estimated_cost_eur": 630721.02,
+        "value_rerouted_eur": 630721.02
       },
       {
         "priority": 3,
-        "title": "Reroute PO10045 Sensor Controller Y22 to GermanyParts 005",
-        "action_type": "reroute_supplier",
-        "po_id": "PO10045",
-        "target_supplier_id": "SUP1005",
-        "target_plant": "Munich Plant",
-        "target_material": "Sensor Controller Y22",
-        "rationale": "Munich Sensor Controller Y22 critical in 5.4 days; reroute to domestic supplier.",
-        "estimated_cost_eur": 578129.4
+        "title": "Increase buffer stock for PO10092",
+        "action_type": "buffer_stock",
+        "po_id": "PO10092",
+        "target_supplier_id": "",
+        "target_plant": "Mannheim Plant",
+        "target_material": "MAT-M11",
+        "rationale": "High value exposure; building buffer safeguards against prolonged disruption.",
+        "estimated_cost_eur": 883035.34,
+        "value_rerouted_eur": 883035.34
       }
     ],
-    "brief_source": "nemotron"
+    "brief_source": "nemotron",
+    "model_used": "nvidia/nemotron-3-super-120b-a12b"
   },
   "critique": {
+    "checks": [
+      {
+        "id": "total_matches_sql",
+        "label": "Value at risk equals the SQL total",
+        "passed": true,
+        "detail": "brief \u20ac6,174,250.32 vs SQL \u20ac6,174,250.32"
+      },
+      {
+        "id": "deadline_matches_runway",
+        "label": "Deadline equals the shortest inventory runway",
+        "passed": true,
+        "detail": "brief 2.2 d vs SQL 2.2 d"
+      },
+      {
+        "id": "actions_reference_exposed_pos",
+        "label": "Every action targets an exposed open PO",
+        "passed": true,
+        "detail": "3 action(s) checked"
+      },
+      {
+        "id": "suppliers_are_erp_approved",
+        "label": "Every reroute uses an ERP-approved alternative for that PO",
+        "passed": true,
+        "detail": "all reroute pairs found in alt_supplier_map"
+      },
+      {
+        "id": "plant_material_match_po",
+        "label": "Action plant and material match the PO record",
+        "passed": true,
+        "detail": "consistent with ERP"
+      },
+      {
+        "id": "brief_generated_by_model",
+        "label": "Plan was generated by the model (not the SQL fallback)",
+        "passed": true,
+        "detail": "brief_source = nemotron"
+      }
+    ],
     "deterministic_flags": [],
     "challenges": [
       {
-        "target": "Action 1",
-        "issue_type": "unsupported_assumption",
-        "severity": "high",
-        "explanation": "The brief assumes SUP1005 can immediately supply Proximity Sensor J32 without verifying current capacity, lead times, or potential impact of the Poland battery disruption on this supplier.",
-        "suggested_fix": "Obtain capacity confirmation from SUP1005, validate lead times, and consider dual-sourcing or safety stock."
-      },
-      {
-        "target": "Action 2",
-        "issue_type": "unsupported_assumption",
-        "severity": "high",
-        "explanation": "Assumes Microcontroller H7 is readily available from SUP1005 with no qualification delay, ignoring possible need for re-validation or supply constraints.",
-        "suggested_fix": "Confirm part qualification status and lead time; if needed, initiate expedited qualification or identify alternate supplier."
-      },
-      {
-        "target": "Action 3",
-        "issue_type": "logistics_bottleneck",
+        "target": "Reroute plan",
+        "issue_type": "single_source_concentration",
         "severity": "medium",
-        "explanation": "All three reroutes target the same supplier (SUP1005), risking overload and creating a single point of failure.",
-        "suggested_fix": "Distribute the load across multiple qualified suppliers or implement staggered delivery schedules."
+        "explanation": "100% of rerouted order value (\u20ac876,369) lands on GermanyParts 005; a problem there would recreate the exposure.",
+        "suggested_fix": "Confirm the alternative's spare capacity before approving, or split volume across a second qualified supplier.",
+        "origin": "deterministic"
+      },
+      {
+        "target": "Reroute PO10154 to German alternative supplier (SUP1005)",
+        "issue_type": "unsupported_assumption",
+        "severity": "high",
+        "explanation": "The plan assumes SUP1005 can immediately supply MAT-J32 to Stuttgart Plant, but no evidence is provided about its current production capacity, qualification lead time for this material, or logistics readiness.",
+        "suggested_fix": "Obtain capacity confirmation from SUP1005, verify qualification status for MAT-J32, and confirm feasible shipment timelines (including any required customs or transport arrangements).",
+        "origin": "model"
+      },
+      {
+        "target": "Expedite PO10174 deliveries",
+        "issue_type": "unsupported_assumption",
+        "severity": "medium",
+        "explanation": "Expediting assumes the current supplier and carriers can accelerate shipments without verifying available transport slots, potential customs bottlenecks, or carrier capacity constraints.",
+        "suggested_fix": "Contact the supplier and logistics providers to secure confirmed expedited shipping options and obtain revised ETAs before committing to the action.",
+        "origin": "model"
+      },
+      {
+        "target": "Increase buffer stock for PO10092",
+        "issue_type": "unsupported_assumption",
+        "severity": "low",
+        "explanation": "Building additional buffer presumes the supplier can raise output quickly and that warehouse space exists, yet no data on supplier production uplift capacity or storage limits is shown.",
+        "suggested_fix": "Validate the supplier\u2019s ability to increase production within the needed window and confirm available warehouse capacity; consider alternative mitigations such as dual\u2011sourcing if buffer buildup is infeasible.",
+        "origin": "model"
       }
     ],
     "verdict": "revise",
+    "status": "model",
+    "model_used": "nvidia/nemotron-3-super-120b-a12b",
     "revised": false
   },
   "provenance": {
@@ -617,9 +667,21 @@
       "critic": "nvidia/nemotron-3-super-120b-a12b"
     },
     "search_count": 3,
-    "source_count": 9,
+    "source_count": 8,
     "claims_extracted": 3,
     "contradictions_identified": 0,
-    "extraction_method": "model"
+    "contradictions_resolved": 0,
+    "extraction_method": "model",
+    "degraded": [],
+    "timings_s": {
+      "research": 6.8,
+      "extraction": 45.2,
+      "contradictions": 0.0,
+      "exposure": 0.0,
+      "strategy": 9.8,
+      "critic": 5.5
+    },
+    "total_s": 67.4,
+    "generated_at": "2026-10-26T09:15:17+00:00"
   }
 }

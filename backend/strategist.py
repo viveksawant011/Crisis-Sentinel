@@ -1,226 +1,235 @@
 """
-Strategist Agent for CrisisSentinel.
-Synthesizes deterministic ERP exposure into executive mitigation actions using Nemotron.
-Enforces honest financial metrics calculated directly from SQL purchase order records.
+Strategist agent for CrisisSentinel.
+
+Turns deterministic ERP exposure into a short list of mitigation actions with
+Nemotron (Super). The model proposes; the code decides what is allowed:
+
+  * Every action must reference an exposed open PO from the SQL result.
+  * Plant and material are always taken from that PO's ERP record, never from
+    the model, so an action can never point at a mismatched plant or part.
+  * Reroute actions must use a supplier that alt_supplier_map approves for
+    THAT PO. Anything else is dropped.
+  * Money and runway figures always come from SQL, never from the model.
+  * If the model fails, a deterministic brief is built from SQL and labelled
+    brief_source = 'deterministic_fallback' so the UI can say so.
 """
 
-import os
 import json
-import re
-from typing import List, Dict, Any, Optional
-from dotenv import load_dotenv
-from openai import OpenAI
-from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 
-load_dotenv()
+from pydantic import BaseModel, ConfigDict
 
-NEBIUS_BASE_URL = "https://api.tokenfactory.nebius.com/v1/"
-FALLBACK_STRATEGIST_MODEL = "nvidia/nemotron-3-super-120b-a12b"
+from llm_json import chat_json
+from tavily_nemotron_probe import nebius_client as client, resolve_super_model
 
-client = OpenAI(
-    base_url=NEBIUS_BASE_URL,
-    api_key=os.environ.get("NEBIUS_API_KEY", ""),
-)
+REROUTE = "reroute_supplier"
+ALLOWED_ACTION_TYPES = {REROUTE, "expedite", "buffer_stock", "verify_capacity"}
+
 
 class MitigationAction(BaseModel):
     priority: int = 1
     title: str
-    action_type: str = "reroute_supplier"  # "reroute_supplier" | "air_freight" | "line_rebalancing" | "buffer_stock"
+    action_type: str = REROUTE
     po_id: str
-    target_supplier_id: str
-    target_plant: str
-    target_material: str
-    rationale: str
-    estimated_cost_eur: float
+    target_supplier_id: str = ""
+    target_plant: str = ""
+    target_material: str = ""
+    rationale: str = ""
+    # Order value of the PO this action touches, taken from SQL. The name is
+    # kept for API compatibility; it is NOT a model estimate of cost.
+    estimated_cost_eur: float = 0.0
+    value_rerouted_eur: float = 0.0
+
 
 class ExecutiveBrief(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     headline: str
     criticality_summary: str
     financial_risk_eur: float
-    assembly_line_deadline_days: float
+    assembly_line_deadline_days: Optional[float] = None
     recommended_actions: List[MitigationAction]
     brief_source: str = "nemotron"  # "nemotron" | "deterministic_fallback"
+    model_used: Optional[str] = None
 
 
 def resolve_reasoning_model() -> str:
-    """Selects a high-reasoning model (Super or Ultra) for strategy generation."""
-    try:
-        models = client.models.list()
-        nemotron_models = [m.id for m in models.data if "nemotron" in m.id.lower()]
-        ultra_or_super = [m for m in nemotron_models if "ultra" in m.lower() or "super" in m.lower()]
-        return ultra_or_super[0] if ultra_or_super else (nemotron_models[0] if nemotron_models else FALLBACK_STRATEGIST_MODEL)
-    except Exception:
-        return FALLBACK_STRATEGIST_MODEL
+    """Single source of truth for the strategist/critic model ID."""
+    return resolve_super_model()
 
 
 def _unwrap_payload(data: Any) -> Dict[str, Any]:
-    """If the LLM wraps the output inside a container key, unpack it."""
     if not isinstance(data, dict):
         return {}
-    
-    # Common nested keys models invent
-    for wrapper in ["analysis_report", "executive_brief", "report", "brief", "data"]:
-        if wrapper in data and isinstance(data[wrapper], dict):
+    for wrapper in ("analysis_report", "executive_brief", "report", "brief", "data"):
+        if isinstance(data.get(wrapper), dict):
             return data[wrapper]
-            
     return data
 
 
-def generate_mitigation_strategy(crisis_context: Dict[str, Any], erp_exposure: Dict[str, Any]) -> ExecutiveBrief:
-    """Feeds external context and internal SQL data into the Strategist model.
-    Guarantees that all financial numbers are derived strictly from ERP SQL data.
-    """
-    model_id = resolve_reasoning_model()
+def _alt_pairs(exposure: Dict[str, Any]) -> Dict[tuple, Dict[str, Any]]:
+    return {(a["po_id"], a["alt_supplier_id"]): a for a in exposure.get("mitigation_alternatives", [])}
 
-    total_exposure = float(erp_exposure.get("total_exposure_eur", 0.0))
-    critical_runway = erp_exposure.get("critical_runway_days", 1.0)
-    critical_runway = float(critical_runway) if critical_runway is not None else 1.0
-    open_pos = erp_exposure.get("affected_open_pos", [])
-    alts = erp_exposure.get("mitigation_alternatives", [])
 
-    # Fast lookup mapping: po_id -> open PO row from SQL
-    po_lookup: Dict[str, Dict[str, Any]] = {
-        po["po_id"]: po for po in open_pos if "po_id" in po
+def _po_lookup(exposure: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    return {po["po_id"]: po for po in exposure.get("affected_open_pos", []) if "po_id" in po}
+
+
+def _finalize_action(action: MitigationAction, po: Dict[str, Any], alt: Optional[Dict[str, Any]]) -> MitigationAction:
+    """Overwrite every ERP-derived field from the PO record."""
+    action.target_plant = po["plant_name"]
+    action.target_material = po["material_id"]
+    action.estimated_cost_eur = float(po["value_eur"])
+    action.value_rerouted_eur = float(po["value_eur"])
+    if action.action_type == REROUTE and alt:
+        action.target_supplier_id = alt["alt_supplier_id"]
+    return action
+
+
+def validate_actions(actions: List[MitigationAction], exposure: Dict[str, Any]) -> List[MitigationAction]:
+    pos = _po_lookup(exposure)
+    pairs = _alt_pairs(exposure)
+    alt_for_po = {a["po_id"]: a for a in exposure.get("mitigation_alternatives", [])}
+    kept: List[MitigationAction] = []
+    seen_pos = set()
+    for a in actions:
+        if a.po_id not in pos or a.po_id in seen_pos:
+            continue
+        if a.action_type not in ALLOWED_ACTION_TYPES:
+            a.action_type = "verify_capacity"
+        if a.action_type == REROUTE:
+            if (a.po_id, a.target_supplier_id) not in pairs:
+                continue  # unapproved supplier for this PO
+            alt = pairs[(a.po_id, a.target_supplier_id)]
+        else:
+            alt = alt_for_po.get(a.po_id)
+        kept.append(_finalize_action(a, pos[a.po_id], alt))
+        seen_pos.add(a.po_id)
+    for i, a in enumerate(kept, start=1):
+        a.priority = i
+    return kept[:3]
+
+
+def deterministic_actions(exposure: Dict[str, Any], limit: int = 3) -> List[MitigationAction]:
+    """Most urgent reroutable POs first (shortest runway, then highest value)."""
+    pos = _po_lookup(exposure)
+    candidates = []
+    for alt in exposure.get("mitigation_alternatives", []):
+        po = pos.get(alt["po_id"])
+        if po:
+            runway = po.get("runway_days")
+            candidates.append((runway if runway is not None else 9e9, -float(po["value_eur"]), po, alt))
+    candidates.sort(key=lambda c: (c[0], c[1]))
+    actions, used = [], set()
+    for runway, _, po, alt in candidates:
+        if po["po_id"] in used:
+            continue
+        used.add(po["po_id"])
+        runway_txt = f"{po['runway_days']} days of stock" if po.get("runway_days") is not None else "no stock record"
+        a = MitigationAction(
+            priority=len(actions) + 1,
+            title=f"Reroute {po['material_id']} ({po['po_id']}) to {alt['alt_supplier_name']}",
+            action_type=REROUTE,
+            po_id=po["po_id"],
+            target_supplier_id=alt["alt_supplier_id"],
+            rationale=f"{po['plant_name']} has {runway_txt}; {alt['alt_supplier_name']} is the ERP-approved alternative for this PO.",
+        )
+        actions.append(_finalize_action(a, po, alt))
+        if len(actions) >= limit:
+            break
+    return actions
+
+
+def _compact_context(crisis_context: Dict[str, Any], exposure: Dict[str, Any]) -> Dict[str, Any]:
+    pos = exposure.get("affected_open_pos", [])
+    return {
+        "event": {
+            "headline": crisis_context.get("event"),
+            "country": crisis_context.get("impacted_country"),
+            "category": crisis_context.get("impacted_category"),
+            "severity": crisis_context.get("severity"),
+            "estimated_duration_days": crisis_context.get("estimated_duration_days"),
+            "claims": [c.get("text") for c in crisis_context.get("claims", [])][:4],
+        },
+        "erp": {
+            "total_exposure_eur": exposure.get("total_exposure_eur"),
+            "open_pos_count": exposure.get("open_pos_count"),
+            "critical_runway_days": exposure.get("critical_runway_days"),
+            "top_exposed_pos": [
+                {k: po.get(k) for k in ("po_id", "material_id", "material_name", "plant_name",
+                                        "supplier_name", "value_eur", "runway_days", "has_alternative")}
+                for po in pos[:8]
+            ],
+            "approved_alternatives": [
+                {k: a.get(k) for k in ("po_id", "material_id", "alt_supplier_id", "alt_supplier_name")}
+                for a in exposure.get("mitigation_alternatives", [])[:12]
+            ],
+        },
     }
 
-    compact_open_pos = open_pos[:5]
+
+def generate_mitigation_strategy(
+    crisis_context: Dict[str, Any],
+    erp_exposure: Dict[str, Any],
+    critique_feedback: Optional[List[Dict[str, Any]]] = None,
+    model_id: Optional[str] = None,
+) -> ExecutiveBrief:
+    model_id = model_id or resolve_reasoning_model()
+    total = float(erp_exposure.get("total_exposure_eur") or 0.0)
+    runway = erp_exposure.get("critical_runway_days")
+    runway = float(runway) if runway is not None else None
 
     system_prompt = (
-        "You are the Chief Supply Chain Strategist for VoltAuto GmbH. "
-        "Analyze the deterministic ERP exposure resulting from an external disruption. "
-        "All calculations must be grounded strictly in the provided ERP data. "
-        "If alternative suppliers are listed in the ERP data, prioritize rerouting orders. "
-        "Provide a concise executive brief with MAXIMUM 3 high-priority operational actions.\n\n"
-        "CRITICAL RULES:\n"
-        "- Generate AT MOST 3 recommended_actions.\n"
-        "- Keep rationale under 25 words per action.\n"
-        "Output MUST be a valid JSON object adhering to this schema:\n"
-        f"{json.dumps(ExecutiveBrief.model_json_schema(), indent=2)}"
+        "You are the Chief Supply Chain Strategist for VoltAuto GmbH, an EV manufacturer. "
+        "You are given a real-world disruption and the company's deterministic ERP exposure. "
+        "Propose AT MOST 3 prioritized actions, most urgent first.\n"
+        "RULES:\n"
+        "- Every action must reference one po_id from top_exposed_pos.\n"
+        "- For action_type 'reroute_supplier', target_supplier_id MUST be the alt_supplier_id listed for that po_id in approved_alternatives. Never invent suppliers.\n"
+        "- Other allowed action_types: expedite, buffer_stock, verify_capacity (target_supplier_id may be empty).\n"
+        "- Do not state that capacity, quotes or qualification are already verified; phrase them as things to confirm.\n"
+        "- Keep each rationale under 25 words. Do not compute money; amounts are filled in from SQL.\n"
+        "Return ONLY a JSON object with keys: headline, criticality_summary, recommended_actions "
+        "(each: priority, title, action_type, po_id, target_supplier_id, rationale)."
+    )
+    user_payload: Dict[str, Any] = _compact_context(crisis_context, erp_exposure)
+    if critique_feedback:
+        user_payload["critic_challenges_to_address"] = critique_feedback
+        system_prompt += "\nThe critic reviewed your previous plan. Address every challenge it raised within these rules."
+
+    parsed, _, status = chat_json(
+        client=client, model=model_id, system_prompt=system_prompt,
+        user_prompt=json.dumps(user_payload, indent=2), max_tokens=3500, temperature=0.1,
     )
 
-    user_payload = {
-        "external_disruption_event": crisis_context,
-        "internal_erp_exposure": {
-            "matched": erp_exposure.get("matched"),
-            "impacted_country": erp_exposure.get("impacted_country"),
-            "impacted_category": erp_exposure.get("impacted_category"),
-            "total_exposure_eur": total_exposure,
-            "critical_runway_days": critical_runway,
-            "open_pos_count": erp_exposure.get("open_pos_count"),
-            "sample_open_pos": compact_open_pos,
-            "mitigation_alternatives": alts[:5]
-        }
-    }
-    
-    user_payload = {
-        "external_disruption_event": crisis_context,
-        "internal_erp_exposure": erp_exposure
-    }
-
-    valid_plants = set(erp_exposure.get("affected_plants", []))
-    # If affected_plants wasn't explicitly populated in erp_exposure, extract from open_pos
-    if not valid_plants:
-        valid_plants = {po["plant_name"] for po in open_pos if "plant_name" in po}
-
-    valid_materials = set()
-    for po in open_pos:
-        if "material_id" in po:
-            valid_materials.add(po["material_id"])
-        if "material_name" in po and po["material_name"]:
-            valid_materials.add(po["material_name"])
-
-    for attempt in range(3):
-        try:
-            completion = client.chat.completions.create(
-                model=model_id,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": json.dumps(user_payload, indent=2)},
-                ],
-                temperature=0.1,
-                max_tokens=3500,  
-                response_format={"type": "json_object"},
+    if status == "model" and parsed:
+        data = _unwrap_payload(parsed)
+        raw_actions = []
+        for item in data.get("recommended_actions", []) or []:
+            try:
+                raw_actions.append(MitigationAction.model_validate(
+                    {**item, "po_id": str(item.get("po_id", "")), "title": item.get("title", "Action")}))
+            except Exception:
+                continue
+        actions = validate_actions(raw_actions, erp_exposure)
+        if actions:
+            return ExecutiveBrief(
+                headline=str(data.get("headline") or f"Disruption in {crisis_context.get('impacted_country', 'supplier region')}"),
+                criticality_summary=str(data.get("criticality_summary") or ""),
+                financial_risk_eur=total,
+                assembly_line_deadline_days=runway,
+                recommended_actions=actions,
+                brief_source="nemotron",
+                model_used=model_id,
             )
-            raw = completion.choices[0].message.content or "{}"
-            parsed_data = json.loads(raw)
-            clean_data = _unwrap_payload(parsed_data)
 
-            # Backfill required top-level fields if omitted by the model
-            clean_data.setdefault("financial_risk_eur", total_exposure)
-            clean_data.setdefault("assembly_line_deadline_days", critical_runway)
-            clean_data.setdefault("headline", f"Disruption in {crisis_context.get('impacted_country', 'Supplier Region')}")
-            clean_data.setdefault("criticality_summary", f"Critical inventory runway is {critical_runway} days.")
-            clean_data.setdefault("recommended_actions", [])
-            clean_data["brief_source"] = "nemotron"
-
-            brief = ExecutiveBrief.model_validate(clean_data)
-
-            # Deterministic guardrails: Enforce exact SQL calculations for brief totals
-            brief.financial_risk_eur = total_exposure
-            brief.assembly_line_deadline_days = critical_runway
-            brief.brief_source = "nemotron"
-
-            # Filter actions: Keep only recognized plants and materials
-            filtered_actions: List[MitigationAction] = []
-            for a in brief.recommended_actions:
-                if a.target_plant in valid_plants and a.target_material in valid_materials:
-                    # OVERWRITE MODEL COST: Link to the exact open PO value in SQL
-                    if a.po_id in po_lookup:
-                        a.estimated_cost_eur = float(po_lookup[a.po_id].get("value_eur", 0.0))
-                    elif open_pos:
-                        a.estimated_cost_eur = float(open_pos[0].get("value_eur", 0.0))
-                    filtered_actions.append(a)
-
-            # If model dropped all actions or failed validation, construct deterministic fallback action
-            if not filtered_actions and open_pos and alts:
-                matched_po_id = alts[0].get("po_id", open_pos[0]["po_id"])
-                actual_po_val = float(po_lookup.get(matched_po_id, open_pos[0]).get("value_eur", 0.0))
-
-                filtered_actions = [
-                    MitigationAction(
-                        priority=1,
-                        title=f"Reroute {alts[0]['material_id']} to {alts[0]['alt_supplier_name']}",
-                        action_type="reroute_supplier",
-                        po_id=matched_po_id,
-                        target_supplier_id=alts[0]["alt_supplier_id"],
-                        target_plant=open_pos[0]["plant_name"],
-                        target_material=open_pos[0]["material_id"],
-                        rationale=f"Deterministic fallback: Mitigates disruption. Critical plant runway is {critical_runway} days.",
-                        estimated_cost_eur=actual_po_val
-                    )
-                ]
-
-            brief.recommended_actions = filtered_actions
-            return brief
-
-        except Exception:
-            continue
-
-    # Graceful fallback: Pure deterministic brief constructed strictly from SQL data
-    default_actions: List[MitigationAction] = []
-    if open_pos and alts:
-        matched_po_id = alts[0].get("po_id", open_pos[0]["po_id"])
-        actual_po_val = float(po_lookup.get(matched_po_id, open_pos[0]).get("value_eur", 0.0))
-
-        default_actions.append(
-            MitigationAction(
-                priority=1,
-                title=f"Reroute {alts[0]['material_id']} to {alts[0]['alt_supplier_name']}",
-                action_type="reroute_supplier",
-                po_id=matched_po_id,
-                target_supplier_id=alts[0]["alt_supplier_id"],
-                target_plant=open_pos[0]["plant_name"],
-                target_material=open_pos[0]["material_id"],
-                rationale=f"Deterministic fallback: Plant runway is {critical_runway} days.",
-                estimated_cost_eur=actual_po_val
-            )
-        )
-
+    runway_txt = f"{runway} days" if runway is not None else "unknown"
     return ExecutiveBrief(
-        headline=f"Supply Disruption: {crisis_context.get('impacted_country', 'Global')} {crisis_context.get('impacted_category', 'Component')}",
-        criticality_summary=f"Assembly line stoppage risk identified with {critical_runway} days remaining.",
-        financial_risk_eur=total_exposure,
-        assembly_line_deadline_days=critical_runway,
-        recommended_actions=default_actions,
-        brief_source="deterministic_fallback"
+        headline=f"{crisis_context.get('impacted_country', 'Regional')} {crisis_context.get('impacted_category', 'supply')} disruption: €{total:,.0f} exposed",
+        criticality_summary=f"{erp_exposure.get('open_pos_count', 0)} open purchase orders are exposed; shortest inventory runway is {runway_txt}.",
+        financial_risk_eur=total,
+        assembly_line_deadline_days=runway,
+        recommended_actions=deterministic_actions(erp_exposure),
+        brief_source="deterministic_fallback",
+        model_used=None,
     )

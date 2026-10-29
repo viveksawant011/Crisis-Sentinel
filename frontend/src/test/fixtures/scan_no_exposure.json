@@ -1,0 +1,62 @@
+{
+ "matched": false,
+ "intelligence": {
+  "event": "Volcanic ash closes European airspace",
+  "impacted_country": null,
+  "impacted_category": null,
+  "severity": "low",
+  "estimated_duration_days": null,
+  "confidence": 0.47,
+  "sources": [
+   {
+    "id": "S1",
+    "title": "News",
+    "url": "https://example.com/a",
+    "snippet": "x"
+   }
+  ],
+  "claims": [],
+  "contradictions": [],
+  "evidence_strength": "47% (1 independent domains, 0 unresolved conflicts)",
+  "search_log": [
+   {
+    "query": "q",
+    "results_count": 1
+   }
+  ],
+  "extraction_method": "model"
+ },
+ "exposure": {
+  "matched": false,
+  "impacted_country": null,
+  "impacted_category": null,
+  "message": "The event does not map to a country and category in the supplier base.",
+  "total_exposure_eur": 0.0,
+  "open_pos_count": 0,
+  "critical_runway_days": null,
+  "affected_open_pos": [],
+  "mitigation_alternatives": []
+ },
+ "brief": null,
+ "critique": null,
+ "provenance": {
+  "models": {
+   "extraction": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "strategy": null,
+   "critic": null
+  },
+  "search_count": 1,
+  "source_count": 1,
+  "claims_extracted": 0,
+  "contradictions_identified": 0,
+  "contradictions_resolved": 0,
+  "extraction_method": "model",
+  "degraded": [],
+  "timings_s": {
+   "contradictions": 0.0,
+   "exposure": 0.0
+  },
+  "total_s": 0.0,
+  "generated_at": "2026-10-25T22:26:47+00:00"
+ }
+}

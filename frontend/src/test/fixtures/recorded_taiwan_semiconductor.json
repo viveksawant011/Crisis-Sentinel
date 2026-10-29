@@ -1,0 +1,696 @@
+{
+ "matched": true,
+ "intelligence": {
+  "event": "Taiwan earthquake forces TSMC fabs to shut, risking global chip supply",
+  "impacted_country": "Taiwan",
+  "impacted_category": "semiconductor",
+  "severity": "high",
+  "estimated_duration_days": 14,
+  "confidence": 0.83,
+  "sources": [
+   {
+    "id": "S1",
+    "title": "Navigating Semiconductor Supply Chain Disruptions: Insights from Taiwan\u2019s Earthquake | interos.ai",
+    "url": "https://www.interos.ai/blog/blog-navigating-semiconductor-supply-chain-disruptions-insights-from-taiwans-earthquake",
+    "snippet": "Further, while manufacturing plants may not have been directly affected by the earthquake\u2019s epicenter, the temporary shutdowns and inspections in Taiwan may lead to delays in chip-making machinery and semiconductor shipments to surrounding countries that rely on Taiwanese products for their own production processes. These delays could result in production bottlenecks and inventory shortages in various industries, including electronics, automotive, and consumer goods. [...] Within the semiconductor market, Taiwan-based companies account for approximately 60% of global production and approximately 90% of production of advanced semiconductors. The quake temporarily suspended chipmaking machinery and evacuated personnel from various semiconductor manufacturing facilities, impacting the production of advanced process nodes. Since highly sophisticated semiconductor fabs need to operate in a continuous vacuum state for several weeks, the temporary halt in operations, [...] Key chip producers like TSMC and UMC temporarily closed operations to conduct facility inspections and ensure employee safety. While employees have returned and some operations resumed, ongoing inspections are expected "
+   },
+   {
+    "id": "S2",
+    "title": "What Are the Key Causes of Fab Shutdowns Since 2024? | Z2Data",
+    "url": "https://www.z2data.com/insights/what-are-the-key-causes-of-fab-shutdowns-since-2024",
+    "snippet": "Taiwan Semiconductor Manufacturing Company\u2019s Fab 18 is located in the Southern Taiwan Science Park in Tainan.  The fabrication plant is one of TSMC\u2019s most productive and is responsible for producing 150,000 12-inch wafers per month. Fab 18 has been temporarily closed five times since the beginning of 2024, experiencing more shutdowns than any other fab in our database. The causes are all related to earthquakes, and the closures were triggered in April 2024, November of 2024, and January 2025. [...] As with Fab 18, TSMC\u2019s fab 14 operates within the Southern Taiwan Science Park, in Tainan. Fab 14 currently specializes in 12-inch wafers, with a capacity of over 360,000 wafers produced per month. This critical semiconductor manufacturing node has undergone four shutdowns since the beginning of 2024, all of which were related to earthquakes. The closures were triggered by evacuations and other precautionary measures in November 2024 and January 2025.\n\n### Foundry: TSMC\n\n#### Fab Name: Fab 6 [...] Because of Taiwan\u2019s vulnerability to earthquakes, the risks to semiconductor manufacturing might appear inescapable: most OEMs that source semiconductors can\u2019t avoid supply chains that pass thr"
+   },
+   {
+    "id": "S3",
+    "title": "Earthquake Impacts Semiconductor Manufacturing in Taiwan | Fusion Worldwide",
+    "url": "https://www.fusionww.com/insights/earthquake-impacts-semiconductor-manufacturers-in-taiwan",
+    "snippet": "| Taiwan Semiconductor Manufacturing Co. (TSMC) | Since the initial impact of the earthquake, TSMC has stated that most of its equipment is back online, but the production lines are not yet up to 100% capacity. TSMC\u2019s foundry facilities in Hsinchu/Miaoli, Taichung, and Tianan were reportedly impacted, with the Hsinchu plant pausing production for at least 24 hours.   Early reports indicated that the impact would be controllable, but the ripple effect of any disruption to IC production lines [...] Manufacturers in the memory supply chain swiftly implemented proactive measures to mitigate the disruption caused by the earthquake. As this occurred at the beginning of the quarter, pricing for components was either in negotiation or recently updated. Forecasts now suggest that pricing for memory products will rise by as much as 20% as manufacturers anticipate a surge in demand post-earthquake. [...] | NANYA | NANYA distributors are pausing quotes because production lines have been temporarily shut down for inspection. These lines are mainly for EUV processes, and production may take time to resume.   The earthquake reportedly paused production at Nanya\u2019s Fab 3A, located in New Taipei. Th"
+   },
+   {
+    "id": "S4",
+    "title": "Taiwan Earthquakes: TSMC in Taiwan Evacuates Factories - Microchip USA",
+    "url": "https://www.microchipusa.com/industry-news/taiwan-earthquake-tsmc-in-taiwan-evacuates-factories",
+    "snippet": "For the global semiconductor supply chain, the outcome was a relief. Unlike the January 2025 earthquake - which halted production and raised alarms about wafer losses and supply shortages - the December 2025 event demonstrated how far TSMC\u2019s earthquake preparedness has advanced. Investments in seismic-resistant fab design, vibration isolation systems, and real-time monitoring appear to have paid off, preventing the kind of cascading supply chain effects that have historically followed major [...] This time, the impact on TSMC and the broader semiconductor industry was notably different. In Hsinchu, home to many of TSMC\u2019s most critical fabs, ground motion was measured at around magnitude 4. TSMC confirmed that its earthquake alert systems were triggered and that some facilities were briefly evacuated in accordance with safety protocols. Following comprehensive inspections, operations resumed quickly, with no structural damage, no reported wafer losses, and no disruption to production [...] Beyond the immediate financial impact, the earthquake poses a reputational challenge for TSMC. The company has built its reputation on reliability and precision, but natural disasters like this on"
+   },
+   {
+    "id": "S5",
+    "title": "Taiwanese semiconductor giant TSMC restarts operations after earthquake, easing concerns of chip supply disruption - Electronics Manufacturing News",
+    "url": "https://www.globalsmt.net/world-news/taiwanese-semiconductor-giant-tsmc-restarts-operations-after-earthquake-easing-concerns-of-chip-supply-disruption",
+    "snippet": "The world\u2019s largest independent contract chip manufacturer, which supplies 90 per cent of the world\u2019s most advanced semiconductors to technology giants like Apple and Nvidia, restarted operations within 10 hours after work was suspended because of the worst earthquake to hit Taiwan in 25 years. There were at least nine fatalities and more than 1,000 injured during the earthquake. [...] Following a brief suspension of work, TSMC said 70 per cent of its chip-manufacturing equipment had been \u201crecovered\u201d for production at its fabrication facilities within 10 hours of the earthquake. New facilities, such as its Fab 18, achieved a recovery rate of more than 80 per cent. [...] Widespread concern about the state of Taiwan\u2019s semiconductor manufacturing industry after the earthquake shows the pivotal role that TSMC and other major chip makers in the island play in the global technology supply chain. The island produces 60 per cent of the world\u2019s semiconductors.\n\nAnalysts at Barclays initially warned that the production of certain chips in Taiwan could take weeks to recover, according to a note published on Wednesday.\n\n### Enjoyed this article?"
+   },
+   {
+    "id": "S6",
+    "title": "TSMC Restarts Taiwan Fabs After Earthquake Shutdowns",
+    "url": "https://www.asiafinancial.com/tsmc-restarts-taiwan-fabs-after-earthquake-shutdowns",
+    "snippet": "Certain production lines in areas that faced greater impact were likely to take more time to return to fully automated production, the company said.\n\nTSMC said its overall tool recovery of its fabrication facilities exceeded 80% as of Thursday. New fabs such as the Fab 18 in Tainan were expected to reach full recovery later in the day. The company\u2019s US-listed shares were up 1.39%.\n\n Reuters with additional editing by Sean O\u2019Meara\n\nRead more: [...] NEWS;)\n ANALYSIS;)\n INDEXES;)\n\nSemiconductors\n\n# TSMC Restarts Taiwan Fabs After Earthquake Shutdowns\n\nApril 4, 2024\n\nThe global chip leader had paused production at its sites after the 7.2-magnitude quake which triggered landslides\n\nTaiwan \n\nThis Reuters image shows a TSMC plant.\n\nChip giant Taiwan Semiconductor Manufacturing Co has restarted work at its manufacturing sites following the island\u2019s strongest earthquake in 25 years, which killed 9 and left 50 people missing. [...] Wednesday\u2019s quake had raised fears of disruptions to global chip supplies as TSMC produces a major share of the world\u2019s most advanced semiconductors, and counts Apple and AI chip leader Nvidia among its customers\n\nTSMC said its initial checks showed that safety sy"
+   }
+  ],
+  "claims": [
+   {
+    "claim_id": "C1",
+    "text": "Earthquake triggers temporary fab shutdowns",
+    "type": "cause",
+    "value": "earthquake",
+    "source_ids": [
+     "S1"
+    ]
+   },
+   {
+    "claim_id": "C2",
+    "text": "TSMC accounts for 60% of global semiconductor output",
+    "type": "scope",
+    "value": "60% global",
+    "source_ids": [
+     "S1"
+    ]
+   },
+   {
+    "claim_id": "C3",
+    "text": "High risk of chip supply chain disruption",
+    "type": "severity",
+    "value": "high",
+    "source_ids": [
+     "S1"
+    ]
+   },
+   {
+    "claim_id": "C4",
+    "text": "Facilities resume production within 10 hours",
+    "type": "duration",
+    "value": "10h",
+    "source_ids": [
+     "S6"
+    ]
+   }
+  ],
+  "contradictions": [],
+  "evidence_strength": "83% (6 independent domains, 0 unresolved conflicts)",
+  "search_log": [
+   {
+    "query": "Taiwan earthquake TSMC fab shutdown automotive semiconductor supply what happened disruption cause",
+    "results_count": 3
+   },
+   {
+    "query": "Taiwan earthquake TSMC fab shutdown automotive semiconductor supply automotive supplier parts plant impact",
+    "results_count": 3
+   },
+   {
+    "query": "Taiwan earthquake TSMC fab shutdown automotive semiconductor supply restart recovery estimated timeline",
+    "results_count": 3
+   }
+  ],
+  "extraction_method": "model"
+ },
+ "exposure": {
+  "matched": true,
+  "impacted_country": "Taiwan",
+  "impacted_category": "semiconductor",
+  "total_exposure_eur": 4723739.97,
+  "open_pos_count": 11,
+  "affected_suppliers": [
+   "TaiwanChip Corp",
+   "TaiwanParts 002",
+   "TaiwanParts 010",
+   "TaiwanParts 014",
+   "TaiwanParts 017",
+   "TaiwanParts 018",
+   "TaiwanParts 019"
+  ],
+  "affected_plants": [
+   "Berlin Plant",
+   "Leipzig Plant",
+   "Mannheim Plant",
+   "Munich Plant",
+   "Stuttgart Plant"
+  ],
+  "critical_runway_days": 3.2,
+  "critical_runway_detail": {
+   "material_id": "MAT-L10",
+   "material_name": "Microcontroller L10",
+   "plant_name": "Berlin Plant",
+   "current_stock": 5335,
+   "daily_consumption": 1665,
+   "runway_days": 3.2
+  },
+  "affected_open_pos": [
+   {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "material_name": "MCU-X200",
+    "quantity": 100000,
+    "value_eur": 2400000.0,
+    "lead_time_days": 18,
+    "supplier_id": "SUP001",
+    "supplier_name": "TaiwanChip Corp",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 18000,
+    "daily_consumption": 1650,
+    "runway_days": 10.9,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10002",
+    "material_id": "MAT-L34",
+    "material_name": "Power Module L34",
+    "quantity": 7686,
+    "value_eur": 349197.73,
+    "lead_time_days": 13,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_LEIPZIG",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 20129,
+    "daily_consumption": 971,
+    "runway_days": 20.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10008",
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "quantity": 3986,
+    "value_eur": 311155.57,
+    "lead_time_days": 24,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 3861,
+    "daily_consumption": 481,
+    "runway_days": 8.0,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10003",
+    "material_id": "MAT-T41",
+    "material_name": "Microcontroller T41",
+    "quantity": 2043,
+    "value_eur": 308330.87,
+    "lead_time_days": 14,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 30782,
+    "daily_consumption": 1057,
+    "runway_days": 29.1,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10005",
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "quantity": 18628,
+    "value_eur": 308233.91,
+    "lead_time_days": 5,
+    "supplier_id": "SUP1014",
+    "supplier_name": "TaiwanParts 014",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_LEIPZIG",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 17681,
+    "daily_consumption": 960,
+    "runway_days": 18.4,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10006",
+    "material_id": "MAT-L10",
+    "material_name": "Microcontroller L10",
+    "quantity": 9243,
+    "value_eur": 280579.62,
+    "lead_time_days": 26,
+    "supplier_id": "SUP1018",
+    "supplier_name": "TaiwanParts 018",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 5335,
+    "daily_consumption": 1665,
+    "runway_days": 3.2,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10010",
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "quantity": 11121,
+    "value_eur": 196581.71,
+    "lead_time_days": 12,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 32819,
+    "daily_consumption": 1256,
+    "runway_days": 26.1,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10007",
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "quantity": 5682,
+    "value_eur": 186117.11,
+    "lead_time_days": 21,
+    "supplier_id": "SUP1002",
+    "supplier_name": "TaiwanParts 002",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 24292,
+    "daily_consumption": 1119,
+    "runway_days": 21.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10004",
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "quantity": 2581,
+    "value_eur": 165430.19,
+    "lead_time_days": 43,
+    "supplier_id": "SUP1018",
+    "supplier_name": "TaiwanParts 018",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 20893,
+    "daily_consumption": 805,
+    "runway_days": 26.0,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10011",
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "quantity": 2398,
+    "value_eur": 122261.48,
+    "lead_time_days": 41,
+    "supplier_id": "SUP1010",
+    "supplier_name": "TaiwanParts 010",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_MUNICH",
+    "plant_name": "Munich Plant",
+    "current_stock": 28093,
+    "daily_consumption": 1356,
+    "runway_days": 20.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10009",
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "quantity": 7017,
+    "value_eur": 95851.78,
+    "lead_time_days": 15,
+    "supplier_id": "SUP1019",
+    "supplier_name": "TaiwanParts 019",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 19289,
+    "daily_consumption": 878,
+    "runway_days": 22.0,
+    "has_alternative": true
+   }
+  ],
+  "inventory_runways": [
+   {
+    "material_id": "MAT-L10",
+    "material_name": "Microcontroller L10",
+    "plant_name": "Berlin Plant",
+    "current_stock": 5335,
+    "daily_consumption": 1665,
+    "runway_days": 3.2
+   },
+   {
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "plant_name": "Berlin Plant",
+    "current_stock": 3861,
+    "daily_consumption": 481,
+    "runway_days": 8.0
+   },
+   {
+    "material_id": "MCU-X200",
+    "material_name": "MCU-X200",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 18000,
+    "daily_consumption": 1650,
+    "runway_days": 10.9
+   },
+   {
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 17681,
+    "daily_consumption": 960,
+    "runway_days": 18.4
+   },
+   {
+    "material_id": "MAT-L34",
+    "material_name": "Power Module L34",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 20129,
+    "daily_consumption": 971,
+    "runway_days": 20.7
+   },
+   {
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "plant_name": "Munich Plant",
+    "current_stock": 28093,
+    "daily_consumption": 1356,
+    "runway_days": 20.7
+   },
+   {
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 24292,
+    "daily_consumption": 1119,
+    "runway_days": 21.7
+   },
+   {
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "plant_name": "Berlin Plant",
+    "current_stock": 19289,
+    "daily_consumption": 878,
+    "runway_days": 22.0
+   },
+   {
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 20893,
+    "daily_consumption": 805,
+    "runway_days": 26.0
+   },
+   {
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 32819,
+    "daily_consumption": 1256,
+    "runway_days": 26.1
+   },
+   {
+    "material_id": "MAT-T41",
+    "material_name": "Microcontroller T41",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 30782,
+    "daily_consumption": 1057,
+    "runway_days": 29.1
+   }
+  ],
+  "pos_without_inventory_record": [],
+  "mitigation_alternatives": [
+   {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "primary_supplier": "TaiwanChip Corp",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "primary_supplier": "TaiwanChip Corp",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10002",
+    "material_id": "MAT-L34",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10002",
+    "material_id": "MAT-L34",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1008",
+    "alt_supplier_name": "SouthKoreaParts 008",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10003",
+    "material_id": "MAT-T41",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10003",
+    "material_id": "MAT-T41",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10004",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10004",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10005",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 014",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10005",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 014",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10006",
+    "material_id": "MAT-L10",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10006",
+    "material_id": "MAT-L10",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10007",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 002",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10007",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 002",
+    "alt_supplier_id": "SUP1008",
+    "alt_supplier_name": "SouthKoreaParts 008",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10008",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10008",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10009",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 019",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10009",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 019",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10010",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10010",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10011",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 010",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10011",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 010",
+    "alt_supplier_id": "SUP1008",
+    "alt_supplier_name": "SouthKoreaParts 008",
+    "alt_supplier_country": "South Korea"
+   }
+  ],
+  "reroutable_value_eur": 4723739.97
+ },
+ "brief": {
+  "headline": "Taiwan Earthquake Disrupts Semiconductor Supply; 3.2-Day Critical Runway at Berlin Plant",
+  "criticality_summary": "11 open POs worth \u20ac4.7M from 7 Taiwan suppliers at risk; all reroutable to EuroSemi GmbH (Germany). MAT-L10 at Berlin Plant has only 3.2 days stock vs 26-day lead time.",
+  "financial_risk_eur": 4723739.97,
+  "assembly_line_deadline_days": 3.2,
+  "recommended_actions": [
+   {
+    "priority": 1,
+    "title": "Emergency Reroute MAT-L10 to EuroSemi GmbH",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10006",
+    "target_supplier_id": "SUP014",
+    "target_plant": "Berlin Plant",
+    "target_material": "MAT-L10",
+    "rationale": "Only 3.2 days runway vs 26-day Taiwan lead time; line stop imminent.",
+    "estimated_cost_eur": 280579.62,
+    "value_rerouted_eur": 280579.62
+   },
+   {
+    "priority": 2,
+    "title": "Reroute MCU-X200 to EuroSemi GmbH",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10482",
+    "target_supplier_id": "SUP014",
+    "target_plant": "Stuttgart Plant",
+    "target_material": "MCU-X200",
+    "rationale": "10.9-day runway vs 18-day Taiwan lead time; high-value \u20ac2.4M PO.",
+    "estimated_cost_eur": 2400000.0,
+    "value_rerouted_eur": 2400000.0
+   }
+  ],
+  "brief_source": "nemotron"
+ },
+ "critique": {
+  "deterministic_flags": [],
+  "challenges": [
+   {
+    "target": "All reroute actions (Priority 1-3)",
+    "issue_type": "unsupported_assumption",
+    "severity": "high",
+    "explanation": "The brief assumes EuroSemi GmbH (SUP014) can immediately absorb the additional volume of Microcontroller L10, Power Module P13, and MCU-X200 without impacting its own lead times or capacity. No data on EuroSemi's current utilization, lead\u2011time buffers, or qualification for these specific parts is provided, creating a risk of overloading the supplier and causing further delays.",
+    "suggested_fix": "Perform a rapid capacity and lead\u2011time assessment for EuroSemi for each material, qualify at least one alternate supplier per material, and consider splitting the volume across multiple sources to mitigate single\u2011point failure."
+   }
+  ],
+  "verdict": "revise",
+  "revised": false,
+  "checks": [
+   {
+    "id": "total_matches_sql",
+    "label": "Value at risk equals the SQL total",
+    "passed": true,
+    "detail": "brief \u20ac4,723,739.97 vs SQL \u20ac4,723,739.97"
+   },
+   {
+    "id": "deadline_matches_runway",
+    "label": "Deadline equals the shortest inventory runway",
+    "passed": true,
+    "detail": "brief 3.2 d vs SQL 3.2 d"
+   },
+   {
+    "id": "actions_reference_exposed_pos",
+    "label": "Every action targets an exposed open PO",
+    "passed": true,
+    "detail": "2 action(s) checked"
+   },
+   {
+    "id": "suppliers_are_erp_approved",
+    "label": "Every reroute uses an ERP-approved alternative for that PO",
+    "passed": true,
+    "detail": "all reroute pairs found in alt_supplier_map"
+   },
+   {
+    "id": "plant_material_match_po",
+    "label": "Action plant and material match the PO record",
+    "passed": true,
+    "detail": "consistent with ERP"
+   },
+   {
+    "id": "brief_generated_by_model",
+    "label": "Plan was generated by the model (not the SQL fallback)",
+    "passed": true,
+    "detail": "brief_source = nemotron"
+   }
+  ],
+  "status": "model"
+ },
+ "provenance": {
+  "models": {
+   "extraction": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "strategy": "nvidia/nemotron-3-super-120b-a12b",
+   "critic": "nvidia/nemotron-3-super-120b-a12b"
+  },
+  "search_count": 3,
+  "source_count": 6,
+  "claims_extracted": 4,
+  "contradictions_identified": 0,
+  "extraction_method": "model"
+ },
+ "cache_notice": "1 recorded action(s) were removed because the ERP baseline changed since this run was recorded. Re-record scenarios to refresh them.",
+ "cached": true,
+ "recorded_at": "2026-10-25T12:10:24+00:00"
+}

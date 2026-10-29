@@ -1,0 +1,646 @@
+{
+ "matched": true,
+ "intelligence": {
+  "event": "Volcanic ash closes European airspace",
+  "impacted_country": "Taiwan",
+  "impacted_category": "semiconductor",
+  "severity": "high",
+  "estimated_duration_days": null,
+  "confidence": 0.47,
+  "sources": [
+   {
+    "id": "S1",
+    "title": "News",
+    "url": "https://example.com/a",
+    "snippet": "x"
+   }
+  ],
+  "claims": [],
+  "contradictions": [],
+  "evidence_strength": "47% (1 independent domains, 0 unresolved conflicts)",
+  "search_log": [
+   {
+    "query": "q",
+    "results_count": 1
+   }
+  ],
+  "extraction_method": "model"
+ },
+ "exposure": {
+  "matched": true,
+  "impacted_country": "Taiwan",
+  "impacted_category": "semiconductor",
+  "total_exposure_eur": 4723739.97,
+  "open_pos_count": 11,
+  "affected_suppliers": [
+   "TaiwanChip Corp",
+   "TaiwanParts 002",
+   "TaiwanParts 010",
+   "TaiwanParts 014",
+   "TaiwanParts 017",
+   "TaiwanParts 018",
+   "TaiwanParts 019"
+  ],
+  "affected_plants": [
+   "Berlin Plant",
+   "Leipzig Plant",
+   "Mannheim Plant",
+   "Munich Plant",
+   "Stuttgart Plant"
+  ],
+  "critical_runway_days": 3.2,
+  "critical_runway_detail": {
+   "material_id": "MAT-L10",
+   "material_name": "Microcontroller L10",
+   "plant_name": "Berlin Plant",
+   "current_stock": 5335,
+   "daily_consumption": 1665,
+   "runway_days": 3.2
+  },
+  "affected_open_pos": [
+   {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "material_name": "MCU-X200",
+    "quantity": 100000,
+    "value_eur": 2400000.0,
+    "lead_time_days": 18,
+    "supplier_id": "SUP001",
+    "supplier_name": "TaiwanChip Corp",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 18000,
+    "daily_consumption": 1650,
+    "runway_days": 10.9,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10002",
+    "material_id": "MAT-L34",
+    "material_name": "Power Module L34",
+    "quantity": 7686,
+    "value_eur": 349197.73,
+    "lead_time_days": 13,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_LEIPZIG",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 20129,
+    "daily_consumption": 971,
+    "runway_days": 20.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10008",
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "quantity": 3986,
+    "value_eur": 311155.57,
+    "lead_time_days": 24,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 3861,
+    "daily_consumption": 481,
+    "runway_days": 8.0,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10003",
+    "material_id": "MAT-T41",
+    "material_name": "Microcontroller T41",
+    "quantity": 2043,
+    "value_eur": 308330.87,
+    "lead_time_days": 14,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 30782,
+    "daily_consumption": 1057,
+    "runway_days": 29.1,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10005",
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "quantity": 18628,
+    "value_eur": 308233.91,
+    "lead_time_days": 5,
+    "supplier_id": "SUP1014",
+    "supplier_name": "TaiwanParts 014",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_LEIPZIG",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 17681,
+    "daily_consumption": 960,
+    "runway_days": 18.4,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10006",
+    "material_id": "MAT-L10",
+    "material_name": "Microcontroller L10",
+    "quantity": 9243,
+    "value_eur": 280579.62,
+    "lead_time_days": 26,
+    "supplier_id": "SUP1018",
+    "supplier_name": "TaiwanParts 018",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 5335,
+    "daily_consumption": 1665,
+    "runway_days": 3.2,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10010",
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "quantity": 11121,
+    "value_eur": 196581.71,
+    "lead_time_days": 12,
+    "supplier_id": "SUP1017",
+    "supplier_name": "TaiwanParts 017",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_STUTTGART",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 32819,
+    "daily_consumption": 1256,
+    "runway_days": 26.1,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10007",
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "quantity": 5682,
+    "value_eur": 186117.11,
+    "lead_time_days": 21,
+    "supplier_id": "SUP1002",
+    "supplier_name": "TaiwanParts 002",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 24292,
+    "daily_consumption": 1119,
+    "runway_days": 21.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10004",
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "quantity": 2581,
+    "value_eur": 165430.19,
+    "lead_time_days": 43,
+    "supplier_id": "SUP1018",
+    "supplier_name": "TaiwanParts 018",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_MANNHEIM",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 20893,
+    "daily_consumption": 805,
+    "runway_days": 26.0,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10011",
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "quantity": 2398,
+    "value_eur": 122261.48,
+    "lead_time_days": 41,
+    "supplier_id": "SUP1010",
+    "supplier_name": "TaiwanParts 010",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_MUNICH",
+    "plant_name": "Munich Plant",
+    "current_stock": 28093,
+    "daily_consumption": 1356,
+    "runway_days": 20.7,
+    "has_alternative": true
+   },
+   {
+    "po_id": "PO10009",
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "quantity": 7017,
+    "value_eur": 95851.78,
+    "lead_time_days": 15,
+    "supplier_id": "SUP1019",
+    "supplier_name": "TaiwanParts 019",
+    "supplier_country": "Taiwan",
+    "plant_id": "PL_BERLIN",
+    "plant_name": "Berlin Plant",
+    "current_stock": 19289,
+    "daily_consumption": 878,
+    "runway_days": 22.0,
+    "has_alternative": true
+   }
+  ],
+  "inventory_runways": [
+   {
+    "material_id": "MAT-L10",
+    "material_name": "Microcontroller L10",
+    "plant_name": "Berlin Plant",
+    "current_stock": 5335,
+    "daily_consumption": 1665,
+    "runway_days": 3.2
+   },
+   {
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "plant_name": "Berlin Plant",
+    "current_stock": 3861,
+    "daily_consumption": 481,
+    "runway_days": 8.0
+   },
+   {
+    "material_id": "MCU-X200",
+    "material_name": "MCU-X200",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 18000,
+    "daily_consumption": 1650,
+    "runway_days": 10.9
+   },
+   {
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 17681,
+    "daily_consumption": 960,
+    "runway_days": 18.4
+   },
+   {
+    "material_id": "MAT-L34",
+    "material_name": "Power Module L34",
+    "plant_name": "Leipzig Plant",
+    "current_stock": 20129,
+    "daily_consumption": 971,
+    "runway_days": 20.7
+   },
+   {
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "plant_name": "Munich Plant",
+    "current_stock": 28093,
+    "daily_consumption": 1356,
+    "runway_days": 20.7
+   },
+   {
+    "material_id": "MAT-A24",
+    "material_name": "Microcontroller A24",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 24292,
+    "daily_consumption": 1119,
+    "runway_days": 21.7
+   },
+   {
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "plant_name": "Berlin Plant",
+    "current_stock": 19289,
+    "daily_consumption": 878,
+    "runway_days": 22.0
+   },
+   {
+    "material_id": "MAT-P13",
+    "material_name": "Power Module P13",
+    "plant_name": "Mannheim Plant",
+    "current_stock": 20893,
+    "daily_consumption": 805,
+    "runway_days": 26.0
+   },
+   {
+    "material_id": "MAT-V43",
+    "material_name": "Sensor Controller V43",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 32819,
+    "daily_consumption": 1256,
+    "runway_days": 26.1
+   },
+   {
+    "material_id": "MAT-T41",
+    "material_name": "Microcontroller T41",
+    "plant_name": "Stuttgart Plant",
+    "current_stock": 30782,
+    "daily_consumption": 1057,
+    "runway_days": 29.1
+   }
+  ],
+  "pos_without_inventory_record": [],
+  "mitigation_alternatives": [
+   {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "primary_supplier": "TaiwanChip Corp",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10482",
+    "material_id": "MCU-X200",
+    "primary_supplier": "TaiwanChip Corp",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10002",
+    "material_id": "MAT-L34",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10002",
+    "material_id": "MAT-L34",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1008",
+    "alt_supplier_name": "SouthKoreaParts 008",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10003",
+    "material_id": "MAT-T41",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10003",
+    "material_id": "MAT-T41",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10004",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10004",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10005",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 014",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10005",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 014",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10006",
+    "material_id": "MAT-L10",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10006",
+    "material_id": "MAT-L10",
+    "primary_supplier": "TaiwanParts 018",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10007",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 002",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10007",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 002",
+    "alt_supplier_id": "SUP1008",
+    "alt_supplier_name": "SouthKoreaParts 008",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10008",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10008",
+    "material_id": "MAT-P13",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10009",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 019",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10009",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 019",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10010",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP014",
+    "alt_supplier_name": "EuroSemi GmbH",
+    "alt_supplier_country": "Germany"
+   },
+   {
+    "po_id": "PO10010",
+    "material_id": "MAT-V43",
+    "primary_supplier": "TaiwanParts 017",
+    "alt_supplier_id": "SUP1006",
+    "alt_supplier_name": "SouthKoreaParts 006",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10011",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 010",
+    "alt_supplier_id": "SUP1007",
+    "alt_supplier_name": "SouthKoreaParts 007",
+    "alt_supplier_country": "South Korea"
+   },
+   {
+    "po_id": "PO10011",
+    "material_id": "MAT-A24",
+    "primary_supplier": "TaiwanParts 010",
+    "alt_supplier_id": "SUP1008",
+    "alt_supplier_name": "SouthKoreaParts 008",
+    "alt_supplier_country": "South Korea"
+   }
+  ],
+  "reroutable_value_eur": 4723739.97
+ },
+ "brief": {
+  "headline": "Taiwan semiconductor disruption: \u20ac4,723,740 exposed",
+  "criticality_summary": "11 open purchase orders are exposed; shortest inventory runway is 3.2 days.",
+  "financial_risk_eur": 4723739.97,
+  "assembly_line_deadline_days": 3.2,
+  "recommended_actions": [
+   {
+    "priority": 1,
+    "title": "Reroute MAT-L10 (PO10006) to EuroSemi GmbH",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10006",
+    "target_supplier_id": "SUP014",
+    "target_plant": "Berlin Plant",
+    "target_material": "MAT-L10",
+    "rationale": "Berlin Plant has 3.2 days of stock; EuroSemi GmbH is the ERP-approved alternative for this PO.",
+    "estimated_cost_eur": 280579.62,
+    "value_rerouted_eur": 280579.62
+   },
+   {
+    "priority": 2,
+    "title": "Reroute MAT-P13 (PO10008) to SouthKoreaParts 006",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10008",
+    "target_supplier_id": "SUP1006",
+    "target_plant": "Berlin Plant",
+    "target_material": "MAT-P13",
+    "rationale": "Berlin Plant has 8.0 days of stock; SouthKoreaParts 006 is the ERP-approved alternative for this PO.",
+    "estimated_cost_eur": 311155.57,
+    "value_rerouted_eur": 311155.57
+   },
+   {
+    "priority": 3,
+    "title": "Reroute MCU-X200 (PO10482) to EuroSemi GmbH",
+    "action_type": "reroute_supplier",
+    "po_id": "PO10482",
+    "target_supplier_id": "SUP014",
+    "target_plant": "Stuttgart Plant",
+    "target_material": "MCU-X200",
+    "rationale": "Stuttgart Plant has 10.9 days of stock; EuroSemi GmbH is the ERP-approved alternative for this PO.",
+    "estimated_cost_eur": 2400000.0,
+    "value_rerouted_eur": 2400000.0
+   }
+  ],
+  "brief_source": "deterministic_fallback",
+  "model_used": null
+ },
+ "critique": {
+  "checks": [
+   {
+    "id": "total_matches_sql",
+    "label": "Value at risk equals the SQL total",
+    "passed": true,
+    "detail": "brief \u20ac4,723,739.97 vs SQL \u20ac4,723,739.97"
+   },
+   {
+    "id": "deadline_matches_runway",
+    "label": "Deadline equals the shortest inventory runway",
+    "passed": true,
+    "detail": "brief 3.2 d vs SQL 3.2 d"
+   },
+   {
+    "id": "actions_reference_exposed_pos",
+    "label": "Every action targets an exposed open PO",
+    "passed": true,
+    "detail": "3 action(s) checked"
+   },
+   {
+    "id": "suppliers_are_erp_approved",
+    "label": "Every reroute uses an ERP-approved alternative for that PO",
+    "passed": true,
+    "detail": "all reroute pairs found in alt_supplier_map"
+   },
+   {
+    "id": "plant_material_match_po",
+    "label": "Action plant and material match the PO record",
+    "passed": true,
+    "detail": "consistent with ERP"
+   },
+   {
+    "id": "brief_generated_by_model",
+    "label": "Plan was generated by the model (not the SQL fallback)",
+    "passed": false,
+    "detail": "brief_source = deterministic_fallback"
+   }
+  ],
+  "deterministic_flags": [],
+  "challenges": [
+   {
+    "target": "Reroute plan",
+    "issue_type": "single_source_concentration",
+    "severity": "medium",
+    "explanation": "90% of rerouted order value (\u20ac2,680,580) lands on EuroSemi GmbH; a problem there would recreate the exposure.",
+    "suggested_fix": "Confirm the alternative's spare capacity before approving, or split volume across a second qualified supplier.",
+    "origin": "deterministic"
+   }
+  ],
+  "verdict": "unverified",
+  "status": "degraded",
+  "model_used": null,
+  "revised": false
+ },
+ "provenance": {
+  "models": {
+   "extraction": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "strategy": null,
+   "critic": null
+  },
+  "search_count": 1,
+  "source_count": 1,
+  "claims_extracted": 0,
+  "contradictions_identified": 0,
+  "contradictions_resolved": 0,
+  "extraction_method": "model",
+  "degraded": [
+   "strategy",
+   "critic"
+  ],
+  "timings_s": {
+   "contradictions": 0.0,
+   "exposure": 0.0,
+   "strategy": 0.0,
+   "critic": 0.0
+  },
+  "total_s": 0.0,
+  "generated_at": "2026-10-25T22:26:47+00:00"
+ }
+}

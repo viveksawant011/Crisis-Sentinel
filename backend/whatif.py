@@ -4,6 +4,7 @@ Simulates capacity disruptions, stockout timelines, and reroute benefits using p
 """
 
 import sqlite3
+from pathlib import Path
 from typing import Dict, Any, List, Optional
 from pydantic import BaseModel, Field
 
@@ -24,7 +25,7 @@ def simulate_whatif(
     capacity_offline_pct: float = 100.0,
     apply_reroute: bool = True,
     alt_lead_time_override: Optional[int] = None,
-    db_path: str = "voltauto.db"
+    db_path: str = str(Path(__file__).resolve().parent / "voltauto.db")
 ) -> Dict[str, Any]:
     """Pure deterministic simulation of inventory depletion and line stoppage."""
     f = max(0.0, min(1.0, capacity_offline_pct / 100.0))
@@ -44,13 +45,13 @@ def simulate_whatif(
         po.lead_time_days,
         inv.current_stock,
         inv.daily_consumption,
-        asm.alt_supplier_id
+        EXISTS (SELECT 1 FROM alt_supplier_map asm
+                WHERE asm.material_id = po.material_id AND asm.primary_supplier_id = po.supplier_id) AS has_alt
     FROM purchase_order po
     JOIN supplier s ON po.supplier_id = s.id
     JOIN material m ON po.material_id = m.id
     JOIN plant p ON po.plant_id = p.id
     LEFT JOIN inventory inv ON (po.material_id = inv.material_id AND po.plant_id = inv.plant_id)
-    LEFT JOIN alt_supplier_map asm ON (po.material_id = asm.material_id AND po.supplier_id = asm.primary_supplier_id)
     WHERE po.status = 'open'
       AND LOWER(s.country) = LOWER(?)
       AND LOWER(s.category) = LOWER(?)
@@ -100,7 +101,7 @@ def simulate_whatif(
         val_at_risk_base = shortfall_units_base * unit_price
 
         # 2. With Reroute
-        has_alt = bool(r["alt_supplier_id"])
+        has_alt = bool(r["has_alt"])
         if has_alt:
             effective_D = min(D, lead_time)
             if depletion > 0:
