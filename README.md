@@ -6,8 +6,7 @@ When a factory shuts down or a port closes, CrisisSentinel tells a manufacturer 
 
 Built for the Nebius x NVIDIA Global AI Hackathon, **Best Apps and Agents** track.
 
-- **Live demo:** ADD_DEMO_URL_HERE
-- **Demo video (3 min):** ADD_YOUTUBE_URL_HERE
+- **Demo video (3 min):** https://www.youtube.com/watch?v=RvS_1QmGDUk
 
 ## The problem
 
